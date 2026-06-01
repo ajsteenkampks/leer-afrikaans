@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leer Afrikaans</title>
+<style>
+:root {
+  --green: #007A4D;
+  --gold: #FFB612;
+  --red: #DE3831;
+  --blue: #002395;
+  --black: #000000;
+  --white: #FFFFFF;
+  --light-green: #e8f5ef;
+  --light-gold: #fff8e7;
+  --gray: #f5f5f5;
+  --dark-gray: #2d2d2d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f8f8; color: var(--dark-gray); min-height: 100vh; }
+
+/* ─── HEADER ─── */
+.header {
+  background: var(--green);
+  color: white;
+  padding: 22px 20px 16px;
+  text-align: center;
+  position: relative;
+}
+.header h1 { font-size: 2rem; letter-spacing: 2px; }
+.header p { opacity: .85; margin-top: 4px; font-size: .95rem; }
+.flag-bar {
+  height: 7px;
+  margin-top: 14px;
+  background: linear-gradient(to right,
+    #000 0%,#000 16.6%,
+    var(--gold) 16.6%,var(--gold) 33.3%,
+    var(--green) 33.3%,var(--green) 50%,
+    #fff 50%,#fff 66.6%,
+    var(--red) 66.6%,var(--red) 83.3%,
+    var(--blue) 83.3%,var(--blue) 100%);
+}
+
+/* ─── SCREENS ─── */
+.screen { display: none; max-width: 820px; margin: 0 auto; padding: 32px 20px; }
+.screen.active { display: block; }
+
+/* ─── PAGE TITLE ─── */
+.page-title { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.page-title h2 { font-size: 1.5rem; color: var(--green); }
+.back-btn {
+  background: none; border: none; color: var(--green); cursor: pointer;
+  font-size: .95rem; padding: 6px 12px; border-radius: 7px;
+  font-weight: 700; display: flex; align-items: center; gap: 4px;
+}
+.back-btn:hover { background: var(--light-green); }
+
+/* ─── SECTION LABEL ─── */
+.section-label { text-align: center; margin-bottom: 6px; }
+.section-label h2 { font-size: 1.35rem; }
+.section-label p { color: #666; margin-top: 4px; font-size: .9rem; }
+
+/* ─── MAIN MENU ─── */
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 20px; margin-top: 28px; }
+.menu-card {
+  background: white; border: 3px solid var(--green); border-radius: 14px;
+  padding: 32px 20px; text-align: center; cursor: pointer; transition: all .2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.menu-card:hover { background: var(--green); color: white; transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,122,77,.28); }
+.menu-card .icon { font-size: 2.8rem; margin-bottom: 10px; }
+.menu-card h2 { font-size: 1.25rem; }
+.menu-card p { font-size: .82rem; margin-top: 8px; opacity: .75; }
+
+/* ─── UNIT GRID ─── */
+.unit-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); gap: 14px; margin-top: 18px; }
+.unit-btn {
+  background: white; border: 2px solid var(--gold); border-radius: 11px;
+  padding: 18px 12px; text-align: center; cursor: pointer; transition: all .2s;
+  font-size: .88rem;
+}
+.unit-btn:hover, .unit-btn.selected { background: var(--gold); color: var(--black); }
+.unit-btn .uicon { font-size: 1.9rem; display: block; margin-bottom: 7px; }
+
+/* ─── TENSE SELECT ─── */
+.tense-grid { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 18px; }
+.tense-btn {
+  flex: 1; min-width: 110px; background: white; border: 2px solid var(--blue);
+  border-radius: 11px; padding: 18px; text-align: center; cursor: pointer; transition: all .2s; font-size: .95rem;
+}
+.tense-btn:hover, .tense-btn.selected { background: var(--blue); color: white; }
+
+/* ─── BUTTONS ─── */
+.btn {
+  padding: 10px 22px; border: none; border-radius: 8px; cursor: pointer;
+  font-size: .94rem; font-weight: 700; transition: all .2s; display: inline-block;
+}
+.btn-green { background: var(--green); color: white; }
+.btn-green:hover { background: #005a38; }
+.btn-gold { background: var(--gold); color: var(--black); }
+.btn-gold:hover { background: #e6a200; }
+.btn-red { background: var(--red); color: white; }
+.btn-red:hover { background: #b52e2a; }
+.btn-blue { background: var(--blue); color: white; }
+.btn-blue:hover { background: #001a6e; }
+.btn-outline { background: transparent; border: 2px solid var(--green); color: var(--green); }
+.btn-outline:hover { background: var(--green); color: white; }
+
+/* ─── FLASHCARD ─── */
+.fc-wrap { perspective: 1000px; margin: 28px auto; max-width: 580px; height: 270px; }
+.flashcard {
+  width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
+  transition: transform .48s cubic-bezier(.4,.2,.2,1); cursor: pointer;
+}
+.flashcard.flipped { transform: rotateY(180deg); }
+.card-face {
+  position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+  border-radius: 18px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.13);
+}
+.card-front { background: linear-gradient(135deg,var(--green),#005a38); color: white; }
+.card-back  { background: linear-gradient(135deg,var(--gold),#d99a00); color: var(--black); transform: rotateY(180deg); }
+.card-word  { font-size: 2.4rem; font-weight: 800; text-align: center; }
+.card-type  { font-size: .78rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 8px; opacity: .75; }
+.card-hint  { font-size: .77rem; margin-top: 18px; opacity: .6; }
+.tense-pill {
+  font-size: .74rem; background: rgba(0,0,0,.15); padding: 3px 12px;
+  border-radius: 20px; margin-bottom: 10px; display: none;
+}
+
+.fc-progress { text-align: center; color: #666; font-size: .88rem; margin-top: 10px; }
+.fc-controls { display: flex; justify-content: center; align-items: center; gap: 18px; margin-top: 18px; flex-wrap: wrap; }
+
+/* ─── QUIZ ─── */
+.progress-bar { background: #ddd; border-radius: 10px; height: 7px; margin-bottom: 18px; }
+.progress-fill { background: var(--green); height: 100%; border-radius: 10px; transition: width .3s; }
+.progress-text { text-align: center; color: #666; font-size: .87rem; margin-bottom: 16px; }
+
+.quiz-card { background: white; border-radius: 14px; padding: 28px; box-shadow: 0 4px 16px rgba(0,0,0,.09); }
+.quiz-badge {
+  display: inline-block; background: var(--blue); color: white;
+  padding: 4px 12px; border-radius: 20px; font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+}
+.quiz-prompt { color: #555; font-size: .88rem; margin-bottom: 4px; }
+.quiz-word { font-size: 2rem; font-weight: 800; margin: 10px 0 18px; }
+.quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+.opt {
+  background: white; border: 2px solid #ddd; border-radius: 10px;
+  padding: 14px; cursor: pointer; text-align: center; font-size: .92rem; transition: all .18s;
+}
+.opt:hover { border-color: var(--blue); background: #f0f4ff; }
+.opt.correct { border-color: var(--green); background: var(--light-green); color: var(--green); font-weight: 700; }
+.opt.wrong { border-color: var(--red); background: #ffeeed; color: var(--red); }
+
+.fill-input {
+  width: 100%; padding: 13px 15px; border: 2px solid #ccc; border-radius: 10px;
+  font-size: 1rem; outline: none; transition: border-color .2s; margin-bottom: 12px;
+}
+.fill-input:focus { border-color: var(--blue); }
+.fill-input.correct { border-color: var(--green); background: var(--light-green); }
+.fill-input.wrong { border-color: var(--red); background: #ffeeed; }
+
+.feedback {
+  margin-top: 14px; padding: 11px 14px; border-radius: 9px;
+  font-weight: 600; display: none; font-size: .9rem;
+}
+.feedback.show { display: block; }
+.feedback.correct { background: var(--light-green); color: #005a38; }
+.feedback.wrong { background: #ffeeed; color: #a02020; }
+
+.reading-passage {
+  background: var(--light-green); border-left: 4px solid var(--green);
+  padding: 18px; border-radius: 8px; margin-bottom: 18px;
+  font-style: italic; line-height: 1.65; font-size: 1.05rem;
+}
+
+/* ─── RESULTS ─── */
+.results-card { background: white; border-radius: 18px; padding: 44px 32px; text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,.1); }
+.score-circle {
+  width: 120px; height: 120px; border-radius: 50%; background: var(--green);
+  color: white; font-size: 2.4rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+}
+.results-card h2 { font-size: 1.8rem; margin-bottom: 8px; }
+.results-card p { color: #555; margin-bottom: 22px; }
+.results-bar {
+  height: 6px; border-radius: 4px; margin: 20px 0;
+  background: linear-gradient(to right,#000 0%,#000 16.6%,var(--gold) 16.6%,var(--gold) 33.3%,var(--green) 33.3%,var(--green) 50%,#ccc 50%,#ccc 66.6%,var(--red) 66.6%,var(--red) 83.3%,var(--blue) 83.3%,var(--blue) 100%);
+}
+.results-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ─── VOCAB LIST ─── */
+.vocab-section { margin-bottom: 30px; }
+.vocab-section h3 { color: var(--green); border-bottom: 3px solid var(--gold); padding-bottom: 8px; margin-bottom: 14px; font-size: 1.05rem; }
+.vocab-table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+.vocab-table th { background: var(--green); color: white; padding: 10px 14px; text-align: left; font-size: .82rem; text-transform: uppercase; letter-spacing: .5px; }
+.vocab-table td { padding: 9px 14px; border-bottom: 1px solid #eee; font-size: .9rem; }
+.vocab-table tr:nth-child(even) td { background: #fafafa; }
+.vocab-table tr:last-child td { border-bottom: none; }
+.badge {
+  display: inline-block; padding: 2px 8px; border-radius: 4px;
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+}
+.badge-noun { background: #e8f5ef; color: var(--green); }
+.badge-verb { background: #fff0e0; color: #b36200; }
+.badge-adj  { background: #e8eeff; color: var(--blue); }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:520px){
+  .quiz-options { grid-template-columns: 1fr; }
+  .card-word { font-size: 1.7rem; }
+  .fc-wrap { height: 230px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🇿🇦 Leer Afrikaans</h1>
+  <p>Learn Afrikaans — Unit by Unit</p>
+  <div class="flag-bar"></div>
+</div>
+
+<!-- ══════════════════ MAIN MENU ══════════════════ -->
+<div id="s-menu" class="screen active">
+  <div class="section-label" style="margin-top:16px">
+    <h2>Wat wil jy doen?</h2>
+    <p>What would you like to do?</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card" onclick="goUnitSelect('flashcards')">
+      <div class="icon">🃏</div>
+      <h2>Flashcards</h2>
+      <p>Flip through vocabulary. Choose your tense. Space to reveal.</p>
+    </div>
+    <div class="menu-card" onclick="goUnitSelect('quiz')">
+      <div class="icon">✏️</div>
+      <h2>Quiz</h2>
+      <p>Multiple choice, fill-in-the-blank, and reading comprehension.</p>
+    </div>
+    <div class="menu-card" onclick="goUnitSelect('vocab')">
+      <div class="icon">📖</div>
+      <h2>Vocab List</h2>
+      <p>Browse all words with full past, present & future forms.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ UNIT SELECT ══════════════════ -->
+<div id="s-unit" class="screen">
+  <div class="page-title">
+    <button class="back-btn" onclick="show('menu')">← Back</button>
+    <h2 id="unit-title">Choose a Unit</h2>
+  </div>
+  <p style="color:#666;font-size:.9rem;margin-bottom:4px">Select a theme to study:</p>
+  <div class="unit-grid" id="unit-grid"></div>
+  <div style="margin-top:22px;text-align:right">
+    <button class="btn btn-green" id="unit-confirm" onclick="confirmUnit()" style="display:none">Continue →</button>
+  </div>
+</div>
+
+<!-- ══════════════════ TENSE SELECT ══════════════════ -->
+<div id="s-tense" class="screen">
+  <div class="page-title">
+    <button class="back-btn" onclick="show('unit')">← Back</button>
+    <h2>Choose a Tense</h2>
+  </div>
+  <p style="color:#666;font-size:.9rem;margin-bottom:4px">Which verb tense would you like to practice?</p>
+  <div class="tense-grid" id="tense-grid">
+    <div class="tense-btn" data-tense="present" onclick="pickTense(this)">
+      <div style="font-size:1.4rem;margin-bottom:5px">🕐</div>
+      <strong>Present</strong>
+      <div style="font-size:.78rem;margin-top:4px;opacity:.7">ek swem</div>
+    </div>
+    <div class="tense-btn" data-tense="past" onclick="pickTense(this)">
+      <div style="font-size:1.4rem;margin-bottom:5px">📅</div>
+      <strong>Past</strong>
+      <div style="font-size:.78rem;margin-top:4px;opacity:.7">ek het geswem</div>
+    </div>
+    <div class="tense-btn" data-tense="future" onclick="pickTense(this)">
+      <div style="font-size:1.4rem;margin-bottom:5px">🔮</div>
+      <strong>Future</strong>
+      <div style="font-size:.78rem;margin-top:4px;opacity:.7">ek sal swem</div>
+    </div>
+  </div>
+  <div style="margin-top:22px;text-align:right">
+    <button class="btn btn-green" id="tense-confirm" onclick="startFlashcards()" style="display:none">Start Flashcards →</button>
+  </div>
+</div>
+
+<!-- ══════════════════ FLASHCARDS ══════════════════ -->
+<div id="s-fc" class="screen">
+  <div class="page-title">
+    <button class="back-btn" onclick="show('menu')">← Menu</button>
+    <h2 id="fc-title">Flashcards</h2>
+  </div>
+
+  <div class="fc-wrap">
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="card-face card-front">
+        <div class="card-type" id="fc-type-front"></div>
+        <div class="card-word" id="fc-en"></div>
+        <div class="card-hint">Press Space or tap to reveal →</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="tense-pill" id="fc-tense-pill"></div>
+        <div class="card-word" id="fc-af"></div>
+        <div class="card-type" id="fc-type-back"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fc-progress" id="fc-progress"></div>
+  <div class="fc-controls">
+    <button class="btn btn-outline" onclick="prevCard()">← Previous</button>
+    <button class="btn btn-green" onclick="nextCard()">Next →</button>
+  </div>
+  <p style="text-align:center;font-size:.78rem;color:#aaa;margin-top:14px">← → arrow keys also work</p>
+</div>
+
+<!-- ══════════════════ QUIZ ══════════════════ -->
+<div id="s-quiz" class="screen">
+  <div class="page-title">
+    <button class="back-btn" onclick="show('menu')">← Menu</button>
+    <h2 id="quiz-title">Quiz</h2>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="q-fill"></div></div>
+  <div class="progress-text" id="q-text"></div>
+  <div class="quiz-card" id="q-card"></div>
+  <div style="text-align:right;margin-top:14px">
+    <button class="btn btn-green" id="q-next" onclick="nextQ()" style="display:none">Next →</button>
+  </div>
+</div>
+
+<!-- ══════════════════ RESULTS ══════════════════ -->
+<div id="s-results" class="screen">
+  <div class="results-card">
+    <div class="score-circle" id="res-circle"></div>
+    <h2 id="res-title"></h2>
+    <p id="res-sub"></p>
+    <div class="results-bar"></div>
+    <div class="results-btns">
+      <button class="btn btn-green" onclick="goUnitSelect('quiz')">Try Again</button>
+      <button class="btn btn-outline" onclick="show('menu')">Main Menu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ VOCAB LIST ══════════════════ -->
+<div id="s-vocab" class="screen">
+  <div class="page-title">
+    <button class="back-btn" onclick="show('menu')">← Menu</button>
+    <h2 id="vocab-title">Vocabulary List</h2>
+  </div>
+  <div id="vocab-body"></div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════
+// VOCABULARY DATA
+// ══════════════════════════════════════════════════
+const UNITS = {
+  beach: {
+    name:"Beach", af:"Strand", icon:"🏖️",
+    nouns:[
+      {en:"wave",af:"golf"},{en:"sand",af:"sand"},{en:"ocean",af:"oseaan"},
+      {en:"shell",af:"skulp"},{en:"sunscreen",af:"sonskerm"},{en:"towel",af:"handdoek"},
+      {en:"lifeguard",af:"reddingswerker"},{en:"umbrella",af:"sambreel"},
+      {en:"seagull",af:"meeu"},{en:"rock",af:"rots"},
+      {en:"beach",af:"strand"},{en:"tide",af:"gety"},{en:"coral",af:"koraal"},
+      {en:"boat",af:"boot"},{en:"sunglasses",af:"sonbril"},
+      {en:"sandcastle",af:"sandkasteel"},{en:"starfish",af:"seester"},
+      {en:"crab",af:"krap"},{en:"dolphin",af:"dolfyn"},{en:"shark",af:"haai"},
+      {en:"lighthouse",af:"vuurtoring"},{en:"pier",af:"pier"},
+      {en:"surfboard",af:"surfplank"},{en:"sunburn",af:"sonbrand"},
+      {en:"fish",af:"vis"},{en:"bucket",af:"emmer"}
+    ],
+    verbs:[
+      {en:"swim",    present:"swem",     past:"het geswem",      future:"sal swem"},
+      {en:"dive",    present:"duik",     past:"het geduik",      future:"sal duik"},
+      {en:"surf",    present:"surf",     past:"het gesurf",      future:"sal surf"},
+      {en:"relax",   present:"ontspan",  past:"het ontspan",     future:"sal ontspan"},
+      {en:"play",    present:"speel",    past:"het gespeel",     future:"sal speel"},
+      {en:"run",     present:"hardloop", past:"het hardgeloop",  future:"sal hardloop"},
+      {en:"walk",    present:"stap",     past:"het gestap",      future:"sal stap"},
+      {en:"collect", present:"versamel", past:"het versamel",    future:"sal versamel"},
+      {en:"float",   present:"dryf",     past:"het gedryf",      future:"sal dryf"},
+      {en:"splash",  present:"spat",     past:"het gespat",      future:"sal spat"},
+      {en:"sail",    present:"seil",     past:"het geseil",      future:"sal seil"},
+      {en:"fish",    present:"visvang",  past:"het gevisvang",   future:"sal visvang"},
+      {en:"build",   present:"bou",      past:"het gebou",       future:"sal bou"},
+      {en:"watch",   present:"kyk",      past:"het gekyk",       future:"sal kyk"},
+      {en:"rest",    present:"rus",      past:"het gerus",       future:"sal rus"}
+    ],
+    adjectives:[
+      {en:"hot",af:"warm"},{en:"wet",af:"nat"},{en:"sunny",af:"sonnig"},
+      {en:"salty",af:"souterig"},{en:"beautiful",af:"mooi"},
+      {en:"cool",af:"koel"},{en:"blue",af:"blou"},{en:"rough",af:"ru"},
+      {en:"sandy",af:"sanderig"},{en:"calm",af:"kalm"},
+      {en:"windy",af:"winderig"},{en:"shallow",af:"vlak"},
+      {en:"deep",af:"diep"},{en:"bright",af:"helder"},
+      {en:"peaceful",af:"vredig"},{en:"crowded",af:"stampvol"},
+      {en:"refreshing",af:"verfrissend"},{en:"clear",af:"helder"}
+    ],
+    readings:[
+      {
+        af:"Die see is blou en warm. Ek swem in die golwe. Die sand is wit en die skulpe is mooi.",
+        en:"The sea is blue and warm. I swim in the waves. The sand is white and the shells are beautiful.",
+        q:"What color is the sea?",
+        opts:["Blue and warm","Green and cold","Brown and rough","Grey and windy"],correct:0
+      },
+      {
+        af:"Sy het sonskerm aangesit voor sy by die strand gesit het. Die meeu het haar kos gesteel!",
+        en:"She applied sunscreen before she sat at the beach. The seagull stole her food!",
+        q:"What happened to her food?",
+        opts:["She ate it all","A seagull stole it","It fell in the sand","She forgot it"],correct:1
+      },
+      {
+        af:"Ons het 'n sandkasteel gebou en daarna in die see gedryf. Die water was koel en verfrissend.",
+        en:"We built a sandcastle and then floated in the sea. The water was cool and refreshing.",
+        q:"What did they do after building a sandcastle?",
+        opts:["They floated in the sea","They went home","They ate lunch","They surfed"],correct:0
+      }
+    ]
+  },
+  mountain: {
+    name:"Mountain", af:"Berg", icon:"⛰️",
+    nouns:[
+      {en:"peak",af:"spits"},{en:"trail",af:"wandelpad"},{en:"rock",af:"rots"},
+      {en:"tree",af:"boom"},{en:"snow",af:"sneeu"},{en:"valley",af:"vallei"},
+      {en:"river",af:"rivier"},{en:"bridge",af:"brug"},
+      {en:"cloud",af:"wolk"},{en:"waterfall",af:"waterval"},
+      {en:"eagle",af:"arend"},{en:"cave",af:"grot"},
+      {en:"cliff",af:"krans"},{en:"meadow",af:"weide"},
+      {en:"tent",af:"tent"},{en:"backpack",af:"rugtas"},
+      {en:"map",af:"kaart"},{en:"fog",af:"mis"},
+      {en:"forest",af:"bos"},{en:"stone",af:"klip"},
+      {en:"summit",af:"top"},{en:"path",af:"pad"},
+      {en:"lake",af:"meer"},{en:"wind",af:"wind"},
+      {en:"boot",af:"stapstewel"},{en:"cabin",af:"hut"}
+    ],
+    verbs:[
+      {en:"hike",        present:"stap",       past:"het gestap",        future:"sal stap"},
+      {en:"climb",       present:"klim",       past:"het geklim",        future:"sal klim"},
+      {en:"rest",        present:"rus",        past:"het gerus",         future:"sal rus"},
+      {en:"breathe",     present:"asemhaal",   past:"het asemgehaal",    future:"sal asemhaal"},
+      {en:"camp",        present:"kamp",       past:"het gekamp",        future:"sal kamp"},
+      {en:"look",        present:"kyk",        past:"het gekyk",         future:"sal kyk"},
+      {en:"fall",        present:"val",        past:"het geval",         future:"sal val"},
+      {en:"carry",       present:"dra",        past:"het gedra",         future:"sal dra"},
+      {en:"explore",     present:"verken",     past:"het verken",        future:"sal verken"},
+      {en:"discover",    present:"ontdek",     past:"het ontdek",        future:"sal ontdek"},
+      {en:"photograph",  present:"fotografeer",past:"het gefotografeer",  future:"sal fotografeer"},
+      {en:"slip",        present:"glip",       past:"het geglip",        future:"sal glip"},
+      {en:"listen",      present:"luister",    past:"het geluister",     future:"sal luister"},
+      {en:"follow",      present:"volg",       past:"het gevolg",        future:"sal volg"},
+      {en:"shelter",     present:"skuil",      past:"het geskuil",       future:"sal skuil"}
+    ],
+    adjectives:[
+      {en:"tall",af:"hoog"},{en:"cold",af:"koud"},{en:"steep",af:"steil"},
+      {en:"quiet",af:"stil"},{en:"beautiful",af:"pragtig"},
+      {en:"far",af:"ver"},{en:"deep",af:"diep"},{en:"rocky",af:"rotsagtig"},
+      {en:"misty",af:"mistig"},{en:"fresh",af:"vars"},
+      {en:"wild",af:"wild"},{en:"dark",af:"donker"},
+      {en:"narrow",af:"nou"},{en:"open",af:"oop"},
+      {en:"freezing",af:"yskoud"},{en:"magnificent",af:"manjifiek"},
+      {en:"green",af:"groen"},{en:"muddy",af:"modderig"}
+    ],
+    readings:[
+      {
+        af:"Die berg is hoog en koud. Ons het die wandelpad geklim en bo gerus. Die vallei is diep en pragtig.",
+        en:"The mountain is tall and cold. We climbed the trail and rested at the top. The valley is deep and beautiful.",
+        q:"What did they do at the top of the mountain?",
+        opts:["They rested","They camped","They fell","They swam"],correct:0
+      },
+      {
+        af:"Die arend vlieg oor die krans. Die mis maak die pad smal en donker. Ons het in die grot geskuil.",
+        en:"The eagle flies over the cliff. The fog makes the path narrow and dark. We sheltered in the cave.",
+        q:"Where did they shelter from the fog?",
+        opts:["In the cave","In a tent","Under a tree","On the summit"],correct:0
+      }
+    ]
+  },
+  sports: {
+    name:"Sports", af:"Sport", icon:"⚽",
+    nouns:[
+      {en:"ball",af:"bal"},{en:"team",af:"span"},{en:"goal",af:"doel"},
+      {en:"player",af:"speler"},{en:"referee",af:"skeidsregter"},
+      {en:"trophy",af:"trofee"},{en:"stadium",af:"stadion"},
+      {en:"field",af:"veld"},{en:"score",af:"telling"},{en:"whistle",af:"fluitjie"},
+      {en:"coach",af:"afrigter"},{en:"bench",af:"bank"},
+      {en:"match",af:"wedstryd"},{en:"championship",af:"kampioenskap"},
+      {en:"jersey",af:"trui"},{en:"net",af:"net"},
+      {en:"court",af:"baan"},{en:"gym",af:"gimnasium"},
+      {en:"medal",af:"medalje"},{en:"captain",af:"kaptein"},
+      {en:"pool",af:"swembad"},{en:"fans",af:"ondersteuners"},
+      {en:"league",af:"liga"},{en:"race",af:"wedrens"},
+      {en:"helmet",af:"helm"},{en:"gloves",af:"handskoene"}
+    ],
+    verbs:[
+      {en:"run",     present:"hardloop",  past:"het hardgeloop",  future:"sal hardloop"},
+      {en:"kick",    present:"skop",      past:"het geskop",      future:"sal skop"},
+      {en:"throw",   present:"gooi",      past:"het gegooi",      future:"sal gooi"},
+      {en:"win",     present:"wen",       past:"het gewen",       future:"sal wen"},
+      {en:"lose",    present:"verloor",   past:"het verloor",     future:"sal verloor"},
+      {en:"train",   present:"oefen",     past:"het geoefen",     future:"sal oefen"},
+      {en:"score",   present:"aanteken",  past:"het aangeteken",  future:"sal aanteken"},
+      {en:"cheer",   present:"juig",      past:"het gejuig",      future:"sal juig"},
+      {en:"jump",    present:"spring",    past:"het gespring",    future:"sal spring"},
+      {en:"tackle",  present:"takel",     past:"het getakel",     future:"sal takel"},
+      {en:"catch",   present:"vang",      past:"het gevang",      future:"sal vang"},
+      {en:"pass",    present:"aangee",    past:"het aangegee",    future:"sal aangee"},
+      {en:"defend",  present:"verdedig",  past:"het verdedig",    future:"sal verdedig"},
+      {en:"attack",  present:"aanval",    past:"het aanval",      future:"sal aanval"},
+      {en:"compete", present:"meeding",   past:"het meegeding",   future:"sal meeding"}
+    ],
+    adjectives:[
+      {en:"fast",af:"vinnig"},{en:"strong",af:"sterk"},{en:"tired",af:"moeg"},
+      {en:"exciting",af:"opwindend"},{en:"competitive",af:"kompeterend"},
+      {en:"fit",af:"fiks"},{en:"skilled",af:"vaardig"},{en:"brave",af:"dapper"},
+      {en:"agile",af:"rats"},{en:"powerful",af:"kragtig"},
+      {en:"focused",af:"gefokus"},{en:"determined",af:"vasberade"},
+      {en:"exhausted",af:"uitgeput"},{en:"athletic",af:"atleties"},
+      {en:"flexible",af:"buigsaam"},{en:"victorious",af:"oorwinnend"},
+      {en:"proud",af:"trots"},{en:"nervous",af:"senuweeagtig"}
+    ],
+    readings:[
+      {
+        af:"Die span het hard geoefen. Hulle het die bal vinnig geskop en 'n doel aangeteken. Die stadion was opwindend!",
+        en:"The team trained hard. They kicked the ball fast and scored a goal. The stadium was exciting!",
+        q:"How did the team feel after scoring?",
+        opts:["The stadium was exciting","They lost the game","They were too tired","The referee stopped them"],correct:0
+      },
+      {
+        af:"Die kaptein het die bal gevang en vinnig aangegee. Die span het gewen en die ondersteuners het gejuig.",
+        en:"The captain caught the ball and passed quickly. The team won and the fans cheered.",
+        q:"What did the fans do when the team won?",
+        opts:["They cheered","They left","They booed","They cried"],correct:0
+      }
+    ]
+  },
+  food: {
+    name:"Food", af:"Kos", icon:"🍽️",
+    nouns:[
+      {en:"bread",af:"brood"},{en:"meat",af:"vleis"},{en:"vegetable",af:"groente"},
+      {en:"fruit",af:"vrugte"},{en:"water",af:"water"},{en:"plate",af:"bord"},
+      {en:"fork",af:"vurk"},{en:"spoon",af:"lepel"},
+      {en:"cup",af:"koppie"},{en:"salt",af:"sout"},
+      {en:"chicken",af:"hoender"},{en:"fish",af:"vis"},
+      {en:"rice",af:"rys"},{en:"soup",af:"sop"},
+      {en:"cheese",af:"kaas"},{en:"egg",af:"eier"},
+      {en:"milk",af:"melk"},{en:"sugar",af:"suiker"},
+      {en:"garlic",af:"knoffel"},{en:"onion",af:"ui"},
+      {en:"potato",af:"aartappel"},{en:"tomato",af:"tamatie"},
+      {en:"kitchen",af:"kombuis"},{en:"recipe",af:"resep"},
+      {en:"dessert",af:"nagereg"},{en:"breakfast",af:"ontbyt"},
+      {en:"lunch",af:"middagete"},{en:"dinner",af:"aandete"},
+      {en:"knife",af:"mes"},{en:"oil",af:"olie"}
+    ],
+    verbs:[
+      {en:"eat",     present:"eet",      past:"het geëet",      future:"sal eet"},
+      {en:"drink",   present:"drink",    past:"het gedrink",    future:"sal drink"},
+      {en:"cook",    present:"kook",     past:"het gekook",     future:"sal kook"},
+      {en:"taste",   present:"proe",     past:"het geproe",     future:"sal proe"},
+      {en:"buy",     present:"koop",     past:"het gekoop",     future:"sal koop"},
+      {en:"share",   present:"deel",     past:"het gedeel",     future:"sal deel"},
+      {en:"cut",     present:"sny",      past:"het gesny",      future:"sal sny"},
+      {en:"serve",   present:"bedien",   past:"het bedien",     future:"sal bedien"},
+      {en:"bake",    present:"bak",      past:"het gebak",      future:"sal bak"},
+      {en:"fry",     present:"braai",    past:"het gebraai",    future:"sal braai"},
+      {en:"stir",    present:"roer",     past:"het geroer",     future:"sal roer"},
+      {en:"pour",    present:"gooi",     past:"het gegooi",     future:"sal gooi"},
+      {en:"mix",     present:"meng",     past:"het gemeng",     future:"sal meng"},
+      {en:"smell",   present:"ruik",     past:"het geruik",     future:"sal ruik"},
+      {en:"prepare", present:"voorberei",past:"het voorberei",  future:"sal voorberei"}
+    ],
+    adjectives:[
+      {en:"delicious",af:"heerlik"},{en:"sweet",af:"soet"},{en:"spicy",af:"pittig"},
+      {en:"fresh",af:"vars"},{en:"hungry",af:"honger"},
+      {en:"sour",af:"suur"},{en:"bitter",af:"bitter"},{en:"warm",af:"warm"},
+      {en:"salty",af:"souterig"},{en:"rich",af:"ryk"},
+      {en:"creamy",af:"romerig"},{en:"crunchy",af:"krakerig"},
+      {en:"tasty",af:"lekker"},{en:"healthy",af:"gesond"},
+      {en:"light",af:"lig"},{en:"full",af:"vol"},
+      {en:"ripe",af:"ryp"},{en:"raw",af:"rou"}
+    ],
+    readings:[
+      {
+        af:"Ma kook die aandete. Sy sny die groente en kook die vleis. Die kos is heerlik en vars.",
+        en:"Mom cooks dinner. She cuts the vegetables and cooks the meat. The food is delicious and fresh.",
+        q:"What does mom cut to prepare dinner?",
+        opts:["The vegetables","The bread","The fruit","The spoon"],correct:0
+      },
+      {
+        af:"Ek het eiers en kaas gemeng en 'n omelette gebak. Dit ruik lekker en smaak romerig.",
+        en:"I mixed eggs and cheese and baked an omelette. It smells good and tastes creamy.",
+        q:"What did the omelette taste like?",
+        opts:["Creamy","Spicy","Bitter","Salty"],correct:0
+      }
+    ]
+  },
+  family: {
+    name:"Family", af:"Familie", icon:"👨‍👩‍👧‍👦",
+    nouns:[
+      {en:"mother",af:"ma"},{en:"father",af:"pa"},{en:"sister",af:"suster"},
+      {en:"brother",af:"broer"},{en:"grandmother",af:"ouma"},
+      {en:"grandfather",af:"oupa"},{en:"child",af:"kind"},
+      {en:"baby",af:"baba"},{en:"family",af:"familie"},{en:"home",af:"huis"},
+      {en:"aunt",af:"tannie"},{en:"uncle",af:"oom"},
+      {en:"cousin",af:"neef / niggie"},{en:"parents",af:"ouers"},
+      {en:"wedding",af:"troue"},{en:"birthday",af:"verjaarsdag"},
+      {en:"gift",af:"geskenk"},{en:"garden",af:"tuin"},
+      {en:"pet",af:"troeteldier"},{en:"dog",af:"hond"},
+      {en:"cat",af:"kat"},{en:"photo",af:"foto"},
+      {en:"memory",af:"herinnering"},{en:"prayer",af:"gebed"},
+      {en:"husband",af:"man"},{en:"wife",af:"vrou"}
+    ],
+    verbs:[
+      {en:"love",      present:"liefhê",     past:"het liefgehad",   future:"sal liefhê"},
+      {en:"help",      present:"help",        past:"het gehelp",      future:"sal help"},
+      {en:"visit",     present:"besoek",      past:"het besoek",      future:"sal besoek"},
+      {en:"celebrate", present:"vier",        past:"het gevier",      future:"sal vier"},
+      {en:"talk",      present:"praat",       past:"het gepraat",     future:"sal praat"},
+      {en:"hug",       present:"druk",        past:"het gedruk",      future:"sal druk"},
+      {en:"laugh",     present:"lag",         past:"het gelag",       future:"sal lag"},
+      {en:"sing",      present:"sing",        past:"het gesing",      future:"sal sing"},
+      {en:"remember",  present:"onthou",      past:"het onthou",      future:"sal onthou"},
+      {en:"care",      present:"sorg",        past:"het gesorg",      future:"sal sorg"},
+      {en:"support",   present:"ondersteun",  past:"het ondersteun",  future:"sal ondersteun"},
+      {en:"teach",     present:"leer",        past:"het geleer",      future:"sal leer"},
+      {en:"forgive",   present:"vergewe",     past:"het vergewe",     future:"sal vergewe"},
+      {en:"play",      present:"speel",       past:"het gespeel",     future:"sal speel"},
+      {en:"pray",      present:"bid",         past:"het gebid",       future:"sal bid"}
+    ],
+    adjectives:[
+      {en:"kind",af:"vriendelik"},{en:"happy",af:"gelukkig"},{en:"loving",af:"liefdevol"},
+      {en:"old",af:"oud"},{en:"young",af:"jonk"},
+      {en:"big",af:"groot"},{en:"small",af:"klein"},{en:"close",af:"naby"},
+      {en:"proud",af:"trots"},{en:"grateful",af:"dankbaar"},
+      {en:"patient",af:"geduldig"},{en:"caring",af:"sorgsaam"},
+      {en:"funny",af:"snaaks"},{en:"gentle",af:"sag"},
+      {en:"wise",af:"wys"},{en:"warm",af:"warm"},
+      {en:"brave",af:"dapper"},{en:"faithful",af:"getrou"}
+    ],
+    readings:[
+      {
+        af:"Die familie vier saam. Oupa en ouma lag en praat. Die kinders is gelukkig en hulle het hard gelag.",
+        en:"The family celebrates together. Grandpa and grandma laugh and talk. The children are happy and laughed loudly.",
+        q:"How do the children feel during the celebration?",
+        opts:["Happy","Sad","Angry","Tired"],correct:0
+      },
+      {
+        af:"Pa het my geleer hoe om te bid. Ons onthou die ou foto's en geskenke. Die geheue is kosbaar.",
+        en:"Dad taught me how to pray. We remember the old photos and gifts. The memory is precious.",
+        q:"What did dad teach?",
+        opts:["How to pray","How to cook","How to drive","How to sing"],correct:0
+      }
+    ]
+  },
+  city: {
+    name:"City", af:"Stad", icon:"🏙️",
+    nouns:[
+      {en:"street",af:"straat"},{en:"building",af:"gebou"},{en:"car",af:"motor"},
+      {en:"bus",af:"bus"},{en:"shop",af:"winkel"},{en:"park",af:"park"},
+      {en:"school",af:"skool"},{en:"hospital",af:"hospitaal"},
+      {en:"traffic light",af:"verkeerslig"},{en:"market",af:"mark"},
+      {en:"road",af:"pad"},{en:"bridge",af:"brug"},
+      {en:"taxi",af:"taxi"},{en:"train",af:"trein"},
+      {en:"station",af:"stasie"},{en:"restaurant",af:"restaurant"},
+      {en:"hotel",af:"hotel"},{en:"library",af:"biblioteek"},
+      {en:"church",af:"kerk"},{en:"bank",af:"bank"},
+      {en:"airport",af:"lughawe"},{en:"apartment",af:"woonstel"},
+      {en:"museum",af:"museum"},{en:"fountain",af:"fontein"},
+      {en:"pavement",af:"sypaadjie"},{en:"traffic",af:"verkeer"}
+    ],
+    verbs:[
+      {en:"drive",   present:"ry",        past:"het gery",        future:"sal ry"},
+      {en:"walk",    present:"stap",      past:"het gestap",      future:"sal stap"},
+      {en:"buy",     present:"koop",      past:"het gekoop",      future:"sal koop"},
+      {en:"work",    present:"werk",      past:"het gewerk",      future:"sal werk"},
+      {en:"travel",  present:"reis",      past:"het gereis",      future:"sal reis"},
+      {en:"park",    present:"parkeer",   past:"het geparkeer",   future:"sal parkeer"},
+      {en:"meet",    present:"ontmoet",   past:"het ontmoet",     future:"sal ontmoet"},
+      {en:"live",    present:"woon",      past:"het gewoon",      future:"sal woon"},
+      {en:"cross",   present:"oorsteek",  past:"het oorgesteek",  future:"sal oorsteek"},
+      {en:"wait",    present:"wag",       past:"het gewag",       future:"sal wag"},
+      {en:"rush",    present:"jaag",      past:"het gejaag",      future:"sal jaag"},
+      {en:"explore", present:"verken",    past:"het verken",      future:"sal verken"},
+      {en:"visit",   present:"besoek",    past:"het besoek",      future:"sal besoek"},
+      {en:"commute", present:"pendel",    past:"het gependel",    future:"sal pendel"},
+      {en:"build",   present:"bou",       past:"het gebou",       future:"sal bou"}
+    ],
+    adjectives:[
+      {en:"busy",af:"besig"},{en:"loud",af:"lawaaierig"},{en:"modern",af:"modern"},
+      {en:"crowded",af:"stampvol"},{en:"clean",af:"skoon"},
+      {en:"big",af:"groot"},{en:"far",af:"ver"},{en:"safe",af:"veilig"},
+      {en:"historic",af:"histories"},{en:"expensive",af:"duur"},
+      {en:"cheap",af:"goedkoop"},{en:"vibrant",af:"lewendig"},
+      {en:"quiet",af:"stil"},{en:"peaceful",af:"vredig"},
+      {en:"polluted",af:"besoedeld"},{en:"developed",af:"ontwikkeld"},
+      {en:"narrow",af:"nou"},{en:"wide",af:"wyd"}
+    ],
+    readings:[
+      {
+        af:"Die stad is besig en lawaaierig. Mense ry en stap in die strate. Die winkels is stampvol mense.",
+        en:"The city is busy and loud. People drive and walk in the streets. The shops are crowded with people.",
+        q:"What are the shops like in this city?",
+        opts:["Crowded with people","Empty and quiet","Small and old","Far from the streets"],correct:0
+      },
+      {
+        af:"Ek pendel elke dag met die trein. Die stasie is besig en ek wag op die sypaadjie. Die stad is lewendig.",
+        en:"I commute every day by train. The station is busy and I wait on the pavement. The city is vibrant.",
+        q:"How does the person commute to work?",
+        opts:["By train","By car","By bus","On foot"],correct:0
+      }
+    ]
+  }
+};
+
+// ══════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════
+let S = {
+  mode: null, unit: null, tense: null,
+  cards: [], cardIdx: 0, flipped: false,
+  qs: [], qIdx: 0, qScore: 0
+};
+
+// ══════════════════════════════════════════════════
+// ROUTING
+// ══════════════════════════════════════════════════
+function show(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('s-'+name).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function goUnitSelect(mode) {
+  S.mode = mode; S.unit = null;
+  document.getElementById('unit-title').textContent =
+    mode==='flashcards'?'🃏 Choose a Unit':mode==='quiz'?'✏️ Choose a Unit':'📖 Choose a Unit';
+  const grid = document.getElementById('unit-grid');
+  grid.innerHTML = '';
+  document.getElementById('unit-confirm').style.display = 'none';
+  Object.entries(UNITS).forEach(([k,u]) => {
+    const d = document.createElement('div');
+    d.className = 'unit-btn';
+    d.innerHTML = `<span class="uicon">${u.icon}</span><strong>${u.name}</strong><br><small style="color:#888">${u.af}</small>`;
+    d.onclick = () => {
+      document.querySelectorAll('.unit-btn').forEach(b=>b.classList.remove('selected'));
+      d.classList.add('selected'); S.unit = k;
+      document.getElementById('unit-confirm').style.display = 'inline-block';
+    };
+    grid.appendChild(d);
+  });
+  show('unit');
+}
+
+function confirmUnit() {
+  if (!S.unit) return;
+  if (S.mode==='flashcards') {
+    S.tense = null;
+    document.querySelectorAll('.tense-btn').forEach(b=>b.classList.remove('selected'));
+    document.getElementById('tense-confirm').style.display = 'none';
+    show('tense');
+  } else if (S.mode==='quiz') {
+    startQuiz();
+  } else {
+    showVocab();
+  }
+}
+
+function pickTense(el) {
+  document.querySelectorAll('.tense-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  S.tense = el.dataset.tense;
+  document.getElementById('tense-confirm').style.display = 'inline-block';
+}
+
+// ══════════════════════════════════════════════════
+// FLASHCARDS
+// ══════════════════════════════════════════════════
+function startFlashcards() {
+  if (!S.tense) return;
+  const u = UNITS[S.unit];
+  let cards = [];
+  u.nouns.forEach(n => cards.push({type:'noun', en:n.en, af:n.af, tense:null}));
+  u.adjectives.forEach(a => cards.push({type:'adjective', en:a.en, af:a.af, tense:null}));
+  u.verbs.forEach(v => cards.push({type:'verb', en:v.en, af:v[S.tense], tense:S.tense}));
+  S.cards = shuffle(cards); S.cardIdx = 0; S.flipped = false;
+  document.getElementById('fc-title').textContent = `${u.icon} ${u.name} — ${cap(S.tense)} Tense`;
+  renderCard();
+  show('fc');
+}
+
+function renderCard() {
+  const c = S.cards[S.cardIdx];
+  S.flipped = false;
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('fc-en').textContent = c.en;
+  document.getElementById('fc-af').textContent = c.af;
+  document.getElementById('fc-type-front').textContent = c.type;
+  document.getElementById('fc-type-back').textContent = c.type;
+  const pill = document.getElementById('fc-tense-pill');
+  if (c.tense) { pill.textContent = cap(c.tense)+' tense'; pill.style.display='block'; }
+  else pill.style.display='none';
+  document.getElementById('fc-progress').textContent =
+    `Card ${S.cardIdx+1} of ${S.cards.length}`;
+}
+
+function flipCard() {
+  S.flipped = !S.flipped;
+  document.getElementById('flashcard').classList.toggle('flipped', S.flipped);
+}
+function nextCard() { if (S.cardIdx < S.cards.length-1) { S.cardIdx++; renderCard(); } }
+function prevCard() { if (S.cardIdx > 0) { S.cardIdx--; renderCard(); } }
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('s-fc').classList.contains('active')) return;
+  if (e.code==='Space') { e.preventDefault(); flipCard(); }
+  else if (e.code==='ArrowRight') nextCard();
+  else if (e.code==='ArrowLeft') prevCard();
+});
+
+// ══════════════════════════════════════════════════
+// QUIZ
+// ══════════════════════════════════════════════════
+function buildQuestions(unitKey) {
+  const u = UNITS[unitKey];
+  const qs = [];
+  const pool = {af:[], en:[]};
+  Object.values(UNITS).forEach(x=>{
+    [...x.nouns,...x.adjectives].forEach(w=>{pool.af.push(w.af);pool.en.push(w.en);});
+  });
+
+  // MC English→Afrikaans (nouns + adjectives)
+  [...u.nouns,...u.adjectives].forEach(w=>{
+    const opts = shuffle([w.af,...distract(w.af,pool.af,3)]);
+    qs.push({kind:'mc',badge:'English → Afrikaans',prompt:'What is the Afrikaans word for:',
+      word:w.en,opts,correct:w.af,expl:`"${w.en}" = "${w.af}"`});
+  });
+
+  // MC Afrikaans→English (nouns + adjectives)
+  [...u.nouns,...u.adjectives].forEach(w=>{
+    const opts = shuffle([w.en,...distract(w.en,pool.en,3)]);
+    qs.push({kind:'mc',badge:'Afrikaans → English',prompt:'What does this Afrikaans word mean?',
+      word:w.af,opts,correct:w.en,expl:`"${w.af}" = "${w.en}"`});
+  });
+
+  // Fill-in verbs across tenses
+  u.verbs.forEach(v=>{
+    ['present','past','future'].forEach(t=>{
+      qs.push({kind:'fill',badge:'Fill in the Blank',
+        prompt:`Type the ${t} tense of "${v.en}" in Afrikaans:`,
+        word:v.en,correct:v[t],expl:`${cap(t)}: "${v[t]}"`});
+    });
+  });
+
+  // Reading comprehension
+  u.readings.forEach(r=>{
+    qs.push({kind:'read',badge:'Reading Comprehension',
+      passage:r.af,word:r.q,opts:r.opts,correct:r.correct,
+      expl:`English: "${r.en}"`});
+  });
+
+  return shuffle(qs).slice(0,16);
+}
+
+function distract(exclude, pool, n) {
+  return shuffle(pool.filter(x=>x!==exclude)).slice(0,n);
+}
+
+function startQuiz() {
+  S.qs = buildQuestions(S.unit); S.qIdx = 0; S.qScore = 0;
+  const u = UNITS[S.unit];
+  document.getElementById('quiz-title').textContent = `${u.icon} ${u.name} Quiz`;
+  renderQ();
+  show('quiz');
+}
+
+function renderQ() {
+  const q = S.qs[S.qIdx], total = S.qs.length;
+  document.getElementById('q-fill').style.width = (S.qIdx/total*100)+'%';
+  document.getElementById('q-text').textContent = `Question ${S.qIdx+1} of ${total}  ·  Score: ${S.qScore}`;
+  document.getElementById('q-next').style.display = 'none';
+
+  let html = `<div class="quiz-badge">${q.badge}</div>`;
+
+  if (q.kind==='mc') {
+    html += `<div class="quiz-prompt">${q.prompt}</div>
+      <div class="quiz-word">${q.word}</div>
+      <div class="quiz-options">
+        ${q.opts.map(o=>`<div class="opt" onclick="checkMC(this,'${esc(o)}','${esc(q.correct)}','${esc(q.expl)}')">${o}</div>`).join('')}
+      </div>`;
+  } else if (q.kind==='fill') {
+    html += `<div class="quiz-prompt">${q.prompt}</div>
+      <div class="quiz-word">${q.word}</div>
+      <input class="fill-input" id="fi" type="text" placeholder="Type the Afrikaans…" autocomplete="off" autocorrect="off" spellcheck="false">
+      <button class="btn btn-blue" onclick="checkFill('${esc(q.correct)}','${esc(q.expl)}')">Check Answer</button>`;
+  } else if (q.kind==='read') {
+    html += `<div class="reading-passage">"${q.passage}"</div>
+      <div class="quiz-prompt"><strong>${q.word}</strong></div>
+      <div class="quiz-options" style="margin-top:14px">
+        ${q.opts.map((o,i)=>`<div class="opt" onclick="checkReadMC(this,${i},${q.correct},'${esc(q.expl)}')">${o}</div>`).join('')}
+      </div>`;
+  }
+
+  html += `<div class="feedback" id="fb"></div>`;
+  document.getElementById('q-card').innerHTML = html;
+
+  if (q.kind==='fill') {
+    const fi = document.getElementById('fi');
+    if (fi) {
+      setTimeout(()=>fi.focus(),80);
+      fi.addEventListener('keydown',e=>{ if(e.key==='Enter') checkFill(q.correct,q.expl); });
+    }
+  }
+}
+
+function esc(s){ return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
+
+function checkMC(el, chosen, correct, expl) {
+  lockOpts();
+  const ok = chosen===correct;
+  el.classList.add(ok?'correct':'wrong');
+  if (!ok) document.querySelectorAll('.opt').forEach(o=>{ if(o.textContent.trim()===correct) o.classList.add('correct'); });
+  showFB(ok, expl);
+  if (ok) S.qScore++;
+  document.getElementById('q-next').style.display='inline-block';
+}
+
+function checkReadMC(el, i, correct, expl) {
+  lockOpts();
+  const ok = i===correct;
+  el.classList.add(ok?'correct':'wrong');
+  if (!ok) document.querySelectorAll('.opt')[correct]?.classList.add('correct');
+  showFB(ok, expl);
+  if (ok) S.qScore++;
+  document.getElementById('q-next').style.display='inline-block';
+}
+
+function checkFill(correct, expl) {
+  const fi = document.getElementById('fi');
+  if (!fi || fi.disabled) return;
+  const given = fi.value.trim().toLowerCase();
+  const ok = given===correct.toLowerCase();
+  fi.disabled=true; fi.classList.add(ok?'correct':'wrong');
+  showFB(ok, ok ? expl : `Correct answer: "${correct}". ${expl}`);
+  if (ok) S.qScore++;
+  document.getElementById('q-next').style.display='inline-block';
+}
+
+function lockOpts(){ document.querySelectorAll('.opt').forEach(o=>o.onclick=null); }
+
+function showFB(ok, msg) {
+  const fb = document.getElementById('fb');
+  fb.textContent = (ok?'✓ Correct! ':'✗ Incorrect. ') + msg;
+  fb.className = `feedback show ${ok?'correct':'wrong'}`;
+}
+
+function nextQ() {
+  S.qIdx++;
+  if (S.qIdx >= S.qs.length) showResults();
+  else renderQ();
+}
+
+function showResults() {
+  const total = S.qs.length, pct = Math.round(S.qScore/total*100);
+  const circle = document.getElementById('res-circle');
+  circle.textContent = pct+'%';
+  circle.style.background = pct>=70?'var(--green)':pct>=50?'var(--gold)':'var(--red)';
+  circle.style.color = (pct>=50&&pct<70)?'var(--black)':'white';
+  const [title,sub] =
+    pct>=90 ? ["Uitstekend! 🎉","Excellent! You're mastering Afrikaans!"] :
+    pct>=70 ? ["Goed gedaan! 👍","Good job! Keep practicing!"] :
+    pct>=50 ? ["Nie sleg nie! 💪","Not bad! Review and try again."] :
+              ["Oefen meer! 📚","Keep studying — you'll improve!"];
+  document.getElementById('res-title').textContent = title;
+  document.getElementById('res-sub').textContent = `Score: ${S.qScore}/${total}. ${sub}`;
+  show('results');
+}
+
+// ══════════════════════════════════════════════════
+// VOCAB LIST
+// ══════════════════════════════════════════════════
+function showVocab() {
+  const u = UNITS[S.unit];
+  document.getElementById('vocab-title').textContent = `${u.icon} ${u.name} — Vocab List`;
+
+  const nounsRows = u.nouns.map(n=>
+    `<tr><td>${n.en}</td><td><strong>${n.af}</strong></td><td><span class="badge badge-noun">Noun</span></td></tr>`
+  ).join('');
+
+  const adjRows = u.adjectives.map(a=>
+    `<tr><td>${a.en}</td><td><strong>${a.af}</strong></td><td><span class="badge badge-adj">Adjective</span></td></tr>`
+  ).join('');
+
+  const verbRows = u.verbs.map(v=>
+    `<tr>
+      <td><span class="badge badge-verb">Verb</span>&nbsp;${v.en}</td>
+      <td>${v.present}</td>
+      <td>${v.past}</td>
+      <td>${v.future}</td>
+    </tr>`
+  ).join('');
+
+  document.getElementById('vocab-body').innerHTML = `
+    <div class="vocab-section">
+      <h3>Nouns (Naamwoorde)</h3>
+      <table class="vocab-table">
+        <thead><tr><th>English</th><th>Afrikaans</th><th>Type</th></tr></thead>
+        <tbody>${nounsRows}</tbody>
+      </table>
+    </div>
+    <div class="vocab-section">
+      <h3>Adjectives (Byvoeglike Naamwoorde)</h3>
+      <table class="vocab-table">
+        <thead><tr><th>English</th><th>Afrikaans</th><th>Type</th></tr></thead>
+        <tbody>${adjRows}</tbody>
+      </table>
+    </div>
+    <div class="vocab-section">
+      <h3>Verbs (Werkwoorde) — All Tenses</h3>
+      <table class="vocab-table">
+        <thead><tr><th>English</th><th>Present</th><th>Past</th><th>Future</th></tr></thead>
+        <tbody>${verbRows}</tbody>
+      </table>
+    </div>
+  `;
+  show('vocab');
+}
+
+// ══════════════════════════════════════════════════
+// UTILS
+// ══════════════════════════════════════════════════
+function shuffle(a) {
+  const b=[...a];
+  for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}
+  return b;
+}
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+</script>
+</body>
+</html>

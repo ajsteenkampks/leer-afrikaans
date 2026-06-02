@@ -309,8 +309,12 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
       <div class="card-face card-back">
         <div class="tense-pill" id="fc-tense-pill"></div>
         <div class="card-word" id="fc-af"></div>
-        <div id="fc-pron" style="font-size:.9rem;font-style:italic;opacity:.65;margin-top:6px;letter-spacing:.5px"></div>
-        <div class="card-type" id="fc-type-back"></div>
+        <div id="fc-pron" style="font-size:.9rem;font-style:italic;opacity:.65;margin-top:4px;letter-spacing:.5px"></div>
+        <div id="fc-ex" style="display:none;margin-top:12px;padding-top:11px;border-top:1px solid rgba(0,0,0,.18);text-align:center;width:100%;max-width:460px">
+          <div id="fc-ex-af" style="font-style:italic;font-size:.9rem;line-height:1.45;color:rgba(0,0,0,.85)"></div>
+          <div id="fc-ex-en" style="font-size:.76rem;opacity:.55;margin-top:4px"></div>
+        </div>
+        <div class="card-type" id="fc-type-back" style="margin-top:10px"></div>
       </div>
     </div>
   </div>
@@ -855,6 +859,472 @@ const UNITS = {
 };
 
 // ══════════════════════════════════════════════════
+// EXAMPLE SENTENCES  (n/a = nouns/adj, p/t/f = present/past/future)
+// ══════════════════════════════════════════════════
+const EX = {
+  beach:{
+    nouns:{
+      wave:["Die golf breek op die strand.","The wave breaks on the beach."],
+      sand:["Die sand is warm en sag.","The sand is warm and soft."],
+      ocean:["Die oseaan is diep en blou.","The ocean is deep and blue."],
+      shell:["Sy het 'n pragtige skulp gevind.","She found a beautiful shell."],
+      sunscreen:["Smeer sonskerm op jou arms.","Apply sunscreen on your arms."],
+      towel:["My handdoek is nat van die water.","My towel is wet from the water."],
+      lifeguard:["Die reddingswerker red die kind.","The lifeguard rescues the child."],
+      umbrella:["Sit in die skaduwee van die sambreel.","Sit in the shade of the umbrella."],
+      seagull:["Die meeu steel my kos.","The seagull steals my food."],
+      rock:["Ons sit op die rots en kyk.","We sit on the rock and look."],
+      beach:["Die strand is ons gunsteling plek.","The beach is our favourite place."],
+      tide:["Die gety kom in teen skemer.","The tide comes in at dusk."],
+      coral:["Die koraal is vol kleur.","The coral is full of colour."],
+      boat:["Die boot vaar verby die pier.","The boat sails past the pier."],
+      sunglasses:["Sy soek haar sonbril.","She looks for her sunglasses."],
+      sandcastle:["Die kinders bou 'n groot sandkasteel.","The children build a big sandcastle."],
+      starfish:["Ek sien 'n seester in die water.","I see a starfish in the water."],
+      crab:["Die krap skuil onder die rots.","The crab hides under the rock."],
+      dolphin:["Die dolfyn speel naby die boot.","The dolphin plays near the boat."],
+      shark:["'n Haai swem ver van die strand.","A shark swims far from the beach."],
+      lighthouse:["Die vuurtoring wys die pad.","The lighthouse shows the way."],
+      pier:["Ons stap tot aan die einde van die pier.","We walk to the end of the pier."],
+      surfboard:["Hy dra sy surfplank na die water.","He carries his surfboard to the water."],
+      sunburn:["Haar sonbrand is baie seer.","Her sunburn is very painful."],
+      fish:["Die vis swem in skole.","The fish swim in schools."],
+      bucket:["Vul die emmer met sand.","Fill the bucket with sand."]
+    },
+    verbs:{
+      swim:{p:["Ek swem elke oggend in die see.","I swim in the sea every morning."],t:["Ek het gister in die see geswem.","I swam in the sea yesterday."],f:["Ek sal môre in die golwe swem.","I will swim in the waves tomorrow."]},
+      dive:{p:["Hy duik diep in die water.","He dives deep into the water."],t:["Sy het van die rots af geduik.","She dived off the rock."],f:["Ons sal naby die koraal duik.","We will dive near the coral."]},
+      surf:{p:["Hy surf elke Saterdag.","He surfs every Saturday."],t:["Ons het groot golwe gesurf.","We surfed big waves."],f:["Sy sal môre surf as dit winderig is.","She will surf tomorrow if it's windy."]},
+      relax:{p:["Ek ontspan op my handdoek.","I relax on my towel."],t:["Hulle het die hele dag ontspan.","They relaxed the whole day."],f:["Ons sal by die strand ontspan.","We will relax at the beach."]},
+      play:{p:["Die kinders speel in die branders.","The children play in the waves."],t:["Ons het in die sand gespeel.","We played in the sand."],f:["Hulle sal later met die bal speel.","They will play with the ball later."]},
+      run:{p:["Ek hardloop langs die see.","I run alongside the sea."],t:["Sy het op die nat strand hardgeloop.","She ran on the wet beach."],f:["Ons sal vroeg oggend hardloop.","We will run early in the morning."]},
+      walk:{p:["Ons stap saam op die strand.","We walk together on the beach."],t:["Hy het tot by die pier gestap.","He walked to the pier."],f:["Ons sal na die vuurtoring stap.","We will walk to the lighthouse."]},
+      collect:{p:["Sy versamel skulpe by die water.","She collects shells by the water."],t:["Die kinders het mooi skulpe versamel.","The children collected beautiful shells."],f:["Ek sal meer skulpe versamel.","I will collect more shells."]},
+      float:{p:["Ek dryf op my rug in die see.","I float on my back in the sea."],t:["Die boot het kalm op die water gedryf.","The boat floated calmly on the water."],f:["Ons sal op lugsakkies dryf.","We will float on inflatables."]},
+      splash:{p:["Die kinders spat water na mekaar.","The children splash water at each other."],t:["Hy het my nat gespat.","He splashed me wet."],f:["Die golwe sal ons nat spat.","The waves will splash us wet."]},
+      sail:{p:["Die seiljag seil langs die kus.","The sailboat sails along the coast."],t:["Ons het na die eiland geseil.","We sailed to the island."],f:["Hy sal die baai verlaat.","He will sail out of the bay."]},
+      fish:{p:["Pa visvang van die pier af.","Dad fishes from the pier."],t:["Ons het groot visse gevisvang.","We caught big fish."],f:["Ons sal môre vroeg visvang.","We will fish early tomorrow."]},
+      build:{p:["Die kinders bou 'n sandkasteel.","The children build a sandcastle."],t:["Ons het 'n groot kasteel gebou.","We built a big castle."],f:["Hulle sal die beste kasteel bou.","They will build the best castle."]},
+      watch:{p:["Ons kyk hoe die son sak.","We watch the sun set."],t:["Ek het die dolfyne gekyk.","I watched the dolphins."],f:["Ons sal die golwe kyk.","We will watch the waves."]},
+      rest:{p:["Ek rus in die koelte van die sambreel.","I rest in the shade of the umbrella."],t:["Sy het na haar swem gerus.","She rested after her swim."],f:["Ons sal later op die strand rus.","We will rest on the beach later."]}
+    },
+    adjectives:{
+      hot:["Die sand is baie warm om op te loop.","The sand is too hot to walk on."],
+      wet:["My klere is nat van die see.","My clothes are wet from the sea."],
+      sunny:["Dit is 'n mooi sonnige dag.","It is a beautiful sunny day."],
+      salty:["Die see is souterig.","The sea is salty."],
+      beautiful:["Die strand is so mooi!","The beach is so beautiful!"],
+      cool:["Die water is lekker koel.","The water is nicely cool."],
+      blue:["Die see is diep blou.","The sea is deep blue."],
+      rough:["Die see is ru vandag — pasop!","The sea is rough today — be careful!"],
+      sandy:["My voete is sanderig.","My feet are sandy."],
+      calm:["Die see is kalm en stil.","The sea is calm and still."],
+      windy:["Dis te winderig om te surf.","It is too windy to surf."],
+      shallow:["Die water is vlak naby die strand.","The water is shallow near the beach."],
+      deep:["Moenie daar swem nie — dit is te diep.","Don't swim there — it is too deep."],
+      bright:["Die son is helder — dra sonbril.","The sun is bright — wear sunglasses."],
+      peaceful:["Die strand is stil en vredig.","The beach is quiet and peaceful."],
+      crowded:["Die strand is stampvol op naweke.","The beach is crowded on weekends."],
+      refreshing:["Die koue water is verfrissend.","The cold water is refreshing."],
+      clear:["Die water is so helder jy kan die bodem sien.","The water is so clear you can see the bottom."]
+    }
+  },
+  mountain:{
+    nouns:{
+      peak:["Die spits van die berg is bedek met sneeu.","The peak of the mountain is covered in snow."],
+      trail:["Die wandelpad is steil maar mooi.","The hiking trail is steep but beautiful."],
+      rock:["Die groot rots bied skuiling.","The big rock provides shelter."],
+      tree:["Die boom se wortels is diep.","The tree's roots are deep."],
+      snow:["Die sneeu maak die berg wit.","The snow makes the mountain white."],
+      valley:["Die vallei is groen en diep.","The valley is green and deep."],
+      river:["Die rivier vloei deur die vallei.","The river flows through the valley."],
+      bridge:["Die brug oor die rivier is oud.","The bridge over the river is old."],
+      cloud:["Die wolke hang laag oor die berg.","The clouds hang low over the mountain."],
+      waterfall:["Die waterval val van die krans af.","The waterfall falls off the cliff."],
+      eagle:["Die arend sweef hoog bo die berg.","The eagle soars high above the mountain."],
+      cave:["Ons slaap in die grot die nag.","We sleep in the cave tonight."],
+      cliff:["Staan weg van die rand van die krans.","Stand away from the edge of the cliff."],
+      meadow:["Die blomme in die weide is pragtig.","The flowers in the meadow are beautiful."],
+      tent:["Ons stel die tent op naby die rivier.","We set up the tent near the river."],
+      backpack:["My rugtas is baie swaar.","My backpack is very heavy."],
+      map:["Ons gebruik die kaart om die pad te vind.","We use the map to find the path."],
+      fog:["Die mis maak dit moeilik om te sien.","The fog makes it difficult to see."],
+      forest:["Die bos is dig en donker.","The forest is thick and dark."],
+      stone:["Sy tel 'n klip op as aandenking.","She picks up a stone as a memento."],
+      summit:["Die top is nog twee uur se stap.","The summit is still two hours' walk."],
+      path:["Die pad lei ons deur die bos.","The path leads us through the forest."],
+      lake:["Die meer is yskoud.","The lake is ice cold."],
+      wind:["Die wind waai sterk op die berg.","The wind blows strongly on the mountain."],
+      boot:["Goeie stapstewe is baie belangrik.","Good hiking boots are very important."],
+      cabin:["Ons oornag in die hut.","We spend the night in the cabin."]
+    },
+    verbs:{
+      hike:{p:["Ons stap deur die berge elke Saterdag.","We hike through the mountains every Saturday."],t:["Ons het gister tien kilometer gestap.","We hiked ten kilometres yesterday."],f:["Ons sal môre die langste roete stap.","We will hike the longest route tomorrow."]},
+      climb:{p:["Hy klim die steil krans.","He climbs the steep cliff."],t:["Sy het die berg sonder hulp geklim.","She climbed the mountain without help."],f:["Ons sal die spits môre klim.","We will climb the peak tomorrow."]},
+      rest:{p:["Ons rus by die waterval.","We rest at the waterfall."],t:["Hy het twee uur gerus voor hy verder gestap het.","He rested two hours before hiking further."],f:["Ons sal bo by die hut rus.","We will rest at the cabin on top."]},
+      breathe:{p:["Ek asemhaal die vars bergelug.","I breathe the fresh mountain air."],t:["Hy het diep asemgehaal voor die klim.","He breathed deeply before the climb."],f:["Ons sal die mis asemhaal as ons die top bereik.","We will breathe the mist when we reach the top."]},
+      camp:{p:["Ons kamp langs die rivier.","We camp along the river."],t:["Ons het drie nagte in die bos gekamp.","We camped three nights in the forest."],f:["Ons sal by die meer kamp.","We will camp at the lake."]},
+      look:{p:["Ek kyk uit oor die vallei.","I look out over the valley."],t:["Ons het terug na die stad gekyk.","We looked back at the city."],f:["Jy sal verstom kyk as jy bo kom.","You will look amazed when you reach the top."]},
+      fall:{p:["Wees versigtig — moenie val nie!","Be careful — don't fall!"],t:["Hy het op die nat klip geval.","He fell on the wet stone."],f:["Die sneeu sal val as die wind draai.","The snow will fall when the wind turns."]},
+      carry:{p:["Sy dra die swaar rugtas.","She carries the heavy backpack."],t:["Ons het die toerusting ver gedra.","We carried the equipment far."],f:["Hy sal die tent dra.","He will carry the tent."]},
+      explore:{p:["Ons verken die grot.","We explore the cave."],t:["Hulle het die hele vallei verken.","They explored the whole valley."],f:["Ons sal die bos verken.","We will explore the forest."]},
+      discover:{p:["Ons ontdek 'n geheime waterval.","We discover a hidden waterfall."],t:["Sy het 'n nuwe pad ontdek.","She discovered a new path."],f:["Hulle sal wonderlike dinge ontdek.","They will discover wonderful things."]},
+      photograph:{p:["Ek fotografeer die arend.","I photograph the eagle."],t:["Hy het die sonsopkoms gefotografeer.","He photographed the sunrise."],f:["Ons sal die uitsig fotografeer.","We will photograph the view."]},
+      slip:{p:["Wees versigtig — jy kan glip!","Be careful — you might slip!"],t:["Sy het op die modder geglip.","She slipped on the mud."],f:["Die paadjie sal glip wees as dit reën.","The path will be slippery if it rains."]},
+      listen:{p:["Ons luister na die voëls.","We listen to the birds."],t:["Ek het na die wind geluister.","I listened to the wind."],f:["Luister — jy sal die waterval hoor.","Listen — you will hear the waterfall."]},
+      follow:{p:["Ons volg die wit merke op die rotse.","We follow the white marks on the rocks."],t:["Sy het die arend met haar oë gevolg.","She followed the eagle with her eyes."],f:["Volg die pad na regs.","Follow the path to the right."]},
+      shelter:{p:["Ons skuil in die grot van die reën.","We shelter in the cave from the rain."],t:["Hulle het agter die rots geskuil.","They sheltered behind the rock."],f:["Ons sal in die hut skuil as dit storm.","We will shelter in the cabin if it storms."]}
+    },
+    adjectives:{
+      tall:["Die berg is baie hoog en indrukwekkend.","The mountain is very tall and impressive."],
+      cold:["Dit is bitter koud op die spits.","It is bitterly cold on the peak."],
+      steep:["Die pad is te steil vir beginners.","The path is too steep for beginners."],
+      quiet:["Dit is stil in die bos.","It is quiet in the forest."],
+      beautiful:["Die uitsig van bo is pragtig.","The view from the top is beautiful."],
+      far:["Die spits lyk ver maar is naby.","The peak looks far but is close."],
+      deep:["Die vallei is baie diep.","The valley is very deep."],
+      rocky:["Die paadjie is rotsagtig.","The path is rocky."],
+      misty:["Die berg is mistig in die oggend.","The mountain is misty in the morning."],
+      fresh:["Die bergelug is vars en suiwer.","The mountain air is fresh and pure."],
+      wild:["Die natuur hier is wild en ongetemd.","The nature here is wild and untamed."],
+      dark:["Die bos is donker en dig.","The forest is dark and dense."],
+      narrow:["Die pad is smal — loop versigtig.","The path is narrow — walk carefully."],
+      open:["Hierbo is die lug oop en wyd.","Up here the sky is open and wide."],
+      freezing:["Die meer is yskoud in die winter.","The lake is freezing in winter."],
+      magnificent:["Die uitsig van die spits is manjifiek.","The view from the peak is magnificent."],
+      green:["Die weide is groen na die reën.","The meadow is green after the rain."],
+      muddy:["Die paadjie is modderig na die reën.","The path is muddy after the rain."]
+    }
+  },
+  sports:{
+    nouns:{
+      ball:["Gee die bal vir my!","Give me the ball!"],
+      team:["Ons span is die beste.","Our team is the best."],
+      goal:["Hy het 'n wonderlike doel geskiet.","He scored a wonderful goal."],
+      player:["Die speler is vinnig en sterk.","The player is fast and strong."],
+      referee:["Die skeidsregter fluit.","The referee blows the whistle."],
+      trophy:["Ons het die trofee gewen!","We won the trophy!"],
+      stadium:["Die stadion is stampvol.","The stadium is packed."],
+      field:["Die veld is nat na die reën.","The field is wet after the rain."],
+      score:["Die telling is gelyk.","The score is equal."],
+      whistle:["Die fluitjie blaas die wedstryd af.","The whistle ends the match."],
+      coach:["Die afrigter praat met die span.","The coach talks to the team."],
+      bench:["Die speler sit op die bank.","The player sits on the bench."],
+      match:["Die wedstryd begin om drie.","The match starts at three."],
+      championship:["Ons wil die kampioenskap wen.","We want to win the championship."],
+      jersey:["Sy dra die groen trui.","She wears the green jersey."],
+      net:["Die bal tref die net.","The ball hits the net."],
+      court:["Die tennisspeler betree die baan.","The tennis player enters the court."],
+      gym:["Ek oefen elke dag in die gimnasium.","I train every day in the gym."],
+      medal:["Hy het 'n goue medalje ontvang.","He received a gold medal."],
+      captain:["Die kaptein lei die span.","The captain leads the team."],
+      pool:["Ons swem in die swembad.","We swim in the pool."],
+      fans:["Die ondersteuners juig luid.","The fans cheer loudly."],
+      league:["Ons span is bo in die liga.","Our team is top of the league."],
+      race:["Die wedrens begin oor tien minute.","The race starts in ten minutes."],
+      helmet:["Dra altyd jou helm.","Always wear your helmet."],
+      gloves:["Die boksers dra handskoene.","The boxers wear gloves."]
+    },
+    verbs:{
+      run:{p:["Hy hardloop die vinnigste in die span.","He runs the fastest in the team."],t:["Sy het 'n wedrens die naweek hardgeloop.","She ran a race over the weekend."],f:["Ons sal môre 5km hardloop.","We will run 5km tomorrow."]},
+      kick:{p:["Hy skop die bal hard.","He kicks the ball hard."],t:["Sy het die bal in die doel geskop.","She kicked the ball into the goal."],f:["Die speler sal die strafskop skop.","The player will kick the penalty."]},
+      throw:{p:["Sy gooi die bal oor die veld.","She throws the ball across the field."],t:["Hy het die bal ver gegooi.","He threw the ball far."],f:["Ons sal die bal na die kaptein gooi.","We will throw the ball to the captain."]},
+      win:{p:["Ons span wen gewoonlik tuis.","Our team usually wins at home."],t:["Ons het die finaal gewen!","We won the final!"],f:["Ons sal die kampioenskap wen.","We will win the championship."]},
+      lose:{p:["Niemand wil graag verloor nie.","Nobody likes to lose."],t:["Ons het met een punt verloor.","We lost by one point."],f:["Ons sal nooit sonder moed verloor nie.","We will never lose without courage."]},
+      train:{p:["Die span oefen elke aand.","The team trains every evening."],t:["Hulle het twee uur lank geoefen.","They trained for two hours."],f:["Ons sal hard oefen voor die finaal.","We will train hard before the final."]},
+      score:{p:["Hy teken 'n doel aan.","He scores a goal."],t:["Sy het twee doele aangeteken.","She scored two goals."],f:["Ons kaptein sal aanteken.","Our captain will score."]},
+      cheer:{p:["Die ondersteuners juig vir die span.","The fans cheer for the team."],t:["Almal het luid gejuig.","Everyone cheered loudly."],f:["Ons sal juig as ons wen.","We will cheer if we win."]},
+      jump:{p:["Die speler spring hoog vir die bal.","The player jumps high for the ball."],t:["Hy het oor die hindernis gespring.","He jumped over the obstacle."],f:["Sy sal die wêreldrekord spring.","She will break the world record."]},
+      tackle:{p:["Hy takel die aanvaller hard.","He tackles the attacker hard."],t:["Sy het hom netjies getakel.","She tackled him neatly."],f:["Die verdediger sal hom takel.","The defender will tackle him."]},
+      catch:{p:["Sy vang die bal met een hand.","She catches the ball with one hand."],t:["Hy het die hoë bal gevang.","He caught the high ball."],f:["Ons doelwagter sal dit vang.","Our goalkeeper will catch it."]},
+      pass:{p:["Hy gee die bal aan die kaptein aan.","He passes the ball to the captain."],t:["Sy het die bal perfek aangegee.","She passed the ball perfectly."],f:["Gee die bal aan die vleuelspeler aan.","Pass the ball to the winger."]},
+      defend:{p:["Ons verdedig ons doel.","We defend our goal."],t:["Die span het goed verdedig.","The team defended well."],f:["Ons sal hul aanval verdedig.","We will defend their attack."]},
+      attack:{p:["Die span val die verdediging aan.","The team attacks the defence."],t:["Hulle het dadelik aanval.","They attacked immediately."],f:["Ons sal in die tweede helfte aanval.","We will attack in the second half."]},
+      compete:{p:["Hy ding mee teen die beste spelers.","He competes against the best players."],t:["Sy het in die Olimpiese Spele meegeding.","She competed in the Olympic Games."],f:["Ons sal internasionaal meeding.","We will compete internationally."]}
+    },
+    adjectives:{
+      fast:["Die winger is baie vinnig.","The winger is very fast."],
+      strong:["Jy moet sterk wees om rugby te speel.","You need to be strong to play rugby."],
+      tired:["Die spelers is moeg na die wedstryd.","The players are tired after the match."],
+      exciting:["Die wedstryd was baie opwindend.","The match was very exciting."],
+      competitive:["Die liga is baie kompeterend.","The league is very competitive."],
+      fit:["Jy moet fiks wees om te kan speel.","You need to be fit to play."],
+      skilled:["Sy is 'n baie vaaardige speler.","She is a very skilled player."],
+      brave:["Die kaptein is dapper en sterk.","The captain is brave and strong."],
+      agile:["Die gimnast is rats en buigsaam.","The gymnast is agile and flexible."],
+      powerful:["Sy skop is kragtig.","His kick is powerful."],
+      focused:["Bly gefokus tydens die wedstryd.","Stay focused during the match."],
+      determined:["Sy is vasberade om te wen.","She is determined to win."],
+      exhausted:["Die spelers is uitgeput ná die wedstryd.","The players are exhausted after the match."],
+      athletic:["Hy het 'n atletiese bou.","He has an athletic build."],
+      flexible:["Die gimnast is baie buigsaam.","The gymnast is very flexible."],
+      victorious:["Die oorwinnende span vier fees.","The victorious team celebrates."],
+      proud:["Die kaptein is trots op sy span.","The captain is proud of his team."],
+      nervous:["Sy is senuweeagtig voor haar eerste wedstryd.","She is nervous before her first match."]
+    }
+  },
+  food:{
+    nouns:{
+      bread:["Die vars brood ruik heerlik.","The fresh bread smells delicious."],
+      meat:["Ons braai vleis op die vuur.","We braai meat on the fire."],
+      vegetable:["Eet jou groente — dis gesond!","Eat your vegetables — they are healthy!"],
+      fruit:["Die vrugte is vars van die mark.","The fruit is fresh from the market."],
+      water:["Drink genoeg water elke dag.","Drink enough water every day."],
+      plate:["Sit die kos op die bord.","Put the food on the plate."],
+      fork:["Ek het 'n vurk nodig.","I need a fork."],
+      spoon:["Gebruik 'n lepel vir die sop.","Use a spoon for the soup."],
+      cup:["Ek drink my tee uit 'n koppie.","I drink my tea from a cup."],
+      salt:["Voeg 'n bietjie sout by.","Add a little salt."],
+      chicken:["Die hoender bak in die oond.","The chicken bakes in the oven."],
+      fish:["Vars vis is my gunsteling kos.","Fresh fish is my favourite food."],
+      rice:["Kook die rys vir twintig minute.","Cook the rice for twenty minutes."],
+      soup:["Die sop is warm en heerlik.","The soup is warm and delicious."],
+      cheese:["Hy sny die kaas in blokkies.","He cuts the cheese into blocks."],
+      egg:["Sy bak twee eiers vir ontbyt.","She fries two eggs for breakfast."],
+      milk:["Voeg melk by die koffie.","Add milk to the coffee."],
+      sugar:["Hy eet nie suiker nie.","He does not eat sugar."],
+      garlic:["Die knoffel gee die kos smaak.","The garlic gives the food flavour."],
+      onion:["Sny die ui in klein stukke.","Cut the onion into small pieces."],
+      potato:["Die aartappels kook in die pot.","The potatoes cook in the pot."],
+      tomato:["Die tamatieresep is eenvoudig.","The tomato recipe is simple."],
+      kitchen:["Almal help in die kombuis.","Everyone helps in the kitchen."],
+      recipe:["Sy volg die resep noukeurig.","She follows the recipe carefully."],
+      dessert:["Nagereg is altyd die beste deel.","Dessert is always the best part."],
+      breakfast:["Ons eet ontbyt om sewe.","We eat breakfast at seven."],
+      lunch:["Middagete is om twaalf.","Lunch is at twelve."],
+      dinner:["Die aandete is klaar om ses.","Dinner is ready at six."],
+      knife:["Gebruik 'n skerp mes.","Use a sharp knife."],
+      oil:["Voeg olie by die pan.","Add oil to the pan."]
+    },
+    verbs:{
+      eat:{p:["Ons eet saam as 'n familie.","We eat together as a family."],t:["Ek het te veel geëet.","I ate too much."],f:["Ons sal buitekant eet vanaand.","We will eat outside tonight."]},
+      drink:{p:["Sy drink koffie elke oggend.","She drinks coffee every morning."],t:["Ons het 'n lekker sap gedrink.","We drank a nice juice."],f:["Hy sal water na sy oefening drink.","He will drink water after his exercise."]},
+      cook:{p:["Ma kook elke aand.","Mom cooks every evening."],t:["Sy het 'n heerlike kerrie gekook.","She cooked a delicious curry."],f:["Ek sal aandete kook vanaand.","I will cook dinner tonight."]},
+      taste:{p:["Proe die sop voor jy sout bysit.","Taste the soup before adding salt."],t:["Ek het die nuwe resep geproe.","I tasted the new recipe."],f:["Sal jy my koek proe?","Will you taste my cake?"]},
+      buy:{p:["Ek koop groente by die mark.","I buy vegetables at the market."],t:["Sy het vars vis gekoop.","She bought fresh fish."],f:["Ons sal bestanddele koop.","We will buy ingredients."]},
+      share:{p:["Ons deel altyd ons kos.","We always share our food."],t:["Hy het sy nagereg gedeel.","He shared his dessert."],f:["Sal jy jou kos deel?","Will you share your food?"]},
+      cut:{p:["Sy sny die groente fyn.","She cuts the vegetables finely."],t:["Pa het die vleis gesny.","Dad cut the meat."],f:["Ek sal die brood sny.","I will cut the bread."]},
+      serve:{p:["Die kelner bedien ons tafel.","The waiter serves our table."],t:["Sy het die kos netjies bedien.","She served the food neatly."],f:["Ons sal kos bedien om sewe.","We will serve food at seven."]},
+      bake:{p:["Sy bak elke Saterdag.","She bakes every Saturday."],t:["Ek het 'n sjokoladekoek gebak.","I baked a chocolate cake."],f:["Ons sal koekies vir die fees bak.","We will bake cookies for the party."]},
+      fry:{p:["Hy braai eiers in botter.","He fries eggs in butter."],t:["Ons het vis en tjips gebraai.","We fried fish and chips."],f:["Sy sal die hoender braai.","She will fry the chicken."]},
+      stir:{p:["Roer die sop gereeld.","Stir the soup regularly."],t:["Hy het die sous geroer.","He stirred the sauce."],f:["Roer tot alles gemeng is.","Stir until everything is mixed."]},
+      pour:{p:["Gooi die melk in die beker.","Pour the milk into the cup."],t:["Sy het die sap gegooi.","She poured the juice."],f:["Gooi die water oor die rys.","Pour the water over the rice."]},
+      mix:{p:["Ek meng die eiers en meel.","I mix the eggs and flour."],t:["Ons het die bestanddele gemeng.","We mixed the ingredients."],f:["Meng alles goed deur.","Mix everything thoroughly."]},
+      smell:{p:["Die vleis ruik wonderlik!","The meat smells wonderful!"],t:["Die brood het heerlik geruik.","The bread smelled delicious."],f:["Die kerrie sal die huis volruik.","The curry will fill the house with smell."]},
+      prepare:{p:["Ek voorberei die kos.","I prepare the food."],t:["Sy het die hele maaltyd voorberei.","She prepared the whole meal."],f:["Ons sal die kos voor tyd voorberei.","We will prepare the food in advance."]}
+    },
+    adjectives:{
+      delicious:["Die kerrie is ongelooflik heerlik.","The curry is incredibly delicious."],
+      sweet:["Die koek is te soet.","The cake is too sweet."],
+      spicy:["Die sous is baie pittig.","The sauce is very spicy."],
+      fresh:["Die vars groente kom van die tuin.","The fresh vegetables come from the garden."],
+      hungry:["Ek is honger na my oefensessie.","I am hungry after my exercise session."],
+      sour:["Die lemoen is te suur.","The lemon is too sour."],
+      bitter:["Die koffie is bitter sonder suiker.","The coffee is bitter without sugar."],
+      warm:["Die sop is warm en troosvol.","The soup is warm and comforting."],
+      salty:["Die slaaie-sous is te souterig.","The salad dressing is too salty."],
+      rich:["Die sjokoladekoek is ryk en swaar.","The chocolate cake is rich and heavy."],
+      creamy:["Die sous is romerig en glad.","The sauce is creamy and smooth."],
+      crunchy:["Die appel is vars en krakerig.","The apple is fresh and crunchy."],
+      tasty:["Hierdie kos is baie lekker!","This food is very tasty!"],
+      healthy:["Groente en vrugte is gesond.","Vegetables and fruit are healthy."],
+      light:["Die slaai is lig en vars.","The salad is light and fresh."],
+      full:["Ek kan nie meer eet nie — ek is vol.","I cannot eat any more — I am full."],
+      ripe:["Die tamaties is ryp en rooi.","The tomatoes are ripe and red."],
+      raw:["Sy eet rou groente in 'n slaai.","She eats raw vegetables in a salad."]
+    }
+  },
+  family:{
+    nouns:{
+      mother:["My ma kook elke aand.","My mother cooks every evening."],
+      father:["Pa werk hard vir die gesin.","Father works hard for the family."],
+      sister:["My suster en ek deel 'n kamer.","My sister and I share a room."],
+      brother:["My broer speel elke dag rugby.","My brother plays rugby every day."],
+      grandmother:["Ouma vertel vir ons stories.","Grandmother tells us stories."],
+      grandfather:["Oupa het 'n mooi tuin.","Grandfather has a beautiful garden."],
+      child:["Die kind lag en speel.","The child laughs and plays."],
+      baby:["Die baba slaap rustig.","The baby sleeps peacefully."],
+      family:["Ons familie eet saam op Sondae.","Our family eats together on Sundays."],
+      home:["Tuis is waar die hart is.","Home is where the heart is."],
+      aunt:["Tannie kook die lekkerste kos.","Aunt cooks the most delicious food."],
+      uncle:["Oom help my met my huiswerk.","Uncle helps me with my homework."],
+      cousin:["My neef kom besoek ons naweke.","My cousin visits us on weekends."],
+      parents:["My ouers is lief vir mekaar.","My parents love each other."],
+      wedding:["Die troue was pragtig.","The wedding was beautiful."],
+      birthday:["Ons vier jou verjaarsdag saam.","We celebrate your birthday together."],
+      gift:["Sy het 'n mooi geskenk gekry.","She received a beautiful gift."],
+      garden:["Oupa werk in die tuin.","Grandpa works in the garden."],
+      pet:["Die troeteldier is deel van die gesin.","The pet is part of the family."],
+      dog:["Die hond bewaak die huis.","The dog guards the house."],
+      cat:["Die kat slaap op my bed.","The cat sleeps on my bed."],
+      photo:["Ons neem 'n foto saam.","We take a photo together."],
+      memory:["Die herinnering bly altyd in my hart.","The memory always stays in my heart."],
+      prayer:["Ons bid voor ons eet.","We pray before we eat."],
+      husband:["Haar man is saggeaard.","Her husband is gentle."],
+      wife:["Sy vrou sorg vir die gesin.","His wife cares for the family."]
+    },
+    verbs:{
+      love:{p:["Ek is lief vir my familie.","I love my family."],t:["Sy het hom altyd liefgehad.","She always loved him."],f:["Ek sal jou altyd liefhê.","I will always love you."]},
+      help:{p:["Hy help sy suster met haar werk.","He helps his sister with her work."],t:["Ouma het my gehelp.","Grandma helped me."],f:["Ons sal Pa help in die tuin.","We will help Dad in the garden."]},
+      visit:{p:["Ons besoek oupa elke Sondag.","We visit grandpa every Sunday."],t:["Hulle het ons verlede week besoek.","They visited us last week."],f:["Ons sal die familie besoek met Kersfees.","We will visit the family at Christmas."]},
+      celebrate:{p:["Ons vier elke verjaarsdag.","We celebrate every birthday."],t:["Ons het haar 21ste verjaardag gevier.","We celebrated her 21st birthday."],f:["Die gesin sal saam vier.","The family will celebrate together."]},
+      talk:{p:["Ma en Pa praat elke aand.","Mom and Dad talk every evening."],t:["Ons het oor die toekoms gepraat.","We talked about the future."],f:["Ons sal môre praat.","We will talk tomorrow."]},
+      hug:{p:["Ek druk my ma elke dag.","I hug my mom every day."],t:["Hy het sy pa gedruk by die lughawe.","He hugged his dad at the airport."],f:["Ek sal jou druk as ons mekaar sien.","I will hug you when we see each other."]},
+      laugh:{p:["Ons lag altyd saam by die tafel.","We always laugh together at the table."],t:["Ons het so gelag dat ons gehuil het.","We laughed so much we cried."],f:["Ons sal baie lag vanaand.","We will laugh a lot tonight."]},
+      sing:{p:["Ma sing terwyl sy kook.","Mom sings while she cooks."],t:["Ons het saam gesing by die fees.","We sang together at the party."],f:["Die gesin sal 'n lied sing.","The family will sing a song."]},
+      remember:{p:["Ek onthou elke oomblik.","I remember every moment."],t:["Hy het haar verjaarsdag onthou.","He remembered her birthday."],f:["Ons sal hierdie dag altyd onthou.","We will always remember this day."]},
+      care:{p:["Ma sorg vir ons almal.","Mom cares for all of us."],t:["Sy het vir haar man gesorg tydens sy siekte.","She cared for her husband during his illness."],f:["Ons sal vir oupa sorg.","We will care for grandpa."]},
+      support:{p:["Ons ondersteun mekaar altyd.","We always support each other."],t:["My familie het my ondersteun.","My family supported me."],f:["Ek sal jou altyd ondersteun.","I will always support you."]},
+      teach:{p:["Pa leer my om te ry.","Dad teaches me to drive."],t:["Ma het my geleer om te kook.","Mom taught me to cook."],f:["Ek sal my kind leer wat reg is.","I will teach my child what is right."]},
+      forgive:{p:["Ek vergewe jou want ek is lief vir jou.","I forgive you because I love you."],t:["Sy het hom lankal vergewe.","She forgave him long ago."],f:["Die gesin sal hom vergewe.","The family will forgive him."]},
+      play:{p:["Die kinders speel in die tuin.","The children play in the garden."],t:["Ons het kaarte gespeel na aandete.","We played cards after dinner."],f:["Ons sal môre saam speel.","We will play together tomorrow."]},
+      pray:{p:["Ons bid saam voor ons slaap.","We pray together before we sleep."],t:["Die familie het saam gebid.","The family prayed together."],f:["Ons sal vir jou bid.","We will pray for you."]}
+    },
+    adjectives:{
+      kind:["Sy is vriendelik teen almal.","She is kind to everyone."],
+      happy:["Die gesin is gelukkig saam.","The family is happy together."],
+      loving:["Liefde maak 'n huis 'n tuis.","Love makes a house a home."],
+      old:["Oupa is al baie oud maar nog sterk.","Grandpa is very old but still strong."],
+      young:["Die jong kind leer vinnig.","The young child learns quickly."],
+      big:["Ons het 'n groot familie.","We have a big family."],
+      small:["Ons is 'n klein maar heg familie.","We are a small but close family."],
+      close:["Ons woon naby mekaar.","We live close to each other."],
+      proud:["Pa is trots op sy kinders.","Dad is proud of his children."],
+      grateful:["Ek is dankbaar vir my familie.","I am grateful for my family."],
+      patient:["Goeie ouers is geduldig.","Good parents are patient."],
+      caring:["My ma is baie sorgsaam.","My mom is very caring."],
+      funny:["My broer is so snaaks!","My brother is so funny!"],
+      gentle:["Pa is sag met die babas.","Dad is gentle with the babies."],
+      wise:["Oupa is wys na jare se ervaring.","Grandpa is wise after years of experience."],
+      warm:["Ons huis is altyd warm.","Our home is always warm."],
+      brave:["Ma is dapper in moeilike tye.","Mom is brave in difficult times."],
+      faithful:["'n Getrou vriend is 'n skat.","A faithful friend is a treasure."]
+    }
+  },
+  city:{
+    nouns:{
+      street:["Die straat is vol mense.","The street is full of people."],
+      building:["Die gebou is twintig verdiepings hoog.","The building is twenty storeys high."],
+      car:["Die motor is in die garage.","The car is in the garage."],
+      bus:["Die bus is altyd vol.","The bus is always full."],
+      shop:["Die winkel sluit om nege.","The shop closes at nine."],
+      park:["Kinders speel in die park.","Children play in the park."],
+      school:["Die skool begin om agt.","School starts at eight."],
+      hospital:["Die hospitaal is naby die park.","The hospital is near the park."],
+      "traffic light":["Stop by die rooi verkeerslig.","Stop at the red traffic light."],
+      market:["Die mark is Saterdag oggend.","The market is Saturday morning."],
+      road:["Die pad na die stad is druk.","The road to the city is busy."],
+      bridge:["Die brug verbind die twee dele.","The bridge connects the two parts."],
+      taxi:["Ek neem 'n taxi na die stasie.","I take a taxi to the station."],
+      train:["Die trein vertrek om sewe.","The train departs at seven."],
+      station:["Ons ontmoet by die stasie.","We meet at the station."],
+      restaurant:["Ons eet by 'n restaurant vanaand.","We eat at a restaurant tonight."],
+      hotel:["Die hotel is sentraal geleë.","The hotel is centrally located."],
+      library:["Die biblioteek is stil en rustig.","The library is quiet and peaceful."],
+      church:["Die kerk het 'n pragtige toring.","The church has a beautiful tower."],
+      bank:["Die bank maak om nege toe.","The bank closes at nine."],
+      airport:["Die lughawe is buite die stad.","The airport is outside the city."],
+      apartment:["Hy woon in 'n woonstel in die stad.","He lives in an apartment in the city."],
+      museum:["Die museum het baie interessante uitstallings.","The museum has many interesting exhibitions."],
+      fountain:["Die fontein is in die middel van die plein.","The fountain is in the middle of the square."],
+      pavement:["Stap op die sypaadjie.","Walk on the pavement."],
+      traffic:["Die verkeer is erg tydens spitstyd.","The traffic is bad during rush hour."]
+    },
+    verbs:{
+      drive:{p:["Ek ry elke dag werk toe.","I drive to work every day."],t:["Sy het deur die nag gery.","She drove through the night."],f:["Ons sal môre vroeg ry.","We will drive early tomorrow."]},
+      walk:{p:["Ek stap werk toe elke oggend.","I walk to work every morning."],t:["Ons het deur die stad gestap.","We walked through the city."],f:["Ons sal in die park stap.","We will walk in the park."]},
+      buy:{p:["Hy koop koffie elke oggend.","He buys coffee every morning."],t:["Sy het 'n nuwe rok gekoop.","She bought a new dress."],f:["Ons sal kos koop by die mark.","We will buy food at the market."]},
+      work:{p:["Sy werk in die middestad.","She works in the city centre."],t:["Hy het laat gewerk gisteraand.","He worked late last night."],f:["Ons sal môre hard werk.","We will work hard tomorrow."]},
+      travel:{p:["Ek reis per trein.","I travel by train."],t:["Ons het deur die stad gereis.","We travelled through the city."],f:["Sy sal na die buiteland reis.","She will travel abroad."]},
+      park:{p:["Hy parkeer sy motor naby die winkel.","He parks his car near the shop."],t:["Ons het twee uur lank geparkeer.","We parked for two hours."],f:["Parkeer naby die stasie.","Park near the station."]},
+      meet:{p:["Ons ontmoet by die kafee.","We meet at the café."],t:["Ek het my vriend by die stasie ontmoet.","I met my friend at the station."],f:["Ons sal mekaar môre ontmoet.","We will meet each other tomorrow."]},
+      live:{p:["Ek woon naby die middestad.","I live near the city centre."],t:["Sy het jare in die stad gewoon.","She lived in the city for years."],f:["Hulle sal in die nuwe huis woon.","They will live in the new house."]},
+      cross:{p:["Steek by die robot oor.","Cross at the traffic light."],t:["Ons het die brug oorgesteek.","We crossed the bridge."],f:["Ons sal die straat by die robot oorsteek.","We will cross the street at the light."]},
+      wait:{p:["Ek wag by die bus halte.","I wait at the bus stop."],t:["Ons het 'n uur gewag.","We waited for an hour."],f:["Wag by die ingang.","Wait at the entrance."]},
+      rush:{p:["Almal jaag tydens spitstyd.","Everyone rushes during rush hour."],t:["Hy het gejaag om die trein te haal.","He rushed to catch the train."],f:["Moenie jaag nie — daar is tyd.","Don't rush — there is time."]},
+      explore:{p:["Ons verken die ou deel van die stad.","We explore the old part of the city."],t:["Sy het die museum verken.","She explored the museum."],f:["Ons sal die mark verken.","We will explore the market."]},
+      visit:{p:["Toeriste besoek die museum elke dag.","Tourists visit the museum every day."],t:["Ons het die ou kerk besoek.","We visited the old church."],f:["Hulle sal die fontein besoek.","They will visit the fountain."]},
+      commute:{p:["Ek pendel elke dag per trein.","I commute by train every day."],t:["Sy het twee jaar na die stad gependel.","She commuted to the city for two years."],f:["Hy sal met die bus pendel.","He will commute by bus."]},
+      build:{p:["Hulle bou 'n nuwe gebou in die middestad.","They are building a new building in the city centre."],t:["Die brug is in 1990 gebou.","The bridge was built in 1990."],f:["Hulle sal 'n nuwe stasie bou.","They will build a new station."]}
+    },
+    adjectives:{
+      busy:["Die stad is besig tydens die dag.","The city is busy during the day."],
+      loud:["Die verkeer is lawaaierig.","The traffic is loud."],
+      modern:["Die nuwe gebou is baie modern.","The new building is very modern."],
+      crowded:["Die mark is stampvol op Saterdae.","The market is crowded on Saturdays."],
+      clean:["Die park is altyd skoon.","The park is always clean."],
+      big:["Dit is 'n groot stad met baie mense.","It is a big city with many people."],
+      far:["Die lughawe is ver van die middestad.","The airport is far from the city centre."],
+      safe:["Die buurt is veilig en vredig.","The neighbourhood is safe and peaceful."],
+      historic:["Die ou kerk is histories.","The old church is historic."],
+      expensive:["Die woonstelle in die middestad is duur.","The apartments in the city centre are expensive."],
+      cheap:["Die markvoedsel is goedkoop.","The market food is cheap."],
+      vibrant:["Die mark is baie lewendig.","The market is very vibrant."],
+      quiet:["Die biblioteek is altyd stil.","The library is always quiet."],
+      peaceful:["Die park is vredig in die oggend.","The park is peaceful in the morning."],
+      polluted:["Die lug is besoedeld naby die fabriek.","The air is polluted near the factory."],
+      developed:["Die stad is goed ontwikkeld.","The city is well developed."],
+      narrow:["Die ou straatjies is nou.","The old alleys are narrow."],
+      wide:["Die hoofstraat is wyd.","The main street is wide."]
+    }
+  },
+  greetings:{
+    nouns:{
+      name:["Wat is jou naam?","What is your name?"],
+      friend:["Hy is my beste vriend.","He is my best friend."],
+      morning:["Die oggend is stil en rustig.","The morning is quiet and peaceful."],
+      afternoon:["Ons eet middag om twaalf.","We eat lunch at noon."],
+      evening:["Die aand is koel na 'n warm dag.","The evening is cool after a warm day."],
+      night:["Die nag is stil en donker.","The night is quiet and dark."],
+      day:["Vandag is 'n mooi dag.","Today is a beautiful day."],
+      week:["Hierdie week is baie besig.","This week is very busy."],
+      weather:["Die weer is lekker vandag.","The weather is nice today."],
+      conversation:["Ons het 'n lekker gesprek gehad.","We had a nice conversation."],
+      question:["Sy het 'n vraag gevra.","She asked a question."],
+      answer:["Hy weet die antwoord.","He knows the answer."],
+      person:["Hy is 'n vriendelike persoon.","He is a friendly person."],
+      language:["Afrikaans is 'n mooi taal.","Afrikaans is a beautiful language."],
+      word:["Leer elke dag 'n nuwe woord.","Learn a new word every day."],
+      greeting:["Die groet was warm en opreg.","The greeting was warm and sincere."],
+      please:["Sê asseblief wanneer jy iets vra.","Say please when you ask for something."],
+      "thank you":["Dankie is altyd welkom om te hoor.","Thank you is always nice to hear."],
+      goodbye:["Totsiens beteken tot ons mekaar weer sien.","Goodbye means until we see each other again."],
+      year:["'n Nuwe jaar bring nuwe hoop.","A new year brings new hope."]
+    },
+    verbs:{
+      greet:{p:["Ek groet almal met 'n glimlag.","I greet everyone with a smile."],t:["Sy het hom vriendelik gegroet.","She greeted him warmly."],f:["Ons sal die gaste groet by die deur.","We will greet the guests at the door."]},
+      meet:{p:["Ons ontmoet vir koffie elke Vrydag.","We meet for coffee every Friday."],t:["Ek het haar by die konferensie ontmoet.","I met her at the conference."],f:["Ons sal mekaar by die mark ontmoet.","We will meet each other at the market."]},
+      ask:{p:["Ek vra die pad wanneer ek verlore is.","I ask for directions when I am lost."],t:["Sy het hom gevra hoe hy is.","She asked him how he is."],f:["Ek sal die vraag later vra.","I will ask the question later."]},
+      answer:{p:["Hy antwoord elke vraag.","He answers every question."],t:["Sy het geantwoord sonder om te dink.","She answered without thinking."],f:["Ek sal die brief antwoord.","I will answer the letter."]},
+      understand:{p:["Ek verstaan Afrikaans 'n bietjie.","I understand Afrikaans a little."],t:["Hy het die opdrag verstaan.","He understood the instructions."],f:["Jy sal dit verstaan ná oefening.","You will understand it after practice."]},
+      speak:{p:["Sy praat Afrikaans en Engels.","She speaks Afrikaans and English."],t:["Ons het oor ons planne gepraat.","We spoke about our plans."],f:["Ek sal meer Afrikaans praat.","I will speak more Afrikaans."]},
+      know:{p:["Ek ken hom al jare.","I have known him for years."],t:["Sy het hom van die skool geken.","She knew him from school."],f:["Jy sal hom gou ken.","You will know him soon."]},
+      say:{p:["Hy sê altyd die regte ding.","He always says the right thing."],t:["Wat het sy gesê?","What did she say?"],f:["Ek sal jou sê wat gebeur het.","I will tell you what happened."]},
+      introduce:{p:["Ek stel my vriend aan jou voor.","I introduce my friend to you."],t:["Sy het hom by die partytjie voorgestel.","She introduced him at the party."],f:["Ek sal jou aan die groep voorstel.","I will introduce you to the group."]},
+      listen:{p:["Luister goed wanneer iemand praat.","Listen well when someone speaks."],t:["Hy het aandagtig geluister.","He listened attentively."],f:["Ek sal luister wat jy sê.","I will listen to what you say."]},
+      call:{p:["Ek noem hom by sy naam.","I call him by his name."],t:["Sy het hom 'n held genoem.","She called him a hero."],f:["Noem my wanneer jy gereed is.","Call me when you are ready."]},
+      "come from":{p:["Ek kom van Kaapstad.","I come from Cape Town."],t:["Hulle het van ver gekom.","They came from far away."],f:["Sy sal van die dorp af kom.","She will come from the town."]}
+    },
+    adjectives:{
+      fine:["Dit gaan goed, dankie!","I am fine, thank you!"],
+      glad:["Ek is bly om jou te sien.","I am glad to see you."],
+      sure:["Ek is seker dat ons kan praat.","I am sure we can talk."],
+      new:["Ek is 'n nuwe lid van die groep.","I am a new member of the group."],
+      ready:["Ek is gereed om te begin.","I am ready to begin."],
+      well:["Ek is gesond en goed.","I am well and healthy."],
+      busy:["Ek is besig maar bly.","I am busy but happy."],
+      friendly:["Wees vriendelik met vreemdelinge.","Be friendly with strangers."],
+      happy:["Ek is gelukkig om hier te wees.","I am happy to be here."],
+      tired:["Ek is moeg na 'n lang dag.","I am tired after a long day."],
+      nice:["Dit is lekker om jou te ontmoet.","It is nice to meet you."],
+      interesting:["Jou storie is baie interessant.","Your story is very interesting."],
+      polite:["Wees altyd beleefd met mense.","Always be polite with people."],
+      quiet:["Hy is stil maar vriendelik.","He is quiet but friendly."]
+    }
+  }
+};
+
+// ══════════════════════════════════════════════════
 // STATE
 // ══════════════════════════════════════════════════
 let S = {
@@ -921,10 +1391,22 @@ function startFlashcards() {
   if (!S.tense) return;
   const u = UNITS[S.unit];
   let cards = [];
-  u.nouns.forEach(n => cards.push({type:'noun', en:n.en, af:n.af, pron:n.pron||'', tense:null}));
-  u.adjectives.forEach(a => cards.push({type:'adjective', en:a.en, af:a.af, pron:a.pron||'', tense:null}));
-  u.verbs.forEach(v => cards.push({type:'verb', en:v.en, af:v[S.tense], pron:v.pron||'', tense:S.tense}));
-  if (u.phrases) u.phrases.forEach(p => cards.push({type:'phrase', en:p.en, af:p.af, pron:p.pron||'', tense:null}));
+  const ux = EX[S.unit] || {};
+  const tKey = {present:'p',past:'t',future:'f'}[S.tense];
+  u.nouns.forEach(n => {
+    const e = ux.nouns?.[n.en];
+    cards.push({type:'noun', en:n.en, af:n.af, pron:n.pron||'', tense:null, ex:e?{af:e[0],en:e[1]}:null});
+  });
+  u.adjectives.forEach(a => {
+    const e = ux.adjectives?.[a.en];
+    cards.push({type:'adjective', en:a.en, af:a.af, pron:a.pron||'', tense:null, ex:e?{af:e[0],en:e[1]}:null});
+  });
+  u.verbs.forEach(v => {
+    const ev = ux.verbs?.[v.en];
+    const e = ev?.[tKey];
+    cards.push({type:'verb', en:v.en, af:v[S.tense], pron:v.pron||'', tense:S.tense, ex:e?{af:e[0],en:e[1]}:null});
+  });
+  if (u.phrases) u.phrases.forEach(p => cards.push({type:'phrase', en:p.en, af:p.af, pron:p.pron||'', tense:null, ex:null}));
   S.cards = shuffle(cards); S.cardIdx = 0; S.flipped = false;
   document.getElementById('fc-title').textContent = `${u.icon} ${u.name} — ${cap(S.tense)} Tense`;
   renderCard();
@@ -943,6 +1425,14 @@ function renderCard() {
   document.getElementById('fc-pron').textContent = c.pron ? c.pron : '';
   document.getElementById('fc-type-front').textContent = c.type;
   document.getElementById('fc-type-back').textContent = c.type;
+  const exEl = document.getElementById('fc-ex');
+  if (c.ex) {
+    document.getElementById('fc-ex-af').textContent = c.ex.af;
+    document.getElementById('fc-ex-en').textContent = c.ex.en;
+    exEl.style.display = 'block';
+  } else {
+    exEl.style.display = 'none';
+  }
   const pill = document.getElementById('fc-tense-pill');
   if (c.tense) { pill.textContent = cap(c.tense)+' tense'; pill.style.display='block'; }
   else pill.style.display='none';

@@ -215,14 +215,184 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
   .card-word { font-size: 1.7rem; }
   .fc-wrap { height: 230px; }
 }
+
+/* ════════════════════════════════════════
+   LANGUAGE SELECTOR
+════════════════════════════════════════ */
+#s-lang { max-width:100%;padding:0;min-height:100vh }
+.lang-hero {
+  min-height:100vh;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 20px;text-align:center;
+}
+.lang-hero h1 { color:#fff;font-size:2.4rem;letter-spacing:3px;margin-bottom:8px }
+.lang-hero > p { color:rgba(255,255,255,.65);font-size:1rem;margin-bottom:44px }
+.lang-cards { display:flex;gap:24px;flex-wrap:wrap;justify-content:center }
+.lang-card {
+  background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.2);
+  border-radius:20px;padding:38px 32px;cursor:pointer;transition:all .25s;
+  min-width:180px;color:#fff;backdrop-filter:blur(8px);
+}
+.lang-card:hover { transform:translateY(-8px);border-color:#fff;background:rgba(255,255,255,.18);box-shadow:0 16px 40px rgba(0,0,0,.45) }
+.lang-card .lc-flag { font-size:3.8rem;display:block;margin-bottom:14px }
+.lang-card h2 { font-size:1.4rem;margin-bottom:6px }
+.lang-card p { opacity:.6;font-size:.85rem }
+
+/* ─── WRITING MODE (Japanese) ─── */
+.writing-grid { display:flex;gap:16px;flex-wrap:wrap;margin-top:20px }
+.writing-card {
+  flex:1;min-width:140px;background:rgba(255,255,255,.92);border:3px solid #BC002D;
+  border-radius:14px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s;
+}
+.writing-card:hover,.writing-card.selected { background:#BC002D;color:#fff }
+.writing-card .wicon { font-size:2rem;margin-bottom:8px;display:block }
+
+/* ════════════════════════════════════════
+   JAPANESE CHERRY BLOSSOM BACKGROUND
+════════════════════════════════════════ */
+#ja-bg {
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;
+  background:linear-gradient(180deg,#5ab3e8 0%,#87ceeb 42%,#b8e4f9 65%,#7dba7d 80%,#4a8f4a 100%);
+}
+#ja-bg svg { position:absolute;bottom:0;width:100%;height:auto }
+.petal {
+  position:absolute;border-radius:50% 0 50% 0;
+  background:radial-gradient(ellipse at 30% 30%,#ffe8ee,#ffb7c5);
+  animation:petalFall linear infinite;pointer-events:none;
+}
+@keyframes petalFall {
+  0%   { transform:translateY(-20px) rotate(0deg) translateX(0); opacity:.9 }
+  100% { transform:translateY(105vh) rotate(960deg) translateX(120px); opacity:.1 }
+}
+
+/* ════════════════════════════════════════
+   JAPANESE THEME OVERRIDES
+════════════════════════════════════════ */
+body.lang-ja .header { background:#BC002D }
+body.lang-ja .flag-bar { background:#BC002D;height:4px }
+body.lang-ja #s-menu,body.lang-ja #s-unit,body.lang-ja #s-tense,
+body.lang-ja #s-fc,body.lang-ja #s-quiz,body.lang-ja #s-results,
+body.lang-ja #s-vocab,body.lang-ja #s-writing {
+  background:rgba(255,255,255,.87);border-radius:20px;margin:16px auto;
+  backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.12);
+}
+body.lang-ja .menu-card { border-color:#BC002D;background:rgba(255,255,255,.95) }
+body.lang-ja .menu-card:hover { background:#BC002D;box-shadow:0 10px 28px rgba(188,0,45,.35) }
+body.lang-ja .unit-btn { border-color:#FFB7C5;background:rgba(255,255,255,.9) }
+body.lang-ja .unit-btn:hover,body.lang-ja .unit-btn.selected { background:#FFB7C5;color:#1a1a1a }
+body.lang-ja .tense-btn { border-color:#BC002D;background:rgba(255,255,255,.9) }
+body.lang-ja .tense-btn:hover,body.lang-ja .tense-btn.selected { background:#BC002D;color:#fff }
+body.lang-ja .btn-green { background:#BC002D }
+body.lang-ja .btn-green:hover { background:#8a0020 }
+body.lang-ja .btn-gold { background:#FFB7C5;color:#1a1a1a }
+body.lang-ja .btn-outline { border-color:#BC002D;color:#BC002D }
+body.lang-ja .btn-outline:hover { background:#BC002D;color:#fff }
+body.lang-ja .back-btn { color:#BC002D }
+body.lang-ja .back-btn:hover { background:rgba(188,0,45,.08) }
+body.lang-ja .page-title h2 { color:#BC002D }
+body.lang-ja .card-front { background:linear-gradient(135deg,#BC002D,#8a0020) }
+body.lang-ja .card-back { background:linear-gradient(135deg,#FFB7C5,#ff8fa3);color:#1a1a1a }
+body.lang-ja .quiz-badge { background:#BC002D }
+body.lang-ja .opt:hover { border-color:#BC002D;background:#fff0f3 }
+body.lang-ja .opt.correct { border-color:#007A4D;background:#e8f5ef;color:#007A4D }
+body.lang-ja .opt.wrong { border-color:#BC002D;background:#ffeeed;color:#BC002D }
+body.lang-ja .vocab-section h3 { color:#BC002D;border-color:#FFB7C5 }
+body.lang-ja .vocab-table th { background:#BC002D }
+body.lang-ja .reading-passage { border-color:#BC002D;background:#fff0f3 }
+body.lang-ja .progress-fill { background:#BC002D }
+body.lang-ja .score-circle { background:#BC002D }
+body.lang-ja .results-card { background:rgba(255,255,255,.95) }
+body.lang-ja .results-bar { background:linear-gradient(to right,#BC002D 33%,#fff 33%,#fff 66%,#BC002D 66%) }
+body.lang-ja .badge-noun { background:#fff0f3;color:#BC002D }
+body.lang-ja .badge-adj { background:#fff8f0;color:#b36200 }
+body.lang-ja .quiz-card { background:rgba(255,255,255,.95) }
+body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <h1>🇿🇦 Leer Afrikaans</h1>
-  <p>Learn Afrikaans — Unit by Unit</p>
-  <div class="flag-bar"></div>
+<!-- ══ JAPANESE CHERRY BLOSSOM BACKGROUND ══ -->
+<div id="ja-bg">
+  <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+    <!-- Pink clouds -->
+    <ellipse cx="150" cy="60" rx="80" ry="30" fill="#ffd6e0" opacity=".55"/>
+    <ellipse cx="200" cy="50" rx="60" ry="22" fill="#ffb7c5" opacity=".45"/>
+    <ellipse cx="640" cy="70" rx="70" ry="26" fill="#ffd6e0" opacity=".5"/>
+    <ellipse cx="690" cy="58" rx="55" ry="20" fill="#ffb7c5" opacity=".4"/>
+    <!-- Mount Fuji body -->
+    <polygon points="400,28 105,230 695,230" fill="#6a6a8a"/>
+    <polygon points="400,28 200,180 600,180" fill="#7a7a9a"/>
+    <!-- Snow cap -->
+    <polygon points="400,28 312,118 488,118" fill="white"/>
+    <path d="M340,95 Q370,75 400,65 Q430,75 460,95 Q440,100 400,97 Q360,100 340,95" fill="white"/>
+    <!-- Ground -->
+    <rect x="0" y="228" width="800" height="52" fill="#3d7a3d"/>
+    <rect x="0" y="244" width="800" height="36" fill="#4a8f4a"/>
+    <!-- Lake reflection -->
+    <ellipse cx="400" cy="244" rx="130" ry="10" fill="rgba(135,206,235,.55)"/>
+    <ellipse cx="400" cy="244" rx="100" ry="6" fill="rgba(255,255,255,.25)"/>
+    <!-- Left cherry blossom trees -->
+    <rect x="88" y="195" width="7" height="35" fill="#6b3a1f"/>
+    <circle cx="91" cy="187" r="24" fill="#ffb7c5" opacity=".92"/>
+    <circle cx="108" cy="178" r="18" fill="#ffc8d5" opacity=".82"/>
+    <circle cx="76" cy="180" r="16" fill="#ffcfe0" opacity=".75"/>
+    <!-- Right cherry blossom trees -->
+    <rect x="705" y="195" width="7" height="35" fill="#6b3a1f"/>
+    <circle cx="708" cy="187" r="24" fill="#ffb7c5" opacity=".92"/>
+    <circle cx="692" cy="178" r="18" fill="#ffc8d5" opacity=".82"/>
+    <circle cx="720" cy="180" r="16" fill="#ffcfe0" opacity=".75"/>
+  </svg>
+</div>
+
+<!-- ══ LANGUAGE SELECTOR ══ -->
+<div id="s-lang" class="screen active">
+  <div class="lang-hero">
+    <h1>🌍 Language Academy</h1>
+    <p>Choose a language to study</p>
+    <div class="lang-cards">
+      <div class="lang-card" onclick="selectLang('af')">
+        <span class="lc-flag">🇿🇦</span>
+        <h2>Afrikaans</h2>
+        <p>South African language</p>
+      </div>
+      <div class="lang-card" onclick="selectLang('ja')">
+        <span class="lc-flag">🇯🇵</span>
+        <h2>Japanese</h2>
+        <p>日本語</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ JAPANESE WRITING MODE ══ -->
+<div id="s-writing" class="screen">
+  <div class="page-title">
+    <button class="back-btn" onclick="selectLang('ja',true)">← Back</button>
+    <h2>Choose a Study Mode</h2>
+  </div>
+  <p style="color:#666;font-size:.9rem;margin-bottom:4px">How would you like to see Japanese words?</p>
+  <div class="writing-grid">
+    <div class="writing-card" id="wc-kana" onclick="pickWriting('kana',this)">
+      <span class="wicon">あ</span>
+      <strong>Kana / Kanji</strong>
+      <div style="font-size:.8rem;margin-top:8px;opacity:.75">Real Japanese script<br><span style="font-size:1.1rem">こんにちは</span></div>
+    </div>
+    <div class="writing-card" id="wc-romaji" onclick="pickWriting('romaji',this)">
+      <span class="wicon">Aa</span>
+      <strong>Romaji</strong>
+      <div style="font-size:.8rem;margin-top:8px;opacity:.75">Pronunciation in English letters<br><span style="font-size:.95rem;font-style:italic">Konnichiwa</span></div>
+    </div>
+  </div>
+  <div style="margin-top:22px;text-align:right">
+    <button class="btn btn-green" id="writing-confirm" onclick="confirmWriting()" style="display:none">Continue →</button>
+  </div>
+</div>
+
+<!-- ══ APP HEADER (shown after language select) ══ -->
+<div class="header" id="app-header" style="display:none">
+  <h1 id="app-title">🇿🇦 Leer Afrikaans</h1>
+  <p id="app-subtitle">Learn Afrikaans — Unit by Unit</p>
+  <div class="flag-bar" id="app-flagbar"></div>
 </div>
 
 <!-- ══════════════════ MAIN MENU ══════════════════ -->
@@ -368,7 +538,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 // ══════════════════════════════════════════════════
 // VOCABULARY DATA
 // ══════════════════════════════════════════════════
-const UNITS = {
+const UNITS_AF = {
   beach: {
     name:"Beach", af:"Strand", icon:"🏖️",
     nouns:[
@@ -855,13 +1025,66 @@ const UNITS = {
       {en:"Where are you from?",         af:"Waar kom jy vandaan?",             pron:"waar kom jy van-daan"},
       {en:"How old are you?",            af:"Hoe oud is jy?",                   pron:"hoe oud is jy"}
     ]
+  },
+  basics: {
+    name:"Basics", af:"Basiese", icon:"💬",
+    nouns:[
+      {en:"I",af:"ek",pron:"ek"},{en:"you (informal)",af:"jy",pron:"jy"},{en:"you (formal)",af:"u",pron:"u"},
+      {en:"he",af:"hy",pron:"hy"},{en:"she",af:"sy",pron:"sy"},{en:"we",af:"ons",pron:"ons"},
+      {en:"they",af:"hulle",pron:"hul-le"},{en:"it",af:"dit",pron:"dit"},
+      {en:"this",af:"hierdie",pron:"hier-die"},{en:"that",af:"daardie",pron:"daar-die"},
+      {en:"here",af:"hier",pron:"hier"},{en:"there",af:"daar",pron:"daar"},
+      {en:"now",af:"nou",pron:"nou"},{en:"today",af:"vandag",pron:"van-dag"},
+      {en:"tomorrow",af:"môre",pron:"mô-re"},{en:"yesterday",af:"gister",pron:"gis-ter"},
+      {en:"always",af:"altyd",pron:"al-tyd"},{en:"never",af:"nooit",pron:"nooit"},
+      {en:"sometimes",af:"soms",pron:"soms"},{en:"everything",af:"alles",pron:"al-les"}
+    ],
+    verbs:[
+      {en:"to be",      present:"is",        pron:"is",          past:"was",           future:"sal wees"},
+      {en:"to have",    present:"het",        pron:"het",         past:"het gehad",     future:"sal hê"},
+      {en:"to want",    present:"wil",        pron:"wil",         past:"wou",           future:"sal wil"},
+      {en:"to like",    present:"hou van",    pron:"hou van",     past:"het gehou van", future:"sal hou van"},
+      {en:"to need",    present:"nodig hê",   pron:"no-dig hê",   past:"het nodig gehad",future:"sal nodig hê"},
+      {en:"to go",      present:"gaan",       pron:"gaan",        past:"het gegaan",    future:"sal gaan"},
+      {en:"to come",    present:"kom",        pron:"kom",         past:"het gekom",     future:"sal kom"},
+      {en:"to do/make", present:"maak",       pron:"maak",        past:"het gemaak",    future:"sal maak"},
+      {en:"to know",    present:"weet",       pron:"weet",        past:"het geweet",    future:"sal weet"},
+      {en:"to think",   present:"dink",       pron:"dink",        past:"het gedink",    future:"sal dink"},
+      {en:"to see",     present:"sien",       pron:"sien",        past:"het gesien",    future:"sal sien"},
+      {en:"to say",     present:"sê",         pron:"sê",          past:"het gesê",      future:"sal sê"}
+    ],
+    adjectives:[
+      {en:"good",af:"goed",pron:"goed"},{en:"bad",af:"sleg",pron:"sleg"},
+      {en:"big",af:"groot",pron:"groot"},{en:"small",af:"klein",pron:"klein"},
+      {en:"fast",af:"vinnig",pron:"vin-nig"},{en:"slow",af:"stadig",pron:"sta-dig"},
+      {en:"right/correct",af:"reg",pron:"reg"},{en:"wrong",af:"verkeerd",pron:"ver-keerd"},
+      {en:"same",af:"dieselfde",pron:"die-sel-de"},{en:"different",af:"anders",pron:"an-ders"},
+      {en:"important",af:"belangrik",pron:"be-lang-rik"},{en:"easy",af:"maklik",pron:"mak-lik"},
+      {en:"difficult",af:"moeilik",pron:"moei-lik"},{en:"new",af:"nuut",pron:"nuut"}
+    ],
+    phrases:[
+      {en:"I am...",                af:"Ek is...",                  pron:"ek is"},
+      {en:"I have...",              af:"Ek het...",                 pron:"ek het"},
+      {en:"I want to...",           af:"Ek wil...",                 pron:"ek wil"},
+      {en:"I like...",              af:"Ek hou van...",             pron:"ek hou van"},
+      {en:"I don't know",           af:"Ek weet nie",               pron:"ek weet nie"},
+      {en:"And... / But...",        af:"En... / Maar...",           pron:"en / maar"},
+      {en:"Because...",             af:"Want...",                   pron:"want"},
+      {en:"I think that...",        af:"Ek dink dat...",            pron:"ek dink dat"}
+    ],
+    readings:[
+      {af:"Ek is 'n mens. Ek wil leer. Ek hou van nuwe dinge. Maar soms is dit moeilik.",
+       en:"I am a person. I want to learn. I like new things. But sometimes it is difficult.",
+       q:"What does the person like?",
+       opts:["New things","Old things","Easy things","Nothing"],correct:0}
+    ]
   }
 };
 
 // ══════════════════════════════════════════════════
 // EXAMPLE SENTENCES  (n/a = nouns/adj, p/t/f = present/past/future)
 // ══════════════════════════════════════════════════
-const EX = {
+const EX_AF = {
   beach:{
     nouns:{
       wave:["Die golf breek op die strand.","The wave breaks on the beach."],
@@ -1325,21 +1548,561 @@ const EX = {
 };
 
 // ══════════════════════════════════════════════════
+// JAPANESE VOCABULARY  (kana = script, romaji = pronunciation)
+// Tense keys: present, past, future (-tai desu = I want to / plan to)
+// ══════════════════════════════════════════════════
+const UNITS_JA = {
+  beach:{
+    name:"Beach",ja:"海辺",jaRom:"Umibe",icon:"🏖️",
+    nouns:[
+      {en:"wave",kana:"波",romaji:"nami",pron:"na-mi"},
+      {en:"sand",kana:"砂",romaji:"suna",pron:"su-na"},
+      {en:"sea",kana:"海",romaji:"umi",pron:"u-mi"},
+      {en:"shell",kana:"貝殻",romaji:"kaigara",pron:"ka-i-ga-ra"},
+      {en:"sunscreen",kana:"日焼け止め",romaji:"hiyakedome",pron:"hi-ya-ke-do-me"},
+      {en:"towel",kana:"タオル",romaji:"taoru",pron:"ta-o-ru"},
+      {en:"seagull",kana:"カモメ",romaji:"kamome",pron:"ka-mo-me"},
+      {en:"rock",kana:"岩",romaji:"iwa",pron:"i-wa"},
+      {en:"beach",kana:"浜辺",romaji:"hamabe",pron:"ha-ma-be"},
+      {en:"surfboard",kana:"サーフボード",romaji:"sāfubōdo",pron:"saa-fu-boo-do"},
+      {en:"sunburn",kana:"日焼け",romaji:"hiyake",pron:"hi-ya-ke"},
+      {en:"fish",kana:"魚",romaji:"sakana",pron:"sa-ka-na"},
+      {en:"boat",kana:"ボート",romaji:"bōto",pron:"boo-to"},
+      {en:"dolphin",kana:"イルカ",romaji:"iruka",pron:"i-ru-ka"},
+      {en:"crab",kana:"カニ",romaji:"kani",pron:"ka-ni"},
+      {en:"lighthouse",kana:"灯台",romaji:"tōdai",pron:"too-da-i"},
+      {en:"lifeguard",kana:"ライフガード",romaji:"raifugādo",pron:"ra-i-fu-gaa-do"},
+      {en:"bucket",kana:"バケツ",romaji:"baketsu",pron:"ba-ke-tsu"}
+    ],
+    verbs:[
+      {en:"swim",kana:{present:"泳ぎます",past:"泳ぎました",future:"泳ぎたいです"},romaji:{present:"oyogimasu",past:"oyogimashita",future:"oyogitai desu"},pron:{present:"o-yo-gi-ma-su",past:"o-yo-gi-ma-shi-ta",future:"o-yo-gi-ta-i de-su"}},
+      {en:"dive",kana:{present:"潜ります",past:"潜りました",future:"潜りたいです"},romaji:{present:"mogurimasu",past:"mogurimashita",future:"moguri tai desu"},pron:{present:"mo-gu-ri-ma-su",past:"mo-gu-ri-ma-shi-ta",future:"mo-gu-ri-ta-i de-su"}},
+      {en:"surf",kana:{present:"サーフィンします",past:"サーフィンしました",future:"サーフィンしたいです"},romaji:{present:"sāfin shimasu",past:"sāfin shimashita",future:"sāfin shitai desu"},pron:{present:"saa-fin shi-ma-su",past:"saa-fin shi-ma-shi-ta",future:"saa-fin shi-ta-i de-su"}},
+      {en:"relax",kana:{present:"くつろぎます",past:"くつろぎました",future:"くつろぎたいです"},romaji:{present:"kutsurogimasu",past:"kutsurogimashita",future:"kutsurogitai desu"},pron:{present:"ku-tsu-ro-gi-ma-su",past:"ku-tsu-ro-gi-ma-shi-ta",future:"ku-tsu-ro-gi-ta-i de-su"}},
+      {en:"play",kana:{present:"遊びます",past:"遊びました",future:"遊びたいです"},romaji:{present:"asobimasu",past:"asobimashita",future:"asobitai desu"},pron:{present:"a-so-bi-ma-su",past:"a-so-bi-ma-shi-ta",future:"a-so-bi-ta-i de-su"}},
+      {en:"walk",kana:{present:"歩きます",past:"歩きました",future:"歩きたいです"},romaji:{present:"arukimasu",past:"arukimashita",future:"arukitai desu"},pron:{present:"a-ru-ki-ma-su",past:"a-ru-ki-ma-shi-ta",future:"a-ru-ki-ta-i de-su"}},
+      {en:"collect",kana:{present:"集めます",past:"集めました",future:"集めたいです"},romaji:{present:"atsumemasu",past:"atsumemashita",future:"atsume tai desu"},pron:{present:"a-tsu-me-ma-su",past:"a-tsu-me-ma-shi-ta",future:"a-tsu-me-ta-i de-su"}},
+      {en:"rest",kana:{present:"休みます",past:"休みました",future:"休みたいです"},romaji:{present:"yasumimasu",past:"yasumimashita",future:"yasumitai desu"},pron:{present:"ya-su-mi-ma-su",past:"ya-su-mi-ma-shi-ta",future:"ya-su-mi-ta-i de-su"}}
+    ],
+    adjectives:[
+      {en:"hot",kana:"暑い",romaji:"atsui",pron:"a-tsu-i"},
+      {en:"wet",kana:"濡れた",romaji:"nureta",pron:"nu-re-ta"},
+      {en:"sunny",kana:"晴れた",romaji:"hareta",pron:"ha-re-ta"},
+      {en:"salty",kana:"しょっぱい",romaji:"shoppai",pron:"shop-pa-i"},
+      {en:"beautiful",kana:"きれい",romaji:"kirei",pron:"ki-re-i"},
+      {en:"cool",kana:"涼しい",romaji:"suzushii",pron:"su-zu-shi-i"},
+      {en:"blue",kana:"青い",romaji:"aoi",pron:"a-o-i"},
+      {en:"calm",kana:"穏やか",romaji:"odayaka",pron:"o-da-ya-ka"},
+      {en:"deep",kana:"深い",romaji:"fukai",pron:"fu-ka-i"},
+      {en:"shallow",kana:"浅い",romaji:"asai",pron:"a-sa-i"},
+      {en:"refreshing",kana:"さわやか",romaji:"sawayaka",pron:"sa-wa-ya-ka"},
+      {en:"warm",kana:"暖かい",romaji:"atatakai",pron:"a-ta-ta-ka-i"}
+    ],
+    phrases:[
+      {en:"Let's go to the beach!",kana:"海辺に行きましょう！",romaji:"Umibe ni ikimashō!",pron:"u-mi-be ni i-ki-ma-shoo"},
+      {en:"The sea is warm",kana:"海は暖かいです",romaji:"Umi wa atatakai desu",pron:"u-mi wa a-ta-ta-ka-i de-su"},
+      {en:"I want to swim",kana:"泳ぎたいです",romaji:"Oyogitai desu",pron:"o-yo-gi-ta-i de-su"},
+      {en:"Be careful of the waves",kana:"波に気をつけてください",romaji:"Nami ni ki o tsukete kudasai",pron:"na-mi ni ki o tsu-ke-te ku-da-sa-i"},
+      {en:"It's a beautiful day",kana:"いい天気ですね",romaji:"Ii tenki desu ne",pron:"i-i ten-ki de-su ne"},
+      {en:"I love the sea",kana:"海が大好きです",romaji:"Umi ga daisuki desu",pron:"u-mi ga da-i-su-ki de-su"}
+    ],
+    readings:[
+      {kana:"海は青くて暖かいです。波の中で泳ぎます。砂はきれいです。",romaji:"Umi wa aokute atatakai desu. Nami no naka de oyogimasu. Suna wa kirei desu.",en:"The sea is blue and warm. I swim in the waves. The sand is beautiful.",q:"What is the sand like?",opts:["Beautiful","Dirty","Hot","Rough"],correct:0}
+    ]
+  },
+  mountain:{
+    name:"Mountain",ja:"山",jaRom:"Yama",icon:"⛰️",
+    nouns:[
+      {en:"peak",kana:"山頂",romaji:"sanchō",pron:"san-choo"},
+      {en:"trail",kana:"登山道",romaji:"tozandō",pron:"to-za-n-doo"},
+      {en:"rock",kana:"岩",romaji:"iwa",pron:"i-wa"},
+      {en:"tree",kana:"木",romaji:"ki",pron:"ki"},
+      {en:"snow",kana:"雪",romaji:"yuki",pron:"yu-ki"},
+      {en:"valley",kana:"谷",romaji:"tani",pron:"ta-ni"},
+      {en:"river",kana:"川",romaji:"kawa",pron:"ka-wa"},
+      {en:"bridge",kana:"橋",romaji:"hashi",pron:"ha-shi"},
+      {en:"cloud",kana:"雲",romaji:"kumo",pron:"ku-mo"},
+      {en:"waterfall",kana:"滝",romaji:"taki",pron:"ta-ki"},
+      {en:"eagle",kana:"鷲",romaji:"washi",pron:"wa-shi"},
+      {en:"cave",kana:"洞窟",romaji:"dōkutsu",pron:"doo-ku-tsu"},
+      {en:"forest",kana:"森",romaji:"mori",pron:"mo-ri"},
+      {en:"tent",kana:"テント",romaji:"tento",pron:"ten-to"},
+      {en:"backpack",kana:"リュック",romaji:"ryukku",pron:"ryu-kku"},
+      {en:"map",kana:"地図",romaji:"chizu",pron:"chi-zu"},
+      {en:"fog",kana:"霧",romaji:"kiri",pron:"ki-ri"},
+      {en:"summit",kana:"頂上",romaji:"chōjō",pron:"choo-joo"}
+    ],
+    verbs:[
+      {en:"hike",kana:{present:"ハイキングします",past:"ハイキングしました",future:"ハイキングしたいです"},romaji:{present:"haikingu shimasu",past:"haikingu shimashita",future:"haikingu shitai desu"},pron:{present:"ha-i-ki-n-gu shi-ma-su",past:"ha-i-ki-n-gu shi-ma-shi-ta",future:"ha-i-ki-n-gu shi-ta-i de-su"}},
+      {en:"climb",kana:{present:"登ります",past:"登りました",future:"登りたいです"},romaji:{present:"noborimasu",past:"noborimashita",future:"noboritai desu"},pron:{present:"no-bo-ri-ma-su",past:"no-bo-ri-ma-shi-ta",future:"no-bo-ri-ta-i de-su"}},
+      {en:"rest",kana:{present:"休みます",past:"休みました",future:"休みたいです"},romaji:{present:"yasumimasu",past:"yasumimashita",future:"yasumitai desu"},pron:{present:"ya-su-mi-ma-su",past:"ya-su-mi-ma-shi-ta",future:"ya-su-mi-ta-i de-su"}},
+      {en:"breathe",kana:{present:"息をします",past:"息をしました",future:"息をしたいです"},romaji:{present:"iki o shimasu",past:"iki o shimashita",future:"iki o shitai desu"},pron:{present:"i-ki o shi-ma-su",past:"i-ki o shi-ma-shi-ta",future:"i-ki o shi-ta-i de-su"}},
+      {en:"camp",kana:{present:"キャンプします",past:"キャンプしました",future:"キャンプしたいです"},romaji:{present:"kyanpu shimasu",past:"kyanpu shimashita",future:"kyanpu shitai desu"},pron:{present:"kyan-pu shi-ma-su",past:"kyan-pu shi-ma-shi-ta",future:"kyan-pu shi-ta-i de-su"}},
+      {en:"explore",kana:{present:"探索します",past:"探索しました",future:"探索したいです"},romaji:{present:"tansaku shimasu",past:"tansaku shimashita",future:"tansaku shitai desu"},pron:{present:"tan-sa-ku shi-ma-su",past:"tan-sa-ku shi-ma-shi-ta",future:"tan-sa-ku shi-ta-i de-su"}},
+      {en:"photograph",kana:{present:"写真を撮ります",past:"写真を撮りました",future:"写真を撮りたいです"},romaji:{present:"shashin o torimasu",past:"shashin o torimashita",future:"shashin o toritai desu"},pron:{present:"sha-shin o to-ri-ma-su",past:"sha-shin o to-ri-ma-shi-ta",future:"sha-shin o to-ri-ta-i de-su"}},
+      {en:"listen",kana:{present:"聞きます",past:"聞きました",future:"聞きたいです"},romaji:{present:"kikimasu",past:"kikimashita",future:"kikitai desu"},pron:{present:"ki-ki-ma-su",past:"ki-ki-ma-shi-ta",future:"ki-ki-ta-i de-su"}}
+    ],
+    adjectives:[
+      {en:"tall",kana:"高い",romaji:"takai",pron:"ta-ka-i"},
+      {en:"cold",kana:"寒い",romaji:"samui",pron:"sa-mu-i"},
+      {en:"steep",kana:"急な",romaji:"kyūna",pron:"kyuu-na"},
+      {en:"quiet",kana:"静かな",romaji:"shizuka na",pron:"shi-zu-ka na"},
+      {en:"beautiful",kana:"美しい",romaji:"utsukushii",pron:"u-tsu-ku-shi-i"},
+      {en:"far",kana:"遠い",romaji:"tōi",pron:"too-i"},
+      {en:"deep",kana:"深い",romaji:"fukai",pron:"fu-ka-i"},
+      {en:"misty",kana:"霧がかかった",romaji:"kiri ga kakatta",pron:"ki-ri ga ka-ka-tta"},
+      {en:"fresh",kana:"新鮮な",romaji:"shinsen na",pron:"shin-se-n na"},
+      {en:"dark",kana:"暗い",romaji:"kurai",pron:"ku-ra-i"},
+      {en:"magnificent",kana:"壮大な",romaji:"sōdai na",pron:"soo-da-i na"},
+      {en:"wild",kana:"野生の",romaji:"yasei no",pron:"ya-se-i no"}
+    ],
+    phrases:[
+      {en:"Let's go hiking",kana:"ハイキングに行きましょう",romaji:"Haikingu ni ikimashō",pron:"ha-i-ki-n-gu ni i-ki-ma-shoo"},
+      {en:"The view is beautiful",kana:"景色が美しいです",romaji:"Keshiki ga utsukushii desu",pron:"ke-shi-ki ga u-tsu-ku-shi-i de-su"},
+      {en:"I am tired",kana:"疲れました",romaji:"Tsukaremashita",pron:"tsu-ka-re-ma-shi-ta"},
+      {en:"Be careful, it is steep",kana:"気をつけて、急です",romaji:"Ki o tsukete, kyū desu",pron:"ki o tsu-ke-te, kyuu de-su"},
+      {en:"It is cold up here",kana:"ここは寒いです",romaji:"Koko wa samui desu",pron:"ko-ko wa sa-mu-i de-su"},
+      {en:"The summit is close",kana:"頂上は近いです",romaji:"Chōjō wa chikai desu",pron:"choo-joo wa chi-ka-i de-su"}
+    ],
+    readings:[
+      {kana:"山は高くて寒いです。登山道を登ります。景色はとても美しいです。",romaji:"Yama wa takakute samui desu. Tozandō o noborimasu. Keshiki wa totemo utsukushii desu.",en:"The mountain is tall and cold. I climb the hiking trail. The view is very beautiful.",q:"How is the view from the mountain?",opts:["Very beautiful","Very dark","Very scary","Very far"],correct:0}
+    ]
+  },
+  sports:{
+    name:"Sports",ja:"スポーツ",jaRom:"Supōtsu",icon:"⚽",
+    nouns:[
+      {en:"ball",kana:"ボール",romaji:"bōru",pron:"boo-ru"},
+      {en:"team",kana:"チーム",romaji:"chīmu",pron:"chii-mu"},
+      {en:"goal",kana:"ゴール",romaji:"gōru",pron:"goo-ru"},
+      {en:"player",kana:"選手",romaji:"senshu",pron:"sen-shu"},
+      {en:"referee",kana:"審判",romaji:"shinpan",pron:"shin-pan"},
+      {en:"trophy",kana:"トロフィー",romaji:"torofī",pron:"to-ro-fii"},
+      {en:"stadium",kana:"スタジアム",romaji:"sutajiamu",pron:"su-ta-ji-a-mu"},
+      {en:"field",kana:"競技場",romaji:"kyōgijō",pron:"kyoo-gi-joo"},
+      {en:"score",kana:"得点",romaji:"tokuten",pron:"to-ku-ten"},
+      {en:"match",kana:"試合",romaji:"shiai",pron:"shi-a-i"},
+      {en:"coach",kana:"コーチ",romaji:"kōchi",pron:"koo-chi"},
+      {en:"captain",kana:"キャプテン",romaji:"kyaputen",pron:"kya-pu-ten"},
+      {en:"medal",kana:"メダル",romaji:"medaru",pron:"me-da-ru"},
+      {en:"gym",kana:"ジム",romaji:"jimu",pron:"ji-mu"},
+      {en:"race",kana:"レース",romaji:"rēsu",pron:"ree-su"},
+      {en:"fans",kana:"ファン",romaji:"fan",pron:"fan"}
+    ],
+    verbs:[
+      {en:"run",kana:{present:"走ります",past:"走りました",future:"走りたいです"},romaji:{present:"hashirimasu",past:"hashirimashita",future:"hashiritai desu"},pron:{present:"ha-shi-ri-ma-su",past:"ha-shi-ri-ma-shi-ta",future:"ha-shi-ri-ta-i de-su"}},
+      {en:"kick",kana:{present:"蹴ります",past:"蹴りました",future:"蹴りたいです"},romaji:{present:"kerimasu",past:"kerimashita",future:"keritai desu"},pron:{present:"ke-ri-ma-su",past:"ke-ri-ma-shi-ta",future:"ke-ri-ta-i de-su"}},
+      {en:"throw",kana:{present:"投げます",past:"投げました",future:"投げたいです"},romaji:{present:"nagemasu",past:"nagemashita",future:"nagetai desu"},pron:{present:"na-ge-ma-su",past:"na-ge-ma-shi-ta",future:"na-ge-ta-i de-su"}},
+      {en:"win",kana:{present:"勝ちます",past:"勝ちました",future:"勝ちたいです"},romaji:{present:"kachimasu",past:"kachimashita",future:"kachitai desu"},pron:{present:"ka-chi-ma-su",past:"ka-chi-ma-shi-ta",future:"ka-chi-ta-i de-su"}},
+      {en:"lose",kana:{present:"負けます",past:"負けました",future:"負けたいです"},romaji:{present:"makemasu",past:"makemashita",future:"make tai desu"},pron:{present:"ma-ke-ma-su",past:"ma-ke-ma-shi-ta",future:"ma-ke-ta-i de-su"}},
+      {en:"train",kana:{present:"練習します",past:"練習しました",future:"練習したいです"},romaji:{present:"renshū shimasu",past:"renshū shimashita",future:"renshū shitai desu"},pron:{present:"ren-shuu shi-ma-su",past:"ren-shuu shi-ma-shi-ta",future:"ren-shuu shi-ta-i de-su"}},
+      {en:"jump",kana:{present:"跳びます",past:"跳びました",future:"跳びたいです"},romaji:{present:"tobimasu",past:"tobimashita",future:"tobitai desu"},pron:{present:"to-bi-ma-su",past:"to-bi-ma-shi-ta",future:"to-bi-ta-i de-su"}},
+      {en:"cheer",kana:{present:"応援します",past:"応援しました",future:"応援したいです"},romaji:{present:"ōen shimasu",past:"ōen shimashita",future:"ōen shitai desu"},pron:{present:"oo-en shi-ma-su",past:"oo-en shi-ma-shi-ta",future:"oo-en shi-ta-i de-su"}}
+    ],
+    adjectives:[
+      {en:"fast",kana:"速い",romaji:"hayai",pron:"ha-ya-i"},
+      {en:"strong",kana:"強い",romaji:"tsuyoi",pron:"tsu-yo-i"},
+      {en:"tired",kana:"疲れた",romaji:"tsukareta",pron:"tsu-ka-re-ta"},
+      {en:"exciting",kana:"興奮する",romaji:"kōfun suru",pron:"koo-fun su-ru"},
+      {en:"skilled",kana:"上手な",romaji:"jōzu na",pron:"joo-zu na"},
+      {en:"brave",kana:"勇敢な",romaji:"yūkan na",pron:"yuu-kan na"},
+      {en:"powerful",kana:"力強い",romaji:"chikarazuyoi",pron:"chi-ka-ra-zu-yo-i"},
+      {en:"focused",kana:"集中した",romaji:"shūchū shita",pron:"shuu-chuu shi-ta"},
+      {en:"victorious",kana:"勝利した",romaji:"shōri shita",pron:"shoo-ri shi-ta"},
+      {en:"athletic",kana:"運動神経がいい",romaji:"undō shinkei ga ii",pron:"un-doo shin-ke-i ga i-i"}
+    ],
+    phrases:[
+      {en:"Let's play!",kana:"試合しましょう！",romaji:"Shiai shimashō!",pron:"shi-a-i shi-ma-shoo"},
+      {en:"Good game!",kana:"いい試合でした！",romaji:"Ii shiai deshita!",pron:"i-i shi-a-i de-shi-ta"},
+      {en:"Well done!",kana:"よくできました！",romaji:"Yoku dekimashita!",pron:"yo-ku de-ki-ma-shi-ta"},
+      {en:"Our team won",kana:"私たちのチームが勝ちました",romaji:"Watashitachi no chīmu ga kachimashita",pron:"wa-ta-shi-ta-chi no chii-mu ga ka-chi-ma-shi-ta"},
+      {en:"Keep going!",kana:"頑張って！",romaji:"Ganbatte!",pron:"gan-ba-tte"},
+      {en:"Score a goal!",kana:"ゴールを決めて！",romaji:"Gōru o kimete!",pron:"goo-ru o ki-me-te"}
+    ],
+    readings:[
+      {kana:"私たちのチームは一生懸命練習しました。試合でゴールを決めました。スタジアムはとても興奮しました。",romaji:"Watashitachi no chīmu wa isshōkenmei renshū shimashita. Shiai de gōru o kimemashita. Sutajiamu wa totemo kōfun shimashita.",en:"Our team trained very hard. We scored a goal in the match. The stadium was very exciting.",q:"What did the team do in the match?",opts:["Scored a goal","Lost the game","Stopped playing","Left early"],correct:0}
+    ]
+  },
+  food:{
+    name:"Food",ja:"食べ物",jaRom:"Tabemono",icon:"🍽️",
+    nouns:[
+      {en:"bread",kana:"パン",romaji:"pan",pron:"pan"},
+      {en:"meat",kana:"肉",romaji:"niku",pron:"ni-ku"},
+      {en:"vegetable",kana:"野菜",romaji:"yasai",pron:"ya-sa-i"},
+      {en:"fruit",kana:"果物",romaji:"kudamono",pron:"ku-da-mo-no"},
+      {en:"water",kana:"水",romaji:"mizu",pron:"mi-zu"},
+      {en:"plate",kana:"お皿",romaji:"osara",pron:"o-sa-ra"},
+      {en:"chopsticks",kana:"お箸",romaji:"ohashi",pron:"o-ha-shi"},
+      {en:"bowl",kana:"お椀",romaji:"owan",pron:"o-wan"},
+      {en:"rice",kana:"ご飯",romaji:"gohan",pron:"go-han"},
+      {en:"soup",kana:"スープ",romaji:"sūpu",pron:"suu-pu"},
+      {en:"fish",kana:"魚",romaji:"sakana",pron:"sa-ka-na"},
+      {en:"egg",kana:"卵",romaji:"tamago",pron:"ta-ma-go"},
+      {en:"milk",kana:"牛乳",romaji:"gyūnyū",pron:"gyuu-nyuu"},
+      {en:"soy sauce",kana:"醤油",romaji:"shōyu",pron:"shoo-yu"},
+      {en:"tea",kana:"お茶",romaji:"ocha",pron:"o-cha"},
+      {en:"ramen",kana:"ラーメン",romaji:"rāmen",pron:"raa-men"},
+      {en:"sushi",kana:"寿司",romaji:"sushi",pron:"su-shi"},
+      {en:"kitchen",kana:"台所",romaji:"daidokoro",pron:"da-i-do-ko-ro"}
+    ],
+    verbs:[
+      {en:"eat",kana:{present:"食べます",past:"食べました",future:"食べたいです"},romaji:{present:"tabemasu",past:"tabemashita",future:"tabe tai desu"},pron:{present:"ta-be-ma-su",past:"ta-be-ma-shi-ta",future:"ta-be-ta-i de-su"}},
+      {en:"drink",kana:{present:"飲みます",past:"飲みました",future:"飲みたいです"},romaji:{present:"nomimasu",past:"nomimashita",future:"nomitai desu"},pron:{present:"no-mi-ma-su",past:"no-mi-ma-shi-ta",future:"no-mi-ta-i de-su"}},
+      {en:"cook",kana:{present:"料理します",past:"料理しました",future:"料理したいです"},romaji:{present:"ryōri shimasu",past:"ryōri shimashita",future:"ryōri shitai desu"},pron:{present:"ryoo-ri shi-ma-su",past:"ryoo-ri shi-ma-shi-ta",future:"ryoo-ri shi-ta-i de-su"}},
+      {en:"taste",kana:{present:"味見します",past:"味見しました",future:"味見したいです"},romaji:{present:"ajimi shimasu",past:"ajimi shimashita",future:"ajimi shitai desu"},pron:{present:"a-ji-mi shi-ma-su",past:"a-ji-mi shi-ma-shi-ta",future:"a-ji-mi shi-ta-i de-su"}},
+      {en:"buy",kana:{present:"買います",past:"買いました",future:"買いたいです"},romaji:{present:"kaimasu",past:"kaimashita",future:"kaitai desu"},pron:{present:"ka-i-ma-su",past:"ka-i-ma-shi-ta",future:"ka-i-ta-i de-su"}},
+      {en:"cut",kana:{present:"切ります",past:"切りました",future:"切りたいです"},romaji:{present:"kirimasu",past:"kirimashita",future:"kiritai desu"},pron:{present:"ki-ri-ma-su",past:"ki-ri-ma-shi-ta",future:"ki-ri-ta-i de-su"}},
+      {en:"bake",kana:{present:"焼きます",past:"焼きました",future:"焼きたいです"},romaji:{present:"yakimasu",past:"yakimashita",future:"yakitai desu"},pron:{present:"ya-ki-ma-su",past:"ya-ki-ma-shi-ta",future:"ya-ki-ta-i de-su"}},
+      {en:"share",kana:{present:"分けます",past:"分けました",future:"分けたいです"},romaji:{present:"wakemasu",past:"wakemashita",future:"wake tai desu"},pron:{present:"wa-ke-ma-su",past:"wa-ke-ma-shi-ta",future:"wa-ke-ta-i de-su"}}
+    ],
+    adjectives:[
+      {en:"delicious",kana:"美味しい",romaji:"oishii",pron:"o-i-shi-i"},
+      {en:"sweet",kana:"甘い",romaji:"amai",pron:"a-ma-i"},
+      {en:"spicy",kana:"辛い",romaji:"karai",pron:"ka-ra-i"},
+      {en:"fresh",kana:"新鮮な",romaji:"shinsen na",pron:"shin-se-n na"},
+      {en:"sour",kana:"酸っぱい",romaji:"suppai",pron:"su-p-pa-i"},
+      {en:"salty",kana:"しょっぱい",romaji:"shoppai",pron:"shop-pa-i"},
+      {en:"hot (spicy)",kana:"辛い",romaji:"karai",pron:"ka-ra-i"},
+      {en:"warm",kana:"温かい",romaji:"atatakai",pron:"a-ta-ta-ka-i"},
+      {en:"tasty",kana:"美味しい",romaji:"oishii",pron:"o-i-shi-i"},
+      {en:"healthy",kana:"健康的な",romaji:"kenkōteki na",pron:"ken-koo-te-ki na"}
+    ],
+    phrases:[
+      {en:"It's delicious!",kana:"美味しいです！",romaji:"Oishii desu!",pron:"o-i-shi-i de-su"},
+      {en:"I am hungry",kana:"お腹が空きました",romaji:"Onaka ga sukimashita",pron:"o-na-ka ga su-ki-ma-shi-ta"},
+      {en:"Enjoy your meal!",kana:"いただきます",romaji:"Itadakimasu",pron:"i-ta-da-ki-ma-su"},
+      {en:"Thank you for the meal",kana:"ごちそうさまでした",romaji:"Gochisōsama deshita",pron:"go-chi-soo-sa-ma de-shi-ta"},
+      {en:"What would you like?",kana:"何がよろしいですか？",romaji:"Nani ga yoroshii desu ka?",pron:"na-ni ga yo-ro-shi-i de-su ka"},
+      {en:"Can I have the bill?",kana:"お会計をお願いします",romaji:"Okaikei o onegai shimasu",pron:"o-ka-i-ke-i o o-ne-ga-i shi-ma-su"}
+    ],
+    readings:[
+      {kana:"お母さんは毎日料理します。野菜を切って、魚を焼きます。ご飯は美味しいです。",romaji:"Okāsan wa mainichi ryōri shimasu. Yasai o kitte, sakana o yakimasu. Gohan wa oishii desu.",en:"Mom cooks every day. She cuts vegetables and grills fish. The meal is delicious.",q:"What does mom do every day?",opts:["Cooks","Goes shopping","Sleeps","Reads"],correct:0}
+    ]
+  },
+  family:{
+    name:"Family",ja:"家族",jaRom:"Kazoku",icon:"👨‍👩‍👧‍👦",
+    nouns:[
+      {en:"mother",kana:"お母さん",romaji:"okāsan",pron:"o-kaa-san"},
+      {en:"father",kana:"お父さん",romaji:"otōsan",pron:"o-too-san"},
+      {en:"sister",kana:"姉/妹",romaji:"ane/imōto",pron:"a-ne / i-moo-to"},
+      {en:"brother",kana:"兄/弟",romaji:"ani/otōto",pron:"a-ni / o-too-to"},
+      {en:"grandmother",kana:"おばあさん",romaji:"obāsan",pron:"o-baa-san"},
+      {en:"grandfather",kana:"おじいさん",romaji:"ojīsan",pron:"o-jii-san"},
+      {en:"child",kana:"子供",romaji:"kodomo",pron:"ko-do-mo"},
+      {en:"baby",kana:"赤ちゃん",romaji:"akachan",pron:"a-ka-chan"},
+      {en:"family",kana:"家族",romaji:"kazoku",pron:"ka-zo-ku"},
+      {en:"home",kana:"家",romaji:"ie",pron:"i-e"},
+      {en:"husband",kana:"夫",romaji:"otto",pron:"ot-to"},
+      {en:"wife",kana:"妻",romaji:"tsuma",pron:"tsu-ma"},
+      {en:"parents",kana:"両親",romaji:"ryōshin",pron:"ryoo-shin"},
+      {en:"dog",kana:"犬",romaji:"inu",pron:"i-nu"},
+      {en:"cat",kana:"猫",romaji:"neko",pron:"ne-ko"},
+      {en:"photo",kana:"写真",romaji:"shashin",pron:"sha-shin"}
+    ],
+    verbs:[
+      {en:"love",kana:{present:"愛しています",past:"愛していました",future:"愛したいです"},romaji:{present:"aishite imasu",past:"aishite imashita",future:"aishi tai desu"},pron:{present:"a-i-shi-te i-ma-su",past:"a-i-shi-te i-ma-shi-ta",future:"a-i-shi-ta-i de-su"}},
+      {en:"help",kana:{present:"助けます",past:"助けました",future:"助けたいです"},romaji:{present:"tasukemasu",past:"tasukemashita",future:"tasuke tai desu"},pron:{present:"ta-su-ke-ma-su",past:"ta-su-ke-ma-shi-ta",future:"ta-su-ke-ta-i de-su"}},
+      {en:"talk",kana:{present:"話します",past:"話しました",future:"話したいです"},romaji:{present:"hanashimasu",past:"hanashimashita",future:"hanashi tai desu"},pron:{present:"ha-na-shi-ma-su",past:"ha-na-shi-ma-shi-ta",future:"ha-na-shi-ta-i de-su"}},
+      {en:"laugh",kana:{present:"笑います",past:"笑いました",future:"笑いたいです"},romaji:{present:"waraimasu",past:"waraimashita",future:"warai tai desu"},pron:{present:"wa-ra-i-ma-su",past:"wa-ra-i-ma-shi-ta",future:"wa-ra-i-ta-i de-su"}},
+      {en:"visit",kana:{present:"訪問します",past:"訪問しました",future:"訪問したいです"},romaji:{present:"hōmon shimasu",past:"hōmon shimashita",future:"hōmon shitai desu"},pron:{present:"hoo-mon shi-ma-su",past:"hoo-mon shi-ma-shi-ta",future:"hoo-mon shi-ta-i de-su"}},
+      {en:"sing",kana:{present:"歌います",past:"歌いました",future:"歌いたいです"},romaji:{present:"utaimasu",past:"utaimashita",future:"utai tai desu"},pron:{present:"u-ta-i-ma-su",past:"u-ta-i-ma-shi-ta",future:"u-ta-i-ta-i de-su"}},
+      {en:"teach",kana:{present:"教えます",past:"教えました",future:"教えたいです"},romaji:{present:"oshiemasu",past:"oshiemashita",future:"oshie tai desu"},pron:{present:"o-shi-e-ma-su",past:"o-shi-e-ma-shi-ta",future:"o-shi-e-ta-i de-su"}},
+      {en:"pray",kana:{present:"お祈りします",past:"お祈りしました",future:"お祈りしたいです"},romaji:{present:"o-inori shimasu",past:"o-inori shimashita",future:"o-inori shitai desu"},pron:{present:"o-i-no-ri shi-ma-su",past:"o-i-no-ri shi-ma-shi-ta",future:"o-i-no-ri shi-ta-i de-su"}}
+    ],
+    adjectives:[
+      {en:"kind",kana:"親切な",romaji:"shinsetsu na",pron:"shin-se-tsu na"},
+      {en:"happy",kana:"幸せな",romaji:"shiawase na",pron:"shi-a-wa-se na"},
+      {en:"loving",kana:"愛情深い",romaji:"aijō fukai",pron:"a-i-joo fu-ka-i"},
+      {en:"old",kana:"年老いた",romaji:"toshi oita",pron:"to-shi o-i-ta"},
+      {en:"young",kana:"若い",romaji:"wakai",pron:"wa-ka-i"},
+      {en:"big",kana:"大きい",romaji:"ōkii",pron:"oo-ki-i"},
+      {en:"small",kana:"小さい",romaji:"chīsai",pron:"chi-i-sa-i"},
+      {en:"close",kana:"仲がいい",romaji:"naka ga ii",pron:"na-ka ga i-i"},
+      {en:"grateful",kana:"感謝している",romaji:"kansha shite iru",pron:"kan-sha shi-te i-ru"},
+      {en:"patient",kana:"辛抱強い",romaji:"shinbō-zuyoi",pron:"shin-boo-zu-yo-i"}
+    ],
+    phrases:[
+      {en:"I love you",kana:"愛しています",romaji:"Aishite imasu",pron:"a-i-shi-te i-ma-su"},
+      {en:"Happy birthday!",kana:"お誕生日おめでとう！",romaji:"O-tanjōbi omedetō!",pron:"o-tan-joo-bi o-me-de-too"},
+      {en:"How is your family?",kana:"ご家族はお元気ですか？",romaji:"Go-kazoku wa o-genki desu ka?",pron:"go-ka-zo-ku wa o-gen-ki de-su ka"},
+      {en:"I miss you",kana:"会いたいです",romaji:"Aitai desu",pron:"a-i-ta-i de-su"},
+      {en:"We are a family",kana:"私たちは家族です",romaji:"Watashitachi wa kazoku desu",pron:"wa-ta-shi-ta-chi wa ka-zo-ku de-su"},
+      {en:"God bless you",kana:"神のご加護を",romaji:"Kami no go-kago o",pron:"ka-mi no go-ka-go o"}
+    ],
+    readings:[
+      {kana:"私の家族は仲がいいです。お母さんは毎日歌います。お父さんは私に多くを教えてくれました。",romaji:"Watashi no kazoku wa naka ga ii desu. Okāsan wa mainichi utaimasu. Otōsan wa watashi ni ōku o oshiete kuremashita.",en:"My family is close. My mother sings every day. My father taught me many things.",q:"What does the mother do every day?",opts:["Sings","Cooks","Works","Sleeps"],correct:0}
+    ]
+  },
+  city:{
+    name:"City",ja:"都市",jaRom:"Toshi",icon:"🏙️",
+    nouns:[
+      {en:"street",kana:"通り",romaji:"tōri",pron:"too-ri"},
+      {en:"building",kana:"建物",romaji:"tatemono",pron:"ta-te-mo-no"},
+      {en:"car",kana:"車",romaji:"kuruma",pron:"ku-ru-ma"},
+      {en:"bus",kana:"バス",romaji:"basu",pron:"ba-su"},
+      {en:"train",kana:"電車",romaji:"densha",pron:"den-sha"},
+      {en:"station",kana:"駅",romaji:"eki",pron:"e-ki"},
+      {en:"shop",kana:"お店",romaji:"omise",pron:"o-mi-se"},
+      {en:"park",kana:"公園",romaji:"kōen",pron:"koo-en"},
+      {en:"school",kana:"学校",romaji:"gakkō",pron:"gak-koo"},
+      {en:"hospital",kana:"病院",romaji:"byōin",pron:"byoo-in"},
+      {en:"restaurant",kana:"レストラン",romaji:"resutoran",pron:"re-su-to-ran"},
+      {en:"hotel",kana:"ホテル",romaji:"hoteru",pron:"ho-te-ru"},
+      {en:"temple",kana:"お寺",romaji:"otera",pron:"o-te-ra"},
+      {en:"market",kana:"市場",romaji:"ichiba",pron:"i-chi-ba"},
+      {en:"airport",kana:"空港",romaji:"kūkō",pron:"kuu-koo"},
+      {en:"traffic",kana:"交通",romaji:"kōtsū",pron:"koo-tsuu"}
+    ],
+    verbs:[
+      {en:"travel",kana:{present:"旅行します",past:"旅行しました",future:"旅行したいです"},romaji:{present:"ryokō shimasu",past:"ryokō shimashita",future:"ryokō shitai desu"},pron:{present:"ryoo-koo shi-ma-su",past:"ryoo-koo shi-ma-shi-ta",future:"ryoo-koo shi-ta-i de-su"}},
+      {en:"walk",kana:{present:"歩きます",past:"歩きました",future:"歩きたいです"},romaji:{present:"arukimasu",past:"arukimashita",future:"arukitai desu"},pron:{present:"a-ru-ki-ma-su",past:"a-ru-ki-ma-shi-ta",future:"a-ru-ki-ta-i de-su"}},
+      {en:"buy",kana:{present:"買います",past:"買いました",future:"買いたいです"},romaji:{present:"kaimasu",past:"kaimashita",future:"kaitai desu"},pron:{present:"ka-i-ma-su",past:"ka-i-ma-shi-ta",future:"ka-i-ta-i de-su"}},
+      {en:"work",kana:{present:"働きます",past:"働きました",future:"働きたいです"},romaji:{present:"hatarakimasu",past:"hatarakimashita",future:"hatarakitai desu"},pron:{present:"ha-ta-ra-ki-ma-su",past:"ha-ta-ra-ki-ma-shi-ta",future:"ha-ta-ra-ki-ta-i de-su"}},
+      {en:"meet",kana:{present:"会います",past:"会いました",future:"会いたいです"},romaji:{present:"aimasu",past:"aimashita",future:"aitai desu"},pron:{present:"a-i-ma-su",past:"a-i-ma-shi-ta",future:"a-i-ta-i de-su"}},
+      {en:"live",kana:{present:"住んでいます",past:"住んでいました",future:"住みたいです"},romaji:{present:"sunde imasu",past:"sunde imashita",future:"sumitai desu"},pron:{present:"sun-de i-ma-su",past:"sun-de i-ma-shi-ta",future:"su-mi-ta-i de-su"}},
+      {en:"visit",kana:{present:"訪問します",past:"訪問しました",future:"訪問したいです"},romaji:{present:"hōmon shimasu",past:"hōmon shimashita",future:"hōmon shitai desu"},pron:{present:"hoo-mon shi-ma-su",past:"hoo-mon shi-ma-shi-ta",future:"hoo-mon shi-ta-i de-su"}},
+      {en:"wait",kana:{present:"待ちます",past:"待ちました",future:"待ちたいです"},romaji:{present:"machimasu",past:"machimashita",future:"machitai desu"},pron:{present:"ma-chi-ma-su",past:"ma-chi-ma-shi-ta",future:"ma-chi-ta-i de-su"}}
+    ],
+    adjectives:[
+      {en:"busy",kana:"賑やか",romaji:"nigiyaka",pron:"ni-gi-ya-ka"},
+      {en:"loud",kana:"うるさい",romaji:"urusai",pron:"u-ru-sa-i"},
+      {en:"modern",kana:"現代的な",romaji:"gendai-teki na",pron:"gen-da-i-te-ki na"},
+      {en:"crowded",kana:"混雑した",romaji:"konzatsu shita",pron:"kon-za-tsu shi-ta"},
+      {en:"clean",kana:"きれいな",romaji:"kirei na",pron:"ki-re-i na"},
+      {en:"big",kana:"大きい",romaji:"ōkii",pron:"oo-ki-i"},
+      {en:"quiet",kana:"静かな",romaji:"shizuka na",pron:"shi-zu-ka na"},
+      {en:"historic",kana:"歴史的な",romaji:"rekishi-teki na",pron:"re-ki-shi-te-ki na"},
+      {en:"expensive",kana:"高い",romaji:"takai",pron:"ta-ka-i"},
+      {en:"safe",kana:"安全な",romaji:"anzen na",pron:"an-zen na"}
+    ],
+    phrases:[
+      {en:"Where is the station?",kana:"駅はどこですか？",romaji:"Eki wa doko desu ka?",pron:"e-ki wa do-ko de-su ka"},
+      {en:"How do I get to...?",kana:"...へはどう行きますか？",romaji:"... e wa dō ikimasu ka?",pron:"... e wa doo i-ki-ma-su ka"},
+      {en:"Turn left",kana:"左に曲がってください",romaji:"Hidari ni magatte kudasai",pron:"hi-da-ri ni ma-ga-tte ku-da-sa-i"},
+      {en:"Turn right",kana:"右に曲がってください",romaji:"Migi ni magatte kudasai",pron:"mi-gi ni ma-ga-tte ku-da-sa-i"},
+      {en:"I am lost",kana:"迷いました",romaji:"Mayoimashita",pron:"ma-yo-i-ma-shi-ta"},
+      {en:"What time is it?",kana:"今何時ですか？",romaji:"Ima nanji desu ka?",pron:"i-ma nan-ji de-su ka"}
+    ],
+    readings:[
+      {kana:"東京はとても賑やかです。電車で会社に行きます。お店はたくさんあります。",romaji:"Tōkyō wa totemo nigiyaka desu. Densha de kaisha ni ikimasu. Omise wa takusan arimasu.",en:"Tokyo is very lively. I go to work by train. There are many shops.",q:"How does the person go to work?",opts:["By train","By car","By bus","Walking"],correct:0}
+    ]
+  },
+  greetings:{
+    name:"Greetings",ja:"挨拶",jaRom:"Aisatsu",icon:"👋",
+    nouns:[
+      {en:"name",kana:"名前",romaji:"namae",pron:"na-ma-e"},
+      {en:"friend",kana:"友達",romaji:"tomodachi",pron:"to-mo-da-chi"},
+      {en:"morning",kana:"朝",romaji:"asa",pron:"a-sa"},
+      {en:"afternoon",kana:"昼",romaji:"hiru",pron:"hi-ru"},
+      {en:"evening",kana:"夕方",romaji:"yūgata",pron:"yuu-ga-ta"},
+      {en:"night",kana:"夜",romaji:"yoru",pron:"yo-ru"},
+      {en:"day",kana:"日",romaji:"hi",pron:"hi"},
+      {en:"week",kana:"週",romaji:"shū",pron:"shuu"},
+      {en:"weather",kana:"天気",romaji:"tenki",pron:"ten-ki"},
+      {en:"conversation",kana:"会話",romaji:"kaiwa",pron:"ka-i-wa"},
+      {en:"question",kana:"質問",romaji:"shitsumon",pron:"shi-tsu-mon"},
+      {en:"answer",kana:"答え",romaji:"kotae",pron:"ko-ta-e"},
+      {en:"language",kana:"言語",romaji:"gengo",pron:"gen-go"},
+      {en:"please (requesting)",kana:"ください",romaji:"kudasai",pron:"ku-da-sa-i"},
+      {en:"thank you",kana:"ありがとう",romaji:"arigatō",pron:"a-ri-ga-too"}
+    ],
+    verbs:[
+      {en:"greet",kana:{present:"挨拶します",past:"挨拶しました",future:"挨拶したいです"},romaji:{present:"aisatsu shimasu",past:"aisatsu shimashita",future:"aisatsu shitai desu"},pron:{present:"a-i-sa-tsu shi-ma-su",past:"a-i-sa-tsu shi-ma-shi-ta",future:"a-i-sa-tsu shi-ta-i de-su"}},
+      {en:"meet",kana:{present:"会います",past:"会いました",future:"会いたいです"},romaji:{present:"aimasu",past:"aimashita",future:"aitai desu"},pron:{present:"a-i-ma-su",past:"a-i-ma-shi-ta",future:"a-i-ta-i de-su"}},
+      {en:"ask",kana:{present:"聞きます",past:"聞きました",future:"聞きたいです"},romaji:{present:"kikimasu",past:"kikimashita",future:"kikitai desu"},pron:{present:"ki-ki-ma-su",past:"ki-ki-ma-shi-ta",future:"ki-ki-ta-i de-su"}},
+      {en:"understand",kana:{present:"分かります",past:"分かりました",future:"分かりたいです"},romaji:{present:"wakarimasu",past:"wakarimashita",future:"wakari tai desu"},pron:{present:"wa-ka-ri-ma-su",past:"wa-ka-ri-ma-shi-ta",future:"wa-ka-ri-ta-i de-su"}},
+      {en:"speak",kana:{present:"話します",past:"話しました",future:"話したいです"},romaji:{present:"hanashimasu",past:"hanashimashita",future:"hanashi tai desu"},pron:{present:"ha-na-shi-ma-su",past:"ha-na-shi-ma-shi-ta",future:"ha-na-shi-ta-i de-su"}},
+      {en:"know",kana:{present:"知っています",past:"知っていました",future:"知りたいです"},romaji:{present:"shitte imasu",past:"shitte imashita",future:"shiritai desu"},pron:{present:"shi-tte i-ma-su",past:"shi-tte i-ma-shi-ta",future:"shi-ri-ta-i de-su"}},
+      {en:"introduce",kana:{present:"紹介します",past:"紹介しました",future:"紹介したいです"},romaji:{present:"shōkai shimasu",past:"shōkai shimashita",future:"shōkai shitai desu"},pron:{present:"shoo-ka-i shi-ma-su",past:"shoo-ka-i shi-ma-shi-ta",future:"shoo-ka-i shi-ta-i de-su"}},
+      {en:"listen",kana:{present:"聞きます",past:"聞きました",future:"聞きたいです"},romaji:{present:"kikimasu",past:"kikimashita",future:"kikitai desu"},pron:{present:"ki-ki-ma-su",past:"ki-ki-ma-shi-ta",future:"ki-ki-ta-i de-su"}}
+    ],
+    adjectives:[
+      {en:"fine/well",kana:"元気な",romaji:"genki na",pron:"gen-ki na"},
+      {en:"glad",kana:"嬉しい",romaji:"ureshii",pron:"u-re-shi-i"},
+      {en:"friendly",kana:"親しみやすい",romaji:"shitashimiyasui",pron:"shi-ta-shi-mi-ya-su-i"},
+      {en:"happy",kana:"幸せな",romaji:"shiawase na",pron:"shi-a-wa-se na"},
+      {en:"tired",kana:"疲れた",romaji:"tsukareta",pron:"tsu-ka-re-ta"},
+      {en:"busy",kana:"忙しい",romaji:"isogashii",pron:"i-so-ga-shi-i"},
+      {en:"new",kana:"新しい",romaji:"atarashii",pron:"a-ta-ra-shi-i"},
+      {en:"interesting",kana:"面白い",romaji:"omoshiroi",pron:"o-mo-shi-ro-i"},
+      {en:"polite",kana:"礼儀正しい",romaji:"reigi tadashii",pron:"re-i-gi ta-da-shi-i"},
+      {en:"nice",kana:"いい",romaji:"ii",pron:"i-i"}
+    ],
+    phrases:[
+      {en:"Hello",kana:"こんにちは",romaji:"Konnichiwa",pron:"kon-ni-chi-wa"},
+      {en:"Good morning",kana:"おはようございます",romaji:"Ohayō gozaimasu",pron:"o-ha-yoo go-za-i-ma-su"},
+      {en:"Good evening",kana:"こんばんは",romaji:"Konbanwa",pron:"kon-ban-wa"},
+      {en:"Good night",kana:"おやすみなさい",romaji:"Oyasumi nasai",pron:"o-ya-su-mi na-sa-i"},
+      {en:"How are you?",kana:"お元気ですか？",romaji:"O-genki desu ka?",pron:"o-gen-ki de-su ka"},
+      {en:"I am fine, thank you",kana:"元気です、ありがとう",romaji:"Genki desu, arigatō",pron:"gen-ki de-su, a-ri-ga-too"},
+      {en:"What is your name?",kana:"お名前は何ですか？",romaji:"O-namae wa nan desu ka?",pron:"o-na-ma-e wa nan de-su ka"},
+      {en:"My name is...",kana:"私の名前は...です",romaji:"Watashi no namae wa ... desu",pron:"wa-ta-shi no na-ma-e wa ... de-su"},
+      {en:"Nice to meet you",kana:"よろしくお願いします",romaji:"Yoroshiku onegai shimasu",pron:"yo-ro-shi-ku o-ne-ga-i shi-ma-su"},
+      {en:"Thank you very much",kana:"ありがとうございます",romaji:"Arigatō gozaimasu",pron:"a-ri-ga-too go-za-i-ma-su"},
+      {en:"You're welcome",kana:"どういたしまして",romaji:"Dō itashimashite",pron:"doo i-ta-shi-ma-shi-te"},
+      {en:"Sorry / Excuse me",kana:"すみません",romaji:"Sumimasen",pron:"su-mi-ma-sen"},
+      {en:"Yes",kana:"はい",romaji:"Hai",pron:"ha-i"},
+      {en:"No",kana:"いいえ",romaji:"Iie",pron:"i-i-e"},
+      {en:"I don't understand",kana:"分かりません",romaji:"Wakarimasen",pron:"wa-ka-ri-ma-sen"},
+      {en:"Do you speak English?",kana:"英語を話しますか？",romaji:"Eigo o hanashimasu ka?",pron:"e-i-go o ha-na-shi-ma-su ka"},
+      {en:"Goodbye",kana:"さようなら",romaji:"Sayōnara",pron:"sa-yoo-na-ra"},
+      {en:"See you later",kana:"またね",romaji:"Mata ne",pron:"ma-ta ne"},
+      {en:"Where are you from?",kana:"どこから来ましたか？",romaji:"Doko kara kimashita ka?",pron:"do-ko ka-ra ki-ma-shi-ta ka"},
+      {en:"How old are you?",kana:"何歳ですか？",romaji:"Nansai desu ka?",pron:"nan-sa-i de-su ka"}
+    ],
+    readings:[
+      {kana:"こんにちは！お元気ですか？元気です、ありがとう。お名前は何ですか？田中です。よろしくお願いします！",romaji:"Konnichiwa! O-genki desu ka? Genki desu, arigatō. O-namae wa nan desu ka? Tanaka desu. Yoroshiku onegai shimasu!",en:"Hello! How are you? I am fine, thank you. What is your name? I am Tanaka. Nice to meet you!",q:"What is the person's name?",opts:["Tanaka","Yamada","Suzuki","Sato"],correct:0}
+    ]
+  },
+  basics:{
+    name:"Basics",ja:"基本",jaRom:"Kihon",icon:"💬",
+    nouns:[
+      {en:"I",kana:"私",romaji:"watashi",pron:"wa-ta-shi"},
+      {en:"you",kana:"あなた",romaji:"anata",pron:"a-na-ta"},
+      {en:"he",kana:"彼",romaji:"kare",pron:"ka-re"},
+      {en:"she",kana:"彼女",romaji:"kanojo",pron:"ka-no-jo"},
+      {en:"we",kana:"私たち",romaji:"watashitachi",pron:"wa-ta-shi-ta-chi"},
+      {en:"they",kana:"彼ら",romaji:"karera",pron:"ka-re-ra"},
+      {en:"this",kana:"これ",romaji:"kore",pron:"ko-re"},
+      {en:"that",kana:"あれ",romaji:"are",pron:"a-re"},
+      {en:"here",kana:"ここ",romaji:"koko",pron:"ko-ko"},
+      {en:"there",kana:"そこ",romaji:"soko",pron:"so-ko"},
+      {en:"now",kana:"今",romaji:"ima",pron:"i-ma"},
+      {en:"today",kana:"今日",romaji:"kyō",pron:"kyoo"},
+      {en:"tomorrow",kana:"明日",romaji:"ashita",pron:"a-shi-ta"},
+      {en:"yesterday",kana:"昨日",romaji:"kinō",pron:"ki-noo"},
+      {en:"always",kana:"いつも",romaji:"itsumo",pron:"i-tsu-mo"},
+      {en:"never",kana:"決して〜ない",romaji:"kesshite ~ nai",pron:"kes-shi-te na-i"}
+    ],
+    verbs:[
+      {en:"to be",kana:{present:"です",past:"でした",future:"でしょう"},romaji:{present:"desu",past:"deshita",future:"deshō"},pron:{present:"de-su",past:"de-shi-ta",future:"de-shoo"}},
+      {en:"to have",kana:{present:"あります/います",past:"ありました/いました",future:"あるでしょう"},romaji:{present:"arimasu / imasu",past:"arimashita / imashita",future:"aru deshō"},pron:{present:"a-ri-ma-su / i-ma-su",past:"a-ri-ma-shi-ta / i-ma-shi-ta",future:"a-ru de-shoo"}},
+      {en:"to want",kana:{present:"ほしいです",past:"ほしかったです",future:"ほしいでしょう"},romaji:{present:"hoshii desu",past:"hoshikatta desu",future:"hoshii deshō"},pron:{present:"ho-shi-i de-su",past:"ho-shi-kat-ta de-su",future:"ho-shi-i de-shoo"}},
+      {en:"to like",kana:{present:"好きです",past:"好きでした",future:"好きになるでしょう"},romaji:{present:"suki desu",past:"suki deshita",future:"suki ni naru deshō"},pron:{present:"su-ki de-su",past:"su-ki de-shi-ta",future:"su-ki ni na-ru de-shoo"}},
+      {en:"to go",kana:{present:"行きます",past:"行きました",future:"行きたいです"},romaji:{present:"ikimasu",past:"ikimashita",future:"ikitai desu"},pron:{present:"i-ki-ma-su",past:"i-ki-ma-shi-ta",future:"i-ki-ta-i de-su"}},
+      {en:"to come",kana:{present:"来ます",past:"来ました",future:"来たいです"},romaji:{present:"kimasu",past:"kimashita",future:"kitai desu"},pron:{present:"ki-ma-su",past:"ki-ma-shi-ta",future:"ki-ta-i de-su"}},
+      {en:"to do",kana:{present:"します",past:"しました",future:"したいです"},romaji:{present:"shimasu",past:"shimashita",future:"shitai desu"},pron:{present:"shi-ma-su",past:"shi-ma-shi-ta",future:"shi-ta-i de-su"}},
+      {en:"to know",kana:{present:"知っています",past:"知っていました",future:"知りたいです"},romaji:{present:"shitte imasu",past:"shitte imashita",future:"shiritai desu"},pron:{present:"shi-tte i-ma-su",past:"shi-tte i-ma-shi-ta",future:"shi-ri-ta-i de-su"}},
+      {en:"to think",kana:{present:"思います",past:"思いました",future:"思うでしょう"},romaji:{present:"omoimasu",past:"omoimashita",future:"omou deshō"},pron:{present:"o-mo-i-ma-su",past:"o-mo-i-ma-shi-ta",future:"o-mo-u de-shoo"}},
+      {en:"to see",kana:{present:"見ます",past:"見ました",future:"見たいです"},romaji:{present:"mimasu",past:"mimashita",future:"mitai desu"},pron:{present:"mi-ma-su",past:"mi-ma-shi-ta",future:"mi-ta-i de-su"}}
+    ],
+    adjectives:[
+      {en:"good",kana:"良い",romaji:"yoi / ii",pron:"yo-i / i-i"},
+      {en:"bad",kana:"悪い",romaji:"warui",pron:"wa-ru-i"},
+      {en:"big",kana:"大きい",romaji:"ōkii",pron:"oo-ki-i"},
+      {en:"small",kana:"小さい",romaji:"chīsai",pron:"chi-i-sa-i"},
+      {en:"fast",kana:"速い",romaji:"hayai",pron:"ha-ya-i"},
+      {en:"slow",kana:"遅い",romaji:"osoi",pron:"o-so-i"},
+      {en:"right/correct",kana:"正しい",romaji:"tadashii",pron:"ta-da-shi-i"},
+      {en:"wrong",kana:"間違い",romaji:"machigai",pron:"ma-chi-ga-i"},
+      {en:"important",kana:"大切な",romaji:"taisetsu na",pron:"ta-i-se-tsu na"},
+      {en:"easy",kana:"簡単な",romaji:"kantan na",pron:"kan-tan na"},
+      {en:"difficult",kana:"難しい",romaji:"muzukashii",pron:"mu-zu-ka-shi-i"},
+      {en:"interesting",kana:"面白い",romaji:"omoshiroi",pron:"o-mo-shi-ro-i"}
+    ],
+    phrases:[
+      {en:"I am...",kana:"私は...です",romaji:"Watashi wa ... desu",pron:"wa-ta-shi wa ... de-su"},
+      {en:"I like...",kana:"...が好きです",romaji:"... ga suki desu",pron:"... ga su-ki de-su"},
+      {en:"I want...",kana:"...がほしいです",romaji:"... ga hoshii desu",pron:"... ga ho-shi-i de-su"},
+      {en:"I don't know",kana:"分かりません",romaji:"Wakarimasen",pron:"wa-ka-ri-ma-sen"},
+      {en:"And... / But...",kana:"そして... / でも...",romaji:"Soshite ... / Demo ...",pron:"so-shi-te / de-mo"},
+      {en:"Because...",kana:"なぜなら...",romaji:"Nazenara ...",pron:"na-ze-na-ra"},
+      {en:"I think that...",kana:"...と思います",romaji:"... to omoimasu",pron:"... to o-mo-i-ma-su"},
+      {en:"Please (requesting)",kana:"...をください",romaji:"... o kudasai",pron:"... o ku-da-sa-i"}
+    ],
+    readings:[
+      {kana:"私は人間です。学びたいです。新しいことが好きです。でも、時々難しいです。",romaji:"Watashi wa ningen desu. Manabitai desu. Atarashii koto ga suki desu. Demo, tokidoki muzukashii desu.",en:"I am a person. I want to learn. I like new things. But, sometimes it is difficult.",q:"What does the person like?",opts:["New things","Old things","Easy things","Nothing"],correct:0}
+    ]
+  }
+};
+
+// ══════════════════════════════════════════════════
 // STATE
 // ══════════════════════════════════════════════════
 let S = {
+  lang: null, writing: null,
   mode: null, unit: null, tense: null,
   cards: [], cardIdx: 0, flipped: false,
   qs: [], qIdx: 0, qScore: 0
 };
+let UNITS, EX; // set when language is selected
+
+// ══════════════════════════════════════════════════
+// LANGUAGE + WRITING MODE
+// ══════════════════════════════════════════════════
+function selectLang(lang, backOnly) {
+  S.lang = lang;
+  document.body.className = 'lang-' + lang;
+  const jaBg = document.getElementById('ja-bg');
+  const header = document.getElementById('app-header');
+  if (lang === 'ja') {
+    jaBg.style.display = 'block';
+    if (!backOnly) createPetals();
+    header.style.display = 'block';
+    document.getElementById('app-title').textContent = '🇯🇵 日本語を学ぼう';
+    document.getElementById('app-subtitle').textContent = 'Learn Japanese — Unit by Unit';
+    document.getElementById('app-flagbar').style.background = '#BC002D';
+    // Reset writing mode
+    S.writing = null;
+    document.querySelectorAll('.writing-card').forEach(c=>c.classList.remove('selected'));
+    document.getElementById('writing-confirm').style.display = 'none';
+    show('writing');
+  } else {
+    jaBg.style.display = 'none';
+    header.style.display = 'block';
+    document.getElementById('app-title').textContent = '🇿🇦 Leer Afrikaans';
+    document.getElementById('app-subtitle').textContent = 'Learn Afrikaans — Unit by Unit';
+    document.getElementById('app-flagbar').style.background = '';
+    UNITS = UNITS_AF; EX = EX_AF;
+    show('menu');
+  }
+}
+
+function pickWriting(mode, el) {
+  S.writing = mode;
+  document.querySelectorAll('.writing-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('writing-confirm').style.display = 'inline-block';
+}
+
+function confirmWriting() {
+  if (!S.writing) return;
+  UNITS = UNITS_JA; EX = null;
+  show('menu');
+}
+
+function createPetals() {
+  const bg = document.getElementById('ja-bg');
+  bg.querySelectorAll('.petal').forEach(p=>p.remove());
+  for (let i=0;i<25;i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = (Math.random()*100)+'%';
+    p.style.top = '-20px';
+    p.style.width = (7+Math.random()*10)+'px';
+    p.style.height = (6+Math.random()*8)+'px';
+    p.style.animationDuration = (6+Math.random()*10)+'s';
+    p.style.animationDelay = (-Math.random()*14)+'s';
+    p.style.opacity = 0.4+Math.random()*0.6;
+    bg.appendChild(p);
+  }
+}
 
 // ══════════════════════════════════════════════════
 // ROUTING
 // ══════════════════════════════════════════════════
 function show(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('s-'+name).classList.add('active');
+  const el = document.getElementById('s-'+name);
+  if (el) el.classList.add('active');
+  // hide header on language selector
+  const hdr = document.getElementById('app-header');
+  if (hdr) hdr.style.display = (name==='lang') ? 'none' : (S.lang ? 'block' : 'none');
   window.scrollTo(0,0);
+}
+
+function jaSubLabel(u) {
+  if (S.lang === 'ja') return u.jaRom || '';
+  return u.af || '';
 }
 
 function goUnitSelect(mode) {
@@ -1352,7 +2115,7 @@ function goUnitSelect(mode) {
   Object.entries(UNITS).forEach(([k,u]) => {
     const d = document.createElement('div');
     d.className = 'unit-btn';
-    d.innerHTML = `<span class="uicon">${u.icon}</span><strong>${u.name}</strong><br><small style="color:#888">${u.af}</small>`;
+    d.innerHTML = `<span class="uicon">${u.icon}</span><strong>${u.name}</strong><br><small style="color:#888">${jaSubLabel(u)}</small>`;
     d.onclick = () => {
       document.querySelectorAll('.unit-btn').forEach(b=>b.classList.remove('selected'));
       d.classList.add('selected'); S.unit = k;
@@ -1387,28 +2150,46 @@ function pickTense(el) {
 // ══════════════════════════════════════════════════
 // FLASHCARDS
 // ══════════════════════════════════════════════════
+function jaWord(w, tense) {
+  // returns the correct target-language display for a word given current lang+writing mode
+  if (S.lang !== 'ja') return tense ? w[tense] : w.af;
+  const mode = S.writing || 'romaji';
+  if (tense) return (w[mode] && w[mode][tense]) || '';
+  return w[mode] || '';
+}
+function jaPron(w, tense) {
+  if (S.lang !== 'ja') return w.pron || '';
+  if (S.writing === 'kana') return ''; // kana is self-guiding; pron not needed
+  return tense ? (w.pron && w.pron[tense]) || '' : w.pron || '';
+}
+
 function startFlashcards() {
   if (!S.tense) return;
   const u = UNITS[S.unit];
   let cards = [];
-  const ux = EX[S.unit] || {};
+  const ux = (EX && EX[S.unit]) || {};
   const tKey = {present:'p',past:'t',future:'f'}[S.tense];
   u.nouns.forEach(n => {
     const e = ux.nouns?.[n.en];
-    cards.push({type:'noun', en:n.en, af:n.af, pron:n.pron||'', tense:null, ex:e?{af:e[0],en:e[1]}:null});
+    cards.push({type:'noun', en:n.en, af:jaWord(n), pron:jaPron(n), tense:null, ex:e?{af:e[0],en:e[1]}:null});
   });
   u.adjectives.forEach(a => {
     const e = ux.adjectives?.[a.en];
-    cards.push({type:'adjective', en:a.en, af:a.af, pron:a.pron||'', tense:null, ex:e?{af:e[0],en:e[1]}:null});
+    cards.push({type:'adjective', en:a.en, af:jaWord(a), pron:jaPron(a), tense:null, ex:e?{af:e[0],en:e[1]}:null});
   });
   u.verbs.forEach(v => {
     const ev = ux.verbs?.[v.en];
     const e = ev?.[tKey];
-    cards.push({type:'verb', en:v.en, af:v[S.tense], pron:v.pron||'', tense:S.tense, ex:e?{af:e[0],en:e[1]}:null});
+    cards.push({type:'verb', en:v.en, af:jaWord(v,S.tense), pron:jaPron(v,S.tense), tense:S.tense, ex:e?{af:e[0],en:e[1]}:null});
   });
-  if (u.phrases) u.phrases.forEach(p => cards.push({type:'phrase', en:p.en, af:p.af, pron:p.pron||'', tense:null, ex:null}));
+  if (u.phrases) u.phrases.forEach(p => {
+    const target = S.lang==='ja' ? (S.writing==='kana'?p.kana:p.romaji) : p.af;
+    const pr = S.lang==='ja' && S.writing==='kana' ? '' : p.pron;
+    cards.push({type:'phrase', en:p.en, af:target, pron:pr, tense:null, ex:null});
+  });
   S.cards = shuffle(cards); S.cardIdx = 0; S.flipped = false;
-  document.getElementById('fc-title').textContent = `${u.icon} ${u.name} — ${cap(S.tense)} Tense`;
+  const modeLabel = S.lang==='ja' ? (S.writing==='kana'?'Kana':'Romaji') : cap(S.tense)+' Tense';
+  document.getElementById('fc-title').textContent = `${u.icon} ${u.name} — ${modeLabel}`;
   renderCard();
   show('fc');
 }
@@ -1457,55 +2238,74 @@ document.addEventListener('keydown', e => {
 // ══════════════════════════════════════════════════
 // QUIZ
 // ══════════════════════════════════════════════════
+function wGet(w,t) { return jaWord(w,t); } // shorthand for quiz
+
 function buildQuestions(unitKey) {
   const u = UNITS[unitKey];
   const qs = [];
-  const pool = {af:[], en:[], paf:[], pen:[]};
+  const isJa = S.lang === 'ja';
+  const wm = S.writing || 'romaji';
+  const langName = isJa ? (wm==='kana'?'Kana':'Romaji') : 'Afrikaans';
+  const pool = {tgt:[], en:[], ptgt:[], pen:[]};
   Object.values(UNITS).forEach(x=>{
-    [...x.nouns,...x.adjectives].forEach(w=>{pool.af.push(w.af);pool.en.push(w.en);});
-    (x.phrases||[]).forEach(p=>{pool.paf.push(p.af);pool.pen.push(p.en);});
+    [...x.nouns,...x.adjectives].forEach(w=>{pool.tgt.push(wGet(w));pool.en.push(w.en);});
+    (x.phrases||[]).forEach(p=>{
+      pool.ptgt.push(isJa?(wm==='kana'?p.kana:p.romaji):p.af);
+      pool.pen.push(p.en);
+    });
   });
 
-  // MC Phrases (en→af and af→en)
+  // MC Phrases
   if (u.phrases) {
     u.phrases.forEach(p=>{
-      const opts1 = shuffle([p.af,...distract(p.af,pool.paf,3)]);
-      qs.push({kind:'mc',badge:'Phrase: EN → AF',prompt:'Translate this phrase to Afrikaans:',
-        word:p.en,opts:opts1,correct:p.af,expl:`"${p.en}" = "${p.af}"`});
+      const tgt = isJa?(wm==='kana'?p.kana:p.romaji):p.af;
+      const opts1 = shuffle([tgt,...distract(tgt,pool.ptgt,3)]);
+      qs.push({kind:'mc',badge:`Phrase: EN → ${langName}`,prompt:`Translate this phrase to ${langName}:`,
+        word:p.en,opts:opts1,correct:tgt,expl:`"${p.en}" = "${tgt}"`});
       const opts2 = shuffle([p.en,...distract(p.en,pool.pen,3)]);
-      qs.push({kind:'mc',badge:'Phrase: AF → EN',prompt:'What does this Afrikaans phrase mean?',
-        word:p.af,opts:opts2,correct:p.en,expl:`"${p.af}" = "${p.en}"`});
+      qs.push({kind:'mc',badge:`Phrase: ${langName} → EN`,prompt:'What does this phrase mean in English?',
+        word:tgt,opts:opts2,correct:p.en,expl:`"${tgt}" = "${p.en}"`});
     });
   }
 
-  // MC English→Afrikaans (nouns + adjectives)
+  // MC English → target language (nouns + adjectives)
   [...u.nouns,...u.adjectives].forEach(w=>{
-    const opts = shuffle([w.af,...distract(w.af,pool.af,3)]);
-    qs.push({kind:'mc',badge:'English → Afrikaans',prompt:'What is the Afrikaans word for:',
-      word:w.en,opts,correct:w.af,expl:`"${w.en}" = "${w.af}"`});
+    const tgt = wGet(w);
+    const opts = shuffle([tgt,...distract(tgt,pool.tgt,3)]);
+    qs.push({kind:'mc',badge:`English → ${langName}`,prompt:`What is the ${langName} word for:`,
+      word:w.en,opts,correct:tgt,expl:`"${w.en}" = "${tgt}"`});
   });
 
-  // MC Afrikaans→English (nouns + adjectives)
+  // MC target language → English (nouns + adjectives)
   [...u.nouns,...u.adjectives].forEach(w=>{
+    const tgt = wGet(w);
     const opts = shuffle([w.en,...distract(w.en,pool.en,3)]);
-    qs.push({kind:'mc',badge:'Afrikaans → English',prompt:'What does this Afrikaans word mean?',
-      word:w.af,opts,correct:w.en,expl:`"${w.af}" = "${w.en}"`});
+    qs.push({kind:'mc',badge:`${langName} → English`,prompt:'What does this mean in English?',
+      word:tgt,opts,correct:w.en,expl:`"${tgt}" = "${w.en}"`});
   });
 
-  // Fill-in verbs across tenses
+  // Verbs: fill-in for Afrikaans+Romaji; MC for Kana
   u.verbs.forEach(v=>{
     ['present','past','future'].forEach(t=>{
-      qs.push({kind:'fill',badge:'Fill in the Blank',
-        prompt:`Type the ${t} tense of "${v.en}" in Afrikaans:`,
-        word:v.en,correct:v[t],expl:`${cap(t)}: "${v[t]}"`});
+      const verbForm = wGet(v,t);
+      if (isJa && wm==='kana') {
+        const vpool = Object.values(UNITS).flatMap(x=>x.verbs.map(vv=>(vv.kana&&vv.kana[t])||''));
+        const opts = shuffle([verbForm,...distract(verbForm,vpool,3)]);
+        qs.push({kind:'mc',badge:`Verb: ${cap(t)}`,prompt:`What is the ${cap(t)} tense (Kana) of "${v.en}"?`,
+          word:v.en,opts,correct:verbForm,expl:`${cap(t)}: "${verbForm}"`});
+      } else {
+        qs.push({kind:'fill',badge:'Fill in the Blank',
+          prompt:`Type the ${cap(t)} tense of "${v.en}" in ${langName}:`,
+          word:v.en,correct:verbForm,expl:`${cap(t)}: "${verbForm}"`});
+      }
     });
   });
 
   // Reading comprehension
   u.readings.forEach(r=>{
-    qs.push({kind:'read',badge:'Reading Comprehension',
-      passage:r.af,word:r.q,opts:r.opts,correct:r.correct,
-      expl:`English: "${r.en}"`});
+    const passage = isJa ? (wm==='kana'?r.kana:r.romaji) : r.af;
+    if (passage) qs.push({kind:'read',badge:'Reading Comprehension',
+      passage,word:r.q,opts:r.opts,correct:r.correct,expl:`English: "${r.en}"`});
   });
 
   return shuffle(qs).slice(0,16);
@@ -1630,58 +2430,56 @@ function showResults() {
 // ══════════════════════════════════════════════════
 function showVocab() {
   const u = UNITS[S.unit];
+  const isJa = S.lang === 'ja';
   document.getElementById('vocab-title').textContent = `${u.icon} ${u.name} — Vocab List`;
+  const prStr = p => p ? `<br><span style="font-size:.78rem;color:#999;font-style:italic">${p}</span>` : '';
 
-  const pron = w => w.pron ? `<br><span style="font-size:.78rem;color:#999;font-style:italic">${w.pron}</span>` : '';
-
-  const nounsRows = u.nouns.map(n=>
-    `<tr><td>${n.en}</td><td><strong>${n.af}</strong>${pron(n)}</td><td><span class="badge badge-noun">Noun</span></td></tr>`
-  ).join('');
-
-  const adjRows = u.adjectives.map(a=>
-    `<tr><td>${a.en}</td><td><strong>${a.af}</strong>${pron(a)}</td><td><span class="badge badge-adj">Adjective</span></td></tr>`
-  ).join('');
-
-  const verbRows = u.verbs.map(v=>
-    `<tr>
-      <td><span class="badge badge-verb">Verb</span>&nbsp;${v.en}</td>
-      <td>${v.present}${v.pron?`<br><span style="font-size:.78rem;color:#999;font-style:italic">${v.pron}</span>`:''}</td>
-      <td>${v.past}</td>
-      <td>${v.future}</td>
-    </tr>`
-  ).join('');
-
-  document.getElementById('vocab-body').innerHTML = `
-    <div class="vocab-section">
-      <h3>Nouns (Naamwoorde)</h3>
-      <table class="vocab-table">
-        <thead><tr><th>English</th><th>Afrikaans</th><th>Type</th></tr></thead>
-        <tbody>${nounsRows}</tbody>
-      </table>
-    </div>
-    <div class="vocab-section">
-      <h3>Adjectives (Byvoeglike Naamwoorde)</h3>
-      <table class="vocab-table">
-        <thead><tr><th>English</th><th>Afrikaans</th><th>Type</th></tr></thead>
-        <tbody>${adjRows}</tbody>
-      </table>
-    </div>
-    <div class="vocab-section">
-      <h3>Verbs (Werkwoorde) — All Tenses</h3>
-      <table class="vocab-table">
-        <thead><tr><th>English</th><th>Present</th><th>Past</th><th>Future</th></tr></thead>
-        <tbody>${verbRows}</tbody>
-      </table>
-    </div>
-    ${u.phrases && u.phrases.length ? `
-    <div class="vocab-section">
-      <h3>Phrases (Frases)</h3>
-      <table class="vocab-table">
-        <thead><tr><th>English</th><th>Afrikaans</th></tr></thead>
-        <tbody>${u.phrases.map(p=>`<tr><td>${p.en}</td><td><strong>${p.af}</strong>${pron(p)}</td></tr>`).join('')}</tbody>
-      </table>
-    </div>` : ''}
-  `;
+  let html = '';
+  if (isJa) {
+    // Japanese: show Kana + Romaji columns for all word types
+    const jaRow = (w, badge) =>
+      `<tr><td>${w.en}</td><td><strong>${w.kana}</strong></td><td>${w.romaji}${prStr(w.pron)}</td><td><span class="badge badge-${badge}">${badge}</span></td></tr>`;
+    html += `<div class="vocab-section"><h3>Nouns (名詞 Meishi)</h3>
+      <table class="vocab-table"><thead><tr><th>English</th><th>Kana/Kanji</th><th>Romaji</th><th>Type</th></tr></thead>
+      <tbody>${u.nouns.map(n=>jaRow(n,'noun')).join('')}</tbody></table></div>`;
+    html += `<div class="vocab-section"><h3>Adjectives (形容詞 Keiyōshi)</h3>
+      <table class="vocab-table"><thead><tr><th>English</th><th>Kana/Kanji</th><th>Romaji</th><th>Type</th></tr></thead>
+      <tbody>${u.adjectives.map(a=>jaRow(a,'adj')).join('')}</tbody></table></div>`;
+    html += `<div class="vocab-section"><h3>Verbs (動詞 Dōshi) — All Tenses</h3>
+      <table class="vocab-table"><thead><tr><th>English</th><th>Present</th><th>Past</th><th>Future (-tai)</th></tr></thead>
+      <tbody>${u.verbs.map(v=>`<tr>
+        <td><span class="badge badge-verb">Verb</span>&nbsp;${v.en}</td>
+        <td>${v.kana.present}<br><span style="font-size:.78rem;color:#999;font-style:italic">${v.romaji.present}${prStr(v.pron.present)}</span></td>
+        <td>${v.kana.past}<br><span style="font-size:.78rem;color:#999;font-style:italic">${v.romaji.past}</span></td>
+        <td>${v.kana.future}<br><span style="font-size:.78rem;color:#999;font-style:italic">${v.romaji.future}</span></td>
+      </tr>`).join('')}</tbody></table></div>`;
+    if (u.phrases && u.phrases.length) {
+      html += `<div class="vocab-section"><h3>Phrases (フレーズ Furēzu)</h3>
+        <table class="vocab-table"><thead><tr><th>English</th><th>Kana</th><th>Romaji</th></tr></thead>
+        <tbody>${u.phrases.map(p=>`<tr><td>${p.en}</td><td><strong>${p.kana}</strong></td><td>${p.romaji}${prStr(p.pron)}</td></tr>`).join('')}</tbody></table></div>`;
+    }
+  } else {
+    // Afrikaans layout (existing)
+    const pron = w => prStr(w.pron);
+    html += `<div class="vocab-section"><h3>Nouns (Naamwoorde)</h3>
+      <table class="vocab-table"><thead><tr><th>English</th><th>Afrikaans</th><th>Type</th></tr></thead>
+      <tbody>${u.nouns.map(n=>`<tr><td>${n.en}</td><td><strong>${n.af}</strong>${pron(n)}</td><td><span class="badge badge-noun">Noun</span></td></tr>`).join('')}</tbody></table></div>`;
+    html += `<div class="vocab-section"><h3>Adjectives (Byvoeglike Naamwoorde)</h3>
+      <table class="vocab-table"><thead><tr><th>English</th><th>Afrikaans</th><th>Type</th></tr></thead>
+      <tbody>${u.adjectives.map(a=>`<tr><td>${a.en}</td><td><strong>${a.af}</strong>${pron(a)}</td><td><span class="badge badge-adj">Adjective</span></td></tr>`).join('')}</tbody></table></div>`;
+    html += `<div class="vocab-section"><h3>Verbs (Werkwoorde) — All Tenses</h3>
+      <table class="vocab-table"><thead><tr><th>English</th><th>Present</th><th>Past</th><th>Future</th></tr></thead>
+      <tbody>${u.verbs.map(v=>`<tr>
+        <td><span class="badge badge-verb">Verb</span>&nbsp;${v.en}</td>
+        <td>${v.present}${v.pron?`<br><span style="font-size:.78rem;color:#999;font-style:italic">${v.pron}</span>`:''}</td>
+        <td>${v.past}</td><td>${v.future}</td></tr>`).join('')}</tbody></table></div>`;
+    if (u.phrases && u.phrases.length) {
+      html += `<div class="vocab-section"><h3>Phrases (Frases)</h3>
+        <table class="vocab-table"><thead><tr><th>English</th><th>Afrikaans</th></tr></thead>
+        <tbody>${u.phrases.map(p=>`<tr><td>${p.en}</td><td><strong>${p.af}</strong>${prStr(p.pron)}</td></tr>`).join('')}</tbody></table></div>`;
+    }
+  }
+  document.getElementById('vocab-body').innerHTML = html;
   show('vocab');
 }
 

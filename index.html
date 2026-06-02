@@ -308,6 +308,7 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
       <div class="card-face card-back">
         <div class="tense-pill" id="fc-tense-pill"></div>
         <div class="card-word" id="fc-af"></div>
+        <div id="fc-pron" style="font-size:.9rem;font-style:italic;opacity:.65;margin-top:6px;letter-spacing:.5px"></div>
         <div class="card-type" id="fc-type-back"></div>
       </div>
     </div>
@@ -366,44 +367,44 @@ const UNITS = {
   beach: {
     name:"Beach", af:"Strand", icon:"🏖️",
     nouns:[
-      {en:"wave",af:"golf"},{en:"sand",af:"sand"},{en:"ocean",af:"oseaan"},
-      {en:"shell",af:"skulp"},{en:"sunscreen",af:"sonskerm"},{en:"towel",af:"handdoek"},
-      {en:"lifeguard",af:"reddingswerker"},{en:"umbrella",af:"sambreel"},
-      {en:"seagull",af:"meeu"},{en:"rock",af:"rots"},
-      {en:"beach",af:"strand"},{en:"tide",af:"gety"},{en:"coral",af:"koraal"},
-      {en:"boat",af:"boot"},{en:"sunglasses",af:"sonbril"},
-      {en:"sandcastle",af:"sandkasteel"},{en:"starfish",af:"seester"},
-      {en:"crab",af:"krap"},{en:"dolphin",af:"dolfyn"},{en:"shark",af:"haai"},
-      {en:"lighthouse",af:"vuurtoring"},{en:"pier",af:"pier"},
-      {en:"surfboard",af:"surfplank"},{en:"sunburn",af:"sonbrand"},
-      {en:"fish",af:"vis"},{en:"bucket",af:"emmer"}
+      {en:"wave",af:"golf",pron:"golf"},{en:"sand",af:"sand",pron:"sand"},{en:"ocean",af:"oseaan",pron:"o-se-aan"},
+      {en:"shell",af:"skulp",pron:"skulp"},{en:"sunscreen",af:"sonskerm",pron:"son-skerm"},{en:"towel",af:"handdoek",pron:"hand-doek"},
+      {en:"lifeguard",af:"reddingswerker",pron:"red-dings-wer-ker"},{en:"umbrella",af:"sambreel",pron:"sam-breel"},
+      {en:"seagull",af:"meeu",pron:"mee-u"},{en:"rock",af:"rots",pron:"rots"},
+      {en:"beach",af:"strand",pron:"strand"},{en:"tide",af:"gety",pron:"ge-ty"},{en:"coral",af:"koraal",pron:"ko-raal"},
+      {en:"boat",af:"boot",pron:"boot"},{en:"sunglasses",af:"sonbril",pron:"son-bril"},
+      {en:"sandcastle",af:"sandkasteel",pron:"sand-kas-teel"},{en:"starfish",af:"seester",pron:"see-ster"},
+      {en:"crab",af:"krap",pron:"krap"},{en:"dolphin",af:"dolfyn",pron:"dol-fyn"},{en:"shark",af:"haai",pron:"haai"},
+      {en:"lighthouse",af:"vuurtoring",pron:"vuur-to-ring"},{en:"pier",af:"pier",pron:"pier"},
+      {en:"surfboard",af:"surfplank",pron:"surf-plank"},{en:"sunburn",af:"sonbrand",pron:"son-brand"},
+      {en:"fish",af:"vis",pron:"vis"},{en:"bucket",af:"emmer",pron:"em-mer"}
     ],
     verbs:[
-      {en:"swim",    present:"swem",     past:"het geswem",      future:"sal swem"},
-      {en:"dive",    present:"duik",     past:"het geduik",      future:"sal duik"},
-      {en:"surf",    present:"surf",     past:"het gesurf",      future:"sal surf"},
-      {en:"relax",   present:"ontspan",  past:"het ontspan",     future:"sal ontspan"},
-      {en:"play",    present:"speel",    past:"het gespeel",     future:"sal speel"},
-      {en:"run",     present:"hardloop", past:"het hardgeloop",  future:"sal hardloop"},
-      {en:"walk",    present:"stap",     past:"het gestap",      future:"sal stap"},
-      {en:"collect", present:"versamel", past:"het versamel",    future:"sal versamel"},
-      {en:"float",   present:"dryf",     past:"het gedryf",      future:"sal dryf"},
-      {en:"splash",  present:"spat",     past:"het gespat",      future:"sal spat"},
-      {en:"sail",    present:"seil",     past:"het geseil",      future:"sal seil"},
-      {en:"fish",    present:"visvang",  past:"het gevisvang",   future:"sal visvang"},
-      {en:"build",   present:"bou",      past:"het gebou",       future:"sal bou"},
-      {en:"watch",   present:"kyk",      past:"het gekyk",       future:"sal kyk"},
-      {en:"rest",    present:"rus",      past:"het gerus",       future:"sal rus"}
+      {en:"swim",    present:"swem",     pron:"swem",         past:"het geswem",      future:"sal swem"},
+      {en:"dive",    present:"duik",     pron:"duik",         past:"het geduik",      future:"sal duik"},
+      {en:"surf",    present:"surf",     pron:"surf",         past:"het gesurf",      future:"sal surf"},
+      {en:"relax",   present:"ontspan",  pron:"ont-span",     past:"het ontspan",     future:"sal ontspan"},
+      {en:"play",    present:"speel",    pron:"speel",        past:"het gespeel",     future:"sal speel"},
+      {en:"run",     present:"hardloop", pron:"hard-loop",    past:"het hardgeloop",  future:"sal hardloop"},
+      {en:"walk",    present:"stap",     pron:"stap",         past:"het gestap",      future:"sal stap"},
+      {en:"collect", present:"versamel", pron:"ver-sa-mel",   past:"het versamel",    future:"sal versamel"},
+      {en:"float",   present:"dryf",     pron:"dryf",         past:"het gedryf",      future:"sal dryf"},
+      {en:"splash",  present:"spat",     pron:"spat",         past:"het gespat",      future:"sal spat"},
+      {en:"sail",    present:"seil",     pron:"seil",         past:"het geseil",      future:"sal seil"},
+      {en:"fish",    present:"visvang",  pron:"vis-vang",     past:"het gevisvang",   future:"sal visvang"},
+      {en:"build",   present:"bou",      pron:"bou",          past:"het gebou",       future:"sal bou"},
+      {en:"watch",   present:"kyk",      pron:"kyk",          past:"het gekyk",       future:"sal kyk"},
+      {en:"rest",    present:"rus",      pron:"rus",          past:"het gerus",       future:"sal rus"}
     ],
     adjectives:[
-      {en:"hot",af:"warm"},{en:"wet",af:"nat"},{en:"sunny",af:"sonnig"},
-      {en:"salty",af:"souterig"},{en:"beautiful",af:"mooi"},
-      {en:"cool",af:"koel"},{en:"blue",af:"blou"},{en:"rough",af:"ru"},
-      {en:"sandy",af:"sanderig"},{en:"calm",af:"kalm"},
-      {en:"windy",af:"winderig"},{en:"shallow",af:"vlak"},
-      {en:"deep",af:"diep"},{en:"bright",af:"helder"},
-      {en:"peaceful",af:"vredig"},{en:"crowded",af:"stampvol"},
-      {en:"refreshing",af:"verfrissend"},{en:"clear",af:"helder"}
+      {en:"hot",af:"warm",pron:"warm"},{en:"wet",af:"nat",pron:"nat"},{en:"sunny",af:"sonnig",pron:"son-nig"},
+      {en:"salty",af:"souterig",pron:"sou-te-rig"},{en:"beautiful",af:"mooi",pron:"mooi"},
+      {en:"cool",af:"koel",pron:"koel"},{en:"blue",af:"blou",pron:"blou"},{en:"rough",af:"ru",pron:"ru"},
+      {en:"sandy",af:"sanderig",pron:"san-de-rig"},{en:"calm",af:"kalm",pron:"kalm"},
+      {en:"windy",af:"winderig",pron:"win-de-rig"},{en:"shallow",af:"vlak",pron:"vlak"},
+      {en:"deep",af:"diep",pron:"diep"},{en:"bright",af:"helder",pron:"hel-der"},
+      {en:"peaceful",af:"vredig",pron:"vre-dig"},{en:"crowded",af:"stampvol",pron:"stamp-vol"},
+      {en:"refreshing",af:"verfrissend",pron:"ver-fris-send"},{en:"clear",af:"helder",pron:"hel-der"}
     ],
     readings:[
       {
@@ -429,45 +430,45 @@ const UNITS = {
   mountain: {
     name:"Mountain", af:"Berg", icon:"⛰️",
     nouns:[
-      {en:"peak",af:"spits"},{en:"trail",af:"wandelpad"},{en:"rock",af:"rots"},
-      {en:"tree",af:"boom"},{en:"snow",af:"sneeu"},{en:"valley",af:"vallei"},
-      {en:"river",af:"rivier"},{en:"bridge",af:"brug"},
-      {en:"cloud",af:"wolk"},{en:"waterfall",af:"waterval"},
-      {en:"eagle",af:"arend"},{en:"cave",af:"grot"},
-      {en:"cliff",af:"krans"},{en:"meadow",af:"weide"},
-      {en:"tent",af:"tent"},{en:"backpack",af:"rugtas"},
-      {en:"map",af:"kaart"},{en:"fog",af:"mis"},
-      {en:"forest",af:"bos"},{en:"stone",af:"klip"},
-      {en:"summit",af:"top"},{en:"path",af:"pad"},
-      {en:"lake",af:"meer"},{en:"wind",af:"wind"},
-      {en:"boot",af:"stapstewel"},{en:"cabin",af:"hut"}
+      {en:"peak",af:"spits",pron:"spits"},{en:"trail",af:"wandelpad",pron:"wan-del-pad"},{en:"rock",af:"rots",pron:"rots"},
+      {en:"tree",af:"boom",pron:"boom"},{en:"snow",af:"sneeu",pron:"sneeu"},{en:"valley",af:"vallei",pron:"val-lei"},
+      {en:"river",af:"rivier",pron:"ri-vier"},{en:"bridge",af:"brug",pron:"brug"},
+      {en:"cloud",af:"wolk",pron:"wolk"},{en:"waterfall",af:"waterval",pron:"wa-ter-val"},
+      {en:"eagle",af:"arend",pron:"a-rend"},{en:"cave",af:"grot",pron:"grot"},
+      {en:"cliff",af:"krans",pron:"krans"},{en:"meadow",af:"weide",pron:"wei-de"},
+      {en:"tent",af:"tent",pron:"tent"},{en:"backpack",af:"rugtas",pron:"rug-tas"},
+      {en:"map",af:"kaart",pron:"kaart"},{en:"fog",af:"mis",pron:"mis"},
+      {en:"forest",af:"bos",pron:"bos"},{en:"stone",af:"klip",pron:"klip"},
+      {en:"summit",af:"top",pron:"top"},{en:"path",af:"pad",pron:"pad"},
+      {en:"lake",af:"meer",pron:"meer"},{en:"wind",af:"wind",pron:"wind"},
+      {en:"boot",af:"stapstewel",pron:"stap-ste-wel"},{en:"cabin",af:"hut",pron:"hut"}
     ],
     verbs:[
-      {en:"hike",        present:"stap",       past:"het gestap",        future:"sal stap"},
-      {en:"climb",       present:"klim",       past:"het geklim",        future:"sal klim"},
-      {en:"rest",        present:"rus",        past:"het gerus",         future:"sal rus"},
-      {en:"breathe",     present:"asemhaal",   past:"het asemgehaal",    future:"sal asemhaal"},
-      {en:"camp",        present:"kamp",       past:"het gekamp",        future:"sal kamp"},
-      {en:"look",        present:"kyk",        past:"het gekyk",         future:"sal kyk"},
-      {en:"fall",        present:"val",        past:"het geval",         future:"sal val"},
-      {en:"carry",       present:"dra",        past:"het gedra",         future:"sal dra"},
-      {en:"explore",     present:"verken",     past:"het verken",        future:"sal verken"},
-      {en:"discover",    present:"ontdek",     past:"het ontdek",        future:"sal ontdek"},
-      {en:"photograph",  present:"fotografeer",past:"het gefotografeer",  future:"sal fotografeer"},
-      {en:"slip",        present:"glip",       past:"het geglip",        future:"sal glip"},
-      {en:"listen",      present:"luister",    past:"het geluister",     future:"sal luister"},
-      {en:"follow",      present:"volg",       past:"het gevolg",        future:"sal volg"},
-      {en:"shelter",     present:"skuil",      past:"het geskuil",       future:"sal skuil"}
+      {en:"hike",        present:"stap",        pron:"stap",           past:"het gestap",        future:"sal stap"},
+      {en:"climb",       present:"klim",        pron:"klim",           past:"het geklim",        future:"sal klim"},
+      {en:"rest",        present:"rus",         pron:"rus",            past:"het gerus",         future:"sal rus"},
+      {en:"breathe",     present:"asemhaal",    pron:"a-sem-haal",     past:"het asemgehaal",    future:"sal asemhaal"},
+      {en:"camp",        present:"kamp",        pron:"kamp",           past:"het gekamp",        future:"sal kamp"},
+      {en:"look",        present:"kyk",         pron:"kyk",            past:"het gekyk",         future:"sal kyk"},
+      {en:"fall",        present:"val",         pron:"val",            past:"het geval",         future:"sal val"},
+      {en:"carry",       present:"dra",         pron:"dra",            past:"het gedra",         future:"sal dra"},
+      {en:"explore",     present:"verken",      pron:"ver-ken",        past:"het verken",        future:"sal verken"},
+      {en:"discover",    present:"ontdek",      pron:"ont-dek",        past:"het ontdek",        future:"sal ontdek"},
+      {en:"photograph",  present:"fotografeer", pron:"fo-to-gra-feer", past:"het gefotografeer", future:"sal fotografeer"},
+      {en:"slip",        present:"glip",        pron:"glip",           past:"het geglip",        future:"sal glip"},
+      {en:"listen",      present:"luister",     pron:"luis-ter",       past:"het geluister",     future:"sal luister"},
+      {en:"follow",      present:"volg",        pron:"volg",           past:"het gevolg",        future:"sal volg"},
+      {en:"shelter",     present:"skuil",       pron:"skuil",          past:"het geskuil",       future:"sal skuil"}
     ],
     adjectives:[
-      {en:"tall",af:"hoog"},{en:"cold",af:"koud"},{en:"steep",af:"steil"},
-      {en:"quiet",af:"stil"},{en:"beautiful",af:"pragtig"},
-      {en:"far",af:"ver"},{en:"deep",af:"diep"},{en:"rocky",af:"rotsagtig"},
-      {en:"misty",af:"mistig"},{en:"fresh",af:"vars"},
-      {en:"wild",af:"wild"},{en:"dark",af:"donker"},
-      {en:"narrow",af:"nou"},{en:"open",af:"oop"},
-      {en:"freezing",af:"yskoud"},{en:"magnificent",af:"manjifiek"},
-      {en:"green",af:"groen"},{en:"muddy",af:"modderig"}
+      {en:"tall",af:"hoog",pron:"hoog"},{en:"cold",af:"koud",pron:"koud"},{en:"steep",af:"steil",pron:"steil"},
+      {en:"quiet",af:"stil",pron:"stil"},{en:"beautiful",af:"pragtig",pron:"prag-tig"},
+      {en:"far",af:"ver",pron:"ver"},{en:"deep",af:"diep",pron:"diep"},{en:"rocky",af:"rotsagtig",pron:"rots-ag-tig"},
+      {en:"misty",af:"mistig",pron:"mis-tig"},{en:"fresh",af:"vars",pron:"vars"},
+      {en:"wild",af:"wild",pron:"wild"},{en:"dark",af:"donker",pron:"don-ker"},
+      {en:"narrow",af:"nou",pron:"nou"},{en:"open",af:"oop",pron:"oop"},
+      {en:"freezing",af:"yskoud",pron:"ys-koud"},{en:"magnificent",af:"manjifiek",pron:"man-ji-fiek"},
+      {en:"green",af:"groen",pron:"groen"},{en:"muddy",af:"modderig",pron:"mod-de-rig"}
     ],
     readings:[
       {
@@ -487,45 +488,45 @@ const UNITS = {
   sports: {
     name:"Sports", af:"Sport", icon:"⚽",
     nouns:[
-      {en:"ball",af:"bal"},{en:"team",af:"span"},{en:"goal",af:"doel"},
-      {en:"player",af:"speler"},{en:"referee",af:"skeidsregter"},
-      {en:"trophy",af:"trofee"},{en:"stadium",af:"stadion"},
-      {en:"field",af:"veld"},{en:"score",af:"telling"},{en:"whistle",af:"fluitjie"},
-      {en:"coach",af:"afrigter"},{en:"bench",af:"bank"},
-      {en:"match",af:"wedstryd"},{en:"championship",af:"kampioenskap"},
-      {en:"jersey",af:"trui"},{en:"net",af:"net"},
-      {en:"court",af:"baan"},{en:"gym",af:"gimnasium"},
-      {en:"medal",af:"medalje"},{en:"captain",af:"kaptein"},
-      {en:"pool",af:"swembad"},{en:"fans",af:"ondersteuners"},
-      {en:"league",af:"liga"},{en:"race",af:"wedrens"},
-      {en:"helmet",af:"helm"},{en:"gloves",af:"handskoene"}
+      {en:"ball",af:"bal",pron:"bal"},{en:"team",af:"span",pron:"span"},{en:"goal",af:"doel",pron:"doel"},
+      {en:"player",af:"speler",pron:"spe-ler"},{en:"referee",af:"skeidsregter",pron:"skeids-reg-ter"},
+      {en:"trophy",af:"trofee",pron:"tro-fee"},{en:"stadium",af:"stadion",pron:"sta-di-on"},
+      {en:"field",af:"veld",pron:"veld"},{en:"score",af:"telling",pron:"tel-ling"},{en:"whistle",af:"fluitjie",pron:"fluit-jie"},
+      {en:"coach",af:"afrigter",pron:"af-rig-ter"},{en:"bench",af:"bank",pron:"bank"},
+      {en:"match",af:"wedstryd",pron:"wed-stryd"},{en:"championship",af:"kampioenskap",pron:"kam-pi-oen-skap"},
+      {en:"jersey",af:"trui",pron:"trui"},{en:"net",af:"net",pron:"net"},
+      {en:"court",af:"baan",pron:"baan"},{en:"gym",af:"gimnasium",pron:"gim-na-si-um"},
+      {en:"medal",af:"medalje",pron:"me-dal-je"},{en:"captain",af:"kaptein",pron:"kap-tein"},
+      {en:"pool",af:"swembad",pron:"swem-bad"},{en:"fans",af:"ondersteuners",pron:"on-der-steu-ners"},
+      {en:"league",af:"liga",pron:"li-ga"},{en:"race",af:"wedrens",pron:"wed-rens"},
+      {en:"helmet",af:"helm",pron:"helm"},{en:"gloves",af:"handskoene",pron:"hand-skoe-ne"}
     ],
     verbs:[
-      {en:"run",     present:"hardloop",  past:"het hardgeloop",  future:"sal hardloop"},
-      {en:"kick",    present:"skop",      past:"het geskop",      future:"sal skop"},
-      {en:"throw",   present:"gooi",      past:"het gegooi",      future:"sal gooi"},
-      {en:"win",     present:"wen",       past:"het gewen",       future:"sal wen"},
-      {en:"lose",    present:"verloor",   past:"het verloor",     future:"sal verloor"},
-      {en:"train",   present:"oefen",     past:"het geoefen",     future:"sal oefen"},
-      {en:"score",   present:"aanteken",  past:"het aangeteken",  future:"sal aanteken"},
-      {en:"cheer",   present:"juig",      past:"het gejuig",      future:"sal juig"},
-      {en:"jump",    present:"spring",    past:"het gespring",    future:"sal spring"},
-      {en:"tackle",  present:"takel",     past:"het getakel",     future:"sal takel"},
-      {en:"catch",   present:"vang",      past:"het gevang",      future:"sal vang"},
-      {en:"pass",    present:"aangee",    past:"het aangegee",    future:"sal aangee"},
-      {en:"defend",  present:"verdedig",  past:"het verdedig",    future:"sal verdedig"},
-      {en:"attack",  present:"aanval",    past:"het aanval",      future:"sal aanval"},
-      {en:"compete", present:"meeding",   past:"het meegeding",   future:"sal meeding"}
+      {en:"run",     present:"hardloop",  pron:"hard-loop",    past:"het hardgeloop",  future:"sal hardloop"},
+      {en:"kick",    present:"skop",      pron:"skop",         past:"het geskop",      future:"sal skop"},
+      {en:"throw",   present:"gooi",      pron:"gooi",         past:"het gegooi",      future:"sal gooi"},
+      {en:"win",     present:"wen",       pron:"wen",          past:"het gewen",       future:"sal wen"},
+      {en:"lose",    present:"verloor",   pron:"ver-loor",     past:"het verloor",     future:"sal verloor"},
+      {en:"train",   present:"oefen",     pron:"oe-fen",       past:"het geoefen",     future:"sal oefen"},
+      {en:"score",   present:"aanteken",  pron:"aan-te-ken",   past:"het aangeteken",  future:"sal aanteken"},
+      {en:"cheer",   present:"juig",      pron:"juig",         past:"het gejuig",      future:"sal juig"},
+      {en:"jump",    present:"spring",    pron:"spring",       past:"het gespring",    future:"sal spring"},
+      {en:"tackle",  present:"takel",     pron:"ta-kel",       past:"het getakel",     future:"sal takel"},
+      {en:"catch",   present:"vang",      pron:"vang",         past:"het gevang",      future:"sal vang"},
+      {en:"pass",    present:"aangee",    pron:"aan-gee",      past:"het aangegee",    future:"sal aangee"},
+      {en:"defend",  present:"verdedig",  pron:"ver-de-dig",   past:"het verdedig",    future:"sal verdedig"},
+      {en:"attack",  present:"aanval",    pron:"aan-val",      past:"het aanval",      future:"sal aanval"},
+      {en:"compete", present:"meeding",   pron:"mee-ding",     past:"het meegeding",   future:"sal meeding"}
     ],
     adjectives:[
-      {en:"fast",af:"vinnig"},{en:"strong",af:"sterk"},{en:"tired",af:"moeg"},
-      {en:"exciting",af:"opwindend"},{en:"competitive",af:"kompeterend"},
-      {en:"fit",af:"fiks"},{en:"skilled",af:"vaardig"},{en:"brave",af:"dapper"},
-      {en:"agile",af:"rats"},{en:"powerful",af:"kragtig"},
-      {en:"focused",af:"gefokus"},{en:"determined",af:"vasberade"},
-      {en:"exhausted",af:"uitgeput"},{en:"athletic",af:"atleties"},
-      {en:"flexible",af:"buigsaam"},{en:"victorious",af:"oorwinnend"},
-      {en:"proud",af:"trots"},{en:"nervous",af:"senuweeagtig"}
+      {en:"fast",af:"vinnig",pron:"vin-nig"},{en:"strong",af:"sterk",pron:"sterk"},{en:"tired",af:"moeg",pron:"moeg"},
+      {en:"exciting",af:"opwindend",pron:"op-win-dend"},{en:"competitive",af:"kompeterend",pron:"kom-pe-te-rend"},
+      {en:"fit",af:"fiks",pron:"fiks"},{en:"skilled",af:"vaardig",pron:"vaar-dig"},{en:"brave",af:"dapper",pron:"dap-per"},
+      {en:"agile",af:"rats",pron:"rats"},{en:"powerful",af:"kragtig",pron:"krag-tig"},
+      {en:"focused",af:"gefokus",pron:"ge-fo-kus"},{en:"determined",af:"vasberade",pron:"vas-be-ra-de"},
+      {en:"exhausted",af:"uitgeput",pron:"uit-ge-put"},{en:"athletic",af:"atleties",pron:"at-le-ties"},
+      {en:"flexible",af:"buigsaam",pron:"buig-saam"},{en:"victorious",af:"oorwinnend",pron:"oor-win-nend"},
+      {en:"proud",af:"trots",pron:"trots"},{en:"nervous",af:"senuweeagtig",pron:"se-nu-wee-ag-tig"}
     ],
     readings:[
       {
@@ -545,47 +546,47 @@ const UNITS = {
   food: {
     name:"Food", af:"Kos", icon:"🍽️",
     nouns:[
-      {en:"bread",af:"brood"},{en:"meat",af:"vleis"},{en:"vegetable",af:"groente"},
-      {en:"fruit",af:"vrugte"},{en:"water",af:"water"},{en:"plate",af:"bord"},
-      {en:"fork",af:"vurk"},{en:"spoon",af:"lepel"},
-      {en:"cup",af:"koppie"},{en:"salt",af:"sout"},
-      {en:"chicken",af:"hoender"},{en:"fish",af:"vis"},
-      {en:"rice",af:"rys"},{en:"soup",af:"sop"},
-      {en:"cheese",af:"kaas"},{en:"egg",af:"eier"},
-      {en:"milk",af:"melk"},{en:"sugar",af:"suiker"},
-      {en:"garlic",af:"knoffel"},{en:"onion",af:"ui"},
-      {en:"potato",af:"aartappel"},{en:"tomato",af:"tamatie"},
-      {en:"kitchen",af:"kombuis"},{en:"recipe",af:"resep"},
-      {en:"dessert",af:"nagereg"},{en:"breakfast",af:"ontbyt"},
-      {en:"lunch",af:"middagete"},{en:"dinner",af:"aandete"},
-      {en:"knife",af:"mes"},{en:"oil",af:"olie"}
+      {en:"bread",af:"brood",pron:"brood"},{en:"meat",af:"vleis",pron:"vleis"},{en:"vegetable",af:"groente",pron:"groen-te"},
+      {en:"fruit",af:"vrugte",pron:"vrug-te"},{en:"water",af:"water",pron:"wa-ter"},{en:"plate",af:"bord",pron:"bord"},
+      {en:"fork",af:"vurk",pron:"vurk"},{en:"spoon",af:"lepel",pron:"le-pel"},
+      {en:"cup",af:"koppie",pron:"kop-pie"},{en:"salt",af:"sout",pron:"sout"},
+      {en:"chicken",af:"hoender",pron:"hoen-der"},{en:"fish",af:"vis",pron:"vis"},
+      {en:"rice",af:"rys",pron:"rys"},{en:"soup",af:"sop",pron:"sop"},
+      {en:"cheese",af:"kaas",pron:"kaas"},{en:"egg",af:"eier",pron:"ei-er"},
+      {en:"milk",af:"melk",pron:"melk"},{en:"sugar",af:"suiker",pron:"sui-ker"},
+      {en:"garlic",af:"knoffel",pron:"knof-fel"},{en:"onion",af:"ui",pron:"ui"},
+      {en:"potato",af:"aartappel",pron:"aar-tap-pel"},{en:"tomato",af:"tamatie",pron:"ta-ma-tie"},
+      {en:"kitchen",af:"kombuis",pron:"kom-buis"},{en:"recipe",af:"resep",pron:"re-sep"},
+      {en:"dessert",af:"nagereg",pron:"na-ge-reg"},{en:"breakfast",af:"ontbyt",pron:"ont-byt"},
+      {en:"lunch",af:"middagete",pron:"mid-dag-e-te"},{en:"dinner",af:"aandete",pron:"aan-de-te"},
+      {en:"knife",af:"mes",pron:"mes"},{en:"oil",af:"olie",pron:"o-lie"}
     ],
     verbs:[
-      {en:"eat",     present:"eet",      past:"het geëet",      future:"sal eet"},
-      {en:"drink",   present:"drink",    past:"het gedrink",    future:"sal drink"},
-      {en:"cook",    present:"kook",     past:"het gekook",     future:"sal kook"},
-      {en:"taste",   present:"proe",     past:"het geproe",     future:"sal proe"},
-      {en:"buy",     present:"koop",     past:"het gekoop",     future:"sal koop"},
-      {en:"share",   present:"deel",     past:"het gedeel",     future:"sal deel"},
-      {en:"cut",     present:"sny",      past:"het gesny",      future:"sal sny"},
-      {en:"serve",   present:"bedien",   past:"het bedien",     future:"sal bedien"},
-      {en:"bake",    present:"bak",      past:"het gebak",      future:"sal bak"},
-      {en:"fry",     present:"braai",    past:"het gebraai",    future:"sal braai"},
-      {en:"stir",    present:"roer",     past:"het geroer",     future:"sal roer"},
-      {en:"pour",    present:"gooi",     past:"het gegooi",     future:"sal gooi"},
-      {en:"mix",     present:"meng",     past:"het gemeng",     future:"sal meng"},
-      {en:"smell",   present:"ruik",     past:"het geruik",     future:"sal ruik"},
-      {en:"prepare", present:"voorberei",past:"het voorberei",  future:"sal voorberei"}
+      {en:"eat",     present:"eet",       pron:"eet",          past:"het geëet",      future:"sal eet"},
+      {en:"drink",   present:"drink",     pron:"drink",        past:"het gedrink",    future:"sal drink"},
+      {en:"cook",    present:"kook",      pron:"kook",         past:"het gekook",     future:"sal kook"},
+      {en:"taste",   present:"proe",      pron:"proe",         past:"het geproe",     future:"sal proe"},
+      {en:"buy",     present:"koop",      pron:"koop",         past:"het gekoop",     future:"sal koop"},
+      {en:"share",   present:"deel",      pron:"deel",         past:"het gedeel",     future:"sal deel"},
+      {en:"cut",     present:"sny",       pron:"sny",          past:"het gesny",      future:"sal sny"},
+      {en:"serve",   present:"bedien",    pron:"be-dien",      past:"het bedien",     future:"sal bedien"},
+      {en:"bake",    present:"bak",       pron:"bak",          past:"het gebak",      future:"sal bak"},
+      {en:"fry",     present:"braai",     pron:"braai",        past:"het gebraai",    future:"sal braai"},
+      {en:"stir",    present:"roer",      pron:"roer",         past:"het geroer",     future:"sal roer"},
+      {en:"pour",    present:"gooi",      pron:"gooi",         past:"het gegooi",     future:"sal gooi"},
+      {en:"mix",     present:"meng",      pron:"meng",         past:"het gemeng",     future:"sal meng"},
+      {en:"smell",   present:"ruik",      pron:"ruik",         past:"het geruik",     future:"sal ruik"},
+      {en:"prepare", present:"voorberei", pron:"voor-be-rei",  past:"het voorberei",  future:"sal voorberei"}
     ],
     adjectives:[
-      {en:"delicious",af:"heerlik"},{en:"sweet",af:"soet"},{en:"spicy",af:"pittig"},
-      {en:"fresh",af:"vars"},{en:"hungry",af:"honger"},
-      {en:"sour",af:"suur"},{en:"bitter",af:"bitter"},{en:"warm",af:"warm"},
-      {en:"salty",af:"souterig"},{en:"rich",af:"ryk"},
-      {en:"creamy",af:"romerig"},{en:"crunchy",af:"krakerig"},
-      {en:"tasty",af:"lekker"},{en:"healthy",af:"gesond"},
-      {en:"light",af:"lig"},{en:"full",af:"vol"},
-      {en:"ripe",af:"ryp"},{en:"raw",af:"rou"}
+      {en:"delicious",af:"heerlik",pron:"heer-lik"},{en:"sweet",af:"soet",pron:"soet"},{en:"spicy",af:"pittig",pron:"pit-tig"},
+      {en:"fresh",af:"vars",pron:"vars"},{en:"hungry",af:"honger",pron:"hon-ger"},
+      {en:"sour",af:"suur",pron:"suur"},{en:"bitter",af:"bitter",pron:"bit-ter"},{en:"warm",af:"warm",pron:"warm"},
+      {en:"salty",af:"souterig",pron:"sou-te-rig"},{en:"rich",af:"ryk",pron:"ryk"},
+      {en:"creamy",af:"romerig",pron:"ro-me-rig"},{en:"crunchy",af:"krakerig",pron:"kra-ke-rig"},
+      {en:"tasty",af:"lekker",pron:"lek-ker"},{en:"healthy",af:"gesond",pron:"ge-sond"},
+      {en:"light",af:"lig",pron:"lig"},{en:"full",af:"vol",pron:"vol"},
+      {en:"ripe",af:"ryp",pron:"ryp"},{en:"raw",af:"rou",pron:"rou"}
     ],
     readings:[
       {
@@ -605,45 +606,45 @@ const UNITS = {
   family: {
     name:"Family", af:"Familie", icon:"👨‍👩‍👧‍👦",
     nouns:[
-      {en:"mother",af:"ma"},{en:"father",af:"pa"},{en:"sister",af:"suster"},
-      {en:"brother",af:"broer"},{en:"grandmother",af:"ouma"},
-      {en:"grandfather",af:"oupa"},{en:"child",af:"kind"},
-      {en:"baby",af:"baba"},{en:"family",af:"familie"},{en:"home",af:"huis"},
-      {en:"aunt",af:"tannie"},{en:"uncle",af:"oom"},
-      {en:"cousin",af:"neef / niggie"},{en:"parents",af:"ouers"},
-      {en:"wedding",af:"troue"},{en:"birthday",af:"verjaarsdag"},
-      {en:"gift",af:"geskenk"},{en:"garden",af:"tuin"},
-      {en:"pet",af:"troeteldier"},{en:"dog",af:"hond"},
-      {en:"cat",af:"kat"},{en:"photo",af:"foto"},
-      {en:"memory",af:"herinnering"},{en:"prayer",af:"gebed"},
-      {en:"husband",af:"man"},{en:"wife",af:"vrou"}
+      {en:"mother",af:"ma",pron:"ma"},{en:"father",af:"pa",pron:"pa"},{en:"sister",af:"suster",pron:"sus-ter"},
+      {en:"brother",af:"broer",pron:"broer"},{en:"grandmother",af:"ouma",pron:"ou-ma"},
+      {en:"grandfather",af:"oupa",pron:"ou-pa"},{en:"child",af:"kind",pron:"kind"},
+      {en:"baby",af:"baba",pron:"ba-ba"},{en:"family",af:"familie",pron:"fa-mi-lie"},{en:"home",af:"huis",pron:"huis"},
+      {en:"aunt",af:"tannie",pron:"tan-nie"},{en:"uncle",af:"oom",pron:"oom"},
+      {en:"cousin",af:"neef / niggie",pron:"neef / nig-gie"},{en:"parents",af:"ouers",pron:"ou-ers"},
+      {en:"wedding",af:"troue",pron:"trou-e"},{en:"birthday",af:"verjaarsdag",pron:"ver-jaars-dag"},
+      {en:"gift",af:"geskenk",pron:"ge-skenk"},{en:"garden",af:"tuin",pron:"tuin"},
+      {en:"pet",af:"troeteldier",pron:"troe-tel-dier"},{en:"dog",af:"hond",pron:"hond"},
+      {en:"cat",af:"kat",pron:"kat"},{en:"photo",af:"foto",pron:"fo-to"},
+      {en:"memory",af:"herinnering",pron:"he-rin-ne-ring"},{en:"prayer",af:"gebed",pron:"ge-bed"},
+      {en:"husband",af:"man",pron:"man"},{en:"wife",af:"vrou",pron:"vrou"}
     ],
     verbs:[
-      {en:"love",      present:"liefhê",     past:"het liefgehad",   future:"sal liefhê"},
-      {en:"help",      present:"help",        past:"het gehelp",      future:"sal help"},
-      {en:"visit",     present:"besoek",      past:"het besoek",      future:"sal besoek"},
-      {en:"celebrate", present:"vier",        past:"het gevier",      future:"sal vier"},
-      {en:"talk",      present:"praat",       past:"het gepraat",     future:"sal praat"},
-      {en:"hug",       present:"druk",        past:"het gedruk",      future:"sal druk"},
-      {en:"laugh",     present:"lag",         past:"het gelag",       future:"sal lag"},
-      {en:"sing",      present:"sing",        past:"het gesing",      future:"sal sing"},
-      {en:"remember",  present:"onthou",      past:"het onthou",      future:"sal onthou"},
-      {en:"care",      present:"sorg",        past:"het gesorg",      future:"sal sorg"},
-      {en:"support",   present:"ondersteun",  past:"het ondersteun",  future:"sal ondersteun"},
-      {en:"teach",     present:"leer",        past:"het geleer",      future:"sal leer"},
-      {en:"forgive",   present:"vergewe",     past:"het vergewe",     future:"sal vergewe"},
-      {en:"play",      present:"speel",       past:"het gespeel",     future:"sal speel"},
-      {en:"pray",      present:"bid",         past:"het gebid",       future:"sal bid"}
+      {en:"love",      present:"liefhê",    pron:"lief-hê",       past:"het liefgehad",   future:"sal liefhê"},
+      {en:"help",      present:"help",       pron:"help",          past:"het gehelp",      future:"sal help"},
+      {en:"visit",     present:"besoek",     pron:"be-soek",       past:"het besoek",      future:"sal besoek"},
+      {en:"celebrate", present:"vier",       pron:"vier",          past:"het gevier",      future:"sal vier"},
+      {en:"talk",      present:"praat",      pron:"praat",         past:"het gepraat",     future:"sal praat"},
+      {en:"hug",       present:"druk",       pron:"druk",          past:"het gedruk",      future:"sal druk"},
+      {en:"laugh",     present:"lag",        pron:"lag",           past:"het gelag",       future:"sal lag"},
+      {en:"sing",      present:"sing",       pron:"sing",          past:"het gesing",      future:"sal sing"},
+      {en:"remember",  present:"onthou",     pron:"ont-hou",       past:"het onthou",      future:"sal onthou"},
+      {en:"care",      present:"sorg",       pron:"sorg",          past:"het gesorg",      future:"sal sorg"},
+      {en:"support",   present:"ondersteun", pron:"on-der-steun",  past:"het ondersteun",  future:"sal ondersteun"},
+      {en:"teach",     present:"leer",       pron:"leer",          past:"het geleer",      future:"sal leer"},
+      {en:"forgive",   present:"vergewe",    pron:"ver-ge-we",     past:"het vergewe",     future:"sal vergewe"},
+      {en:"play",      present:"speel",      pron:"speel",         past:"het gespeel",     future:"sal speel"},
+      {en:"pray",      present:"bid",        pron:"bid",           past:"het gebid",       future:"sal bid"}
     ],
     adjectives:[
-      {en:"kind",af:"vriendelik"},{en:"happy",af:"gelukkig"},{en:"loving",af:"liefdevol"},
-      {en:"old",af:"oud"},{en:"young",af:"jonk"},
-      {en:"big",af:"groot"},{en:"small",af:"klein"},{en:"close",af:"naby"},
-      {en:"proud",af:"trots"},{en:"grateful",af:"dankbaar"},
-      {en:"patient",af:"geduldig"},{en:"caring",af:"sorgsaam"},
-      {en:"funny",af:"snaaks"},{en:"gentle",af:"sag"},
-      {en:"wise",af:"wys"},{en:"warm",af:"warm"},
-      {en:"brave",af:"dapper"},{en:"faithful",af:"getrou"}
+      {en:"kind",af:"vriendelik",pron:"vrien-de-lik"},{en:"happy",af:"gelukkig",pron:"ge-luk-kig"},{en:"loving",af:"liefdevol",pron:"lief-de-vol"},
+      {en:"old",af:"oud",pron:"oud"},{en:"young",af:"jonk",pron:"jonk"},
+      {en:"big",af:"groot",pron:"groot"},{en:"small",af:"klein",pron:"klein"},{en:"close",af:"naby",pron:"na-by"},
+      {en:"proud",af:"trots",pron:"trots"},{en:"grateful",af:"dankbaar",pron:"dank-baar"},
+      {en:"patient",af:"geduldig",pron:"ge-dul-dig"},{en:"caring",af:"sorgsaam",pron:"sorg-saam"},
+      {en:"funny",af:"snaaks",pron:"snaaks"},{en:"gentle",af:"sag",pron:"sag"},
+      {en:"wise",af:"wys",pron:"wys"},{en:"warm",af:"warm",pron:"warm"},
+      {en:"brave",af:"dapper",pron:"dap-per"},{en:"faithful",af:"getrou",pron:"ge-trou"}
     ],
     readings:[
       {
@@ -663,45 +664,45 @@ const UNITS = {
   city: {
     name:"City", af:"Stad", icon:"🏙️",
     nouns:[
-      {en:"street",af:"straat"},{en:"building",af:"gebou"},{en:"car",af:"motor"},
-      {en:"bus",af:"bus"},{en:"shop",af:"winkel"},{en:"park",af:"park"},
-      {en:"school",af:"skool"},{en:"hospital",af:"hospitaal"},
-      {en:"traffic light",af:"verkeerslig"},{en:"market",af:"mark"},
-      {en:"road",af:"pad"},{en:"bridge",af:"brug"},
-      {en:"taxi",af:"taxi"},{en:"train",af:"trein"},
-      {en:"station",af:"stasie"},{en:"restaurant",af:"restaurant"},
-      {en:"hotel",af:"hotel"},{en:"library",af:"biblioteek"},
-      {en:"church",af:"kerk"},{en:"bank",af:"bank"},
-      {en:"airport",af:"lughawe"},{en:"apartment",af:"woonstel"},
-      {en:"museum",af:"museum"},{en:"fountain",af:"fontein"},
-      {en:"pavement",af:"sypaadjie"},{en:"traffic",af:"verkeer"}
+      {en:"street",af:"straat",pron:"straat"},{en:"building",af:"gebou",pron:"ge-bou"},{en:"car",af:"motor",pron:"mo-tor"},
+      {en:"bus",af:"bus",pron:"bus"},{en:"shop",af:"winkel",pron:"win-kel"},{en:"park",af:"park",pron:"park"},
+      {en:"school",af:"skool",pron:"skool"},{en:"hospital",af:"hospitaal",pron:"hos-pi-taal"},
+      {en:"traffic light",af:"verkeerslig",pron:"ver-keers-lig"},{en:"market",af:"mark",pron:"mark"},
+      {en:"road",af:"pad",pron:"pad"},{en:"bridge",af:"brug",pron:"brug"},
+      {en:"taxi",af:"taxi",pron:"tak-si"},{en:"train",af:"trein",pron:"trein"},
+      {en:"station",af:"stasie",pron:"sta-sie"},{en:"restaurant",af:"restaurant",pron:"res-tau-rant"},
+      {en:"hotel",af:"hotel",pron:"ho-tel"},{en:"library",af:"biblioteek",pron:"bib-li-o-teek"},
+      {en:"church",af:"kerk",pron:"kerk"},{en:"bank",af:"bank",pron:"bank"},
+      {en:"airport",af:"lughawe",pron:"lug-ha-we"},{en:"apartment",af:"woonstel",pron:"woon-stel"},
+      {en:"museum",af:"museum",pron:"mu-se-um"},{en:"fountain",af:"fontein",pron:"fon-tein"},
+      {en:"pavement",af:"sypaadjie",pron:"sy-paad-jie"},{en:"traffic",af:"verkeer",pron:"ver-keer"}
     ],
     verbs:[
-      {en:"drive",   present:"ry",        past:"het gery",        future:"sal ry"},
-      {en:"walk",    present:"stap",      past:"het gestap",      future:"sal stap"},
-      {en:"buy",     present:"koop",      past:"het gekoop",      future:"sal koop"},
-      {en:"work",    present:"werk",      past:"het gewerk",      future:"sal werk"},
-      {en:"travel",  present:"reis",      past:"het gereis",      future:"sal reis"},
-      {en:"park",    present:"parkeer",   past:"het geparkeer",   future:"sal parkeer"},
-      {en:"meet",    present:"ontmoet",   past:"het ontmoet",     future:"sal ontmoet"},
-      {en:"live",    present:"woon",      past:"het gewoon",      future:"sal woon"},
-      {en:"cross",   present:"oorsteek",  past:"het oorgesteek",  future:"sal oorsteek"},
-      {en:"wait",    present:"wag",       past:"het gewag",       future:"sal wag"},
-      {en:"rush",    present:"jaag",      past:"het gejaag",      future:"sal jaag"},
-      {en:"explore", present:"verken",    past:"het verken",      future:"sal verken"},
-      {en:"visit",   present:"besoek",    past:"het besoek",      future:"sal besoek"},
-      {en:"commute", present:"pendel",    past:"het gependel",    future:"sal pendel"},
-      {en:"build",   present:"bou",       past:"het gebou",       future:"sal bou"}
+      {en:"drive",   present:"ry",        pron:"ry",           past:"het gery",        future:"sal ry"},
+      {en:"walk",    present:"stap",      pron:"stap",         past:"het gestap",      future:"sal stap"},
+      {en:"buy",     present:"koop",      pron:"koop",         past:"het gekoop",      future:"sal koop"},
+      {en:"work",    present:"werk",      pron:"werk",         past:"het gewerk",      future:"sal werk"},
+      {en:"travel",  present:"reis",      pron:"reis",         past:"het gereis",      future:"sal reis"},
+      {en:"park",    present:"parkeer",   pron:"par-keer",     past:"het geparkeer",   future:"sal parkeer"},
+      {en:"meet",    present:"ontmoet",   pron:"ont-moet",     past:"het ontmoet",     future:"sal ontmoet"},
+      {en:"live",    present:"woon",      pron:"woon",         past:"het gewoon",      future:"sal woon"},
+      {en:"cross",   present:"oorsteek",  pron:"oor-steek",    past:"het oorgesteek",  future:"sal oorsteek"},
+      {en:"wait",    present:"wag",       pron:"wag",          past:"het gewag",       future:"sal wag"},
+      {en:"rush",    present:"jaag",      pron:"jaag",         past:"het gejaag",      future:"sal jaag"},
+      {en:"explore", present:"verken",    pron:"ver-ken",      past:"het verken",      future:"sal verken"},
+      {en:"visit",   present:"besoek",    pron:"be-soek",      past:"het besoek",      future:"sal besoek"},
+      {en:"commute", present:"pendel",    pron:"pen-del",      past:"het gependel",    future:"sal pendel"},
+      {en:"build",   present:"bou",       pron:"bou",          past:"het gebou",       future:"sal bou"}
     ],
     adjectives:[
-      {en:"busy",af:"besig"},{en:"loud",af:"lawaaierig"},{en:"modern",af:"modern"},
-      {en:"crowded",af:"stampvol"},{en:"clean",af:"skoon"},
-      {en:"big",af:"groot"},{en:"far",af:"ver"},{en:"safe",af:"veilig"},
-      {en:"historic",af:"histories"},{en:"expensive",af:"duur"},
-      {en:"cheap",af:"goedkoop"},{en:"vibrant",af:"lewendig"},
-      {en:"quiet",af:"stil"},{en:"peaceful",af:"vredig"},
-      {en:"polluted",af:"besoedeld"},{en:"developed",af:"ontwikkeld"},
-      {en:"narrow",af:"nou"},{en:"wide",af:"wyd"}
+      {en:"busy",af:"besig",pron:"be-sig"},{en:"loud",af:"lawaaierig",pron:"la-waai-e-rig"},{en:"modern",af:"modern",pron:"mo-dern"},
+      {en:"crowded",af:"stampvol",pron:"stamp-vol"},{en:"clean",af:"skoon",pron:"skoon"},
+      {en:"big",af:"groot",pron:"groot"},{en:"far",af:"ver",pron:"ver"},{en:"safe",af:"veilig",pron:"vei-lig"},
+      {en:"historic",af:"histories",pron:"his-to-ries"},{en:"expensive",af:"duur",pron:"duur"},
+      {en:"cheap",af:"goedkoop",pron:"goed-koop"},{en:"vibrant",af:"lewendig",pron:"le-wen-dig"},
+      {en:"quiet",af:"stil",pron:"stil"},{en:"peaceful",af:"vredig",pron:"vre-dig"},
+      {en:"polluted",af:"besoedeld",pron:"be-soe-deld"},{en:"developed",af:"ontwikkeld",pron:"ont-wik-keld"},
+      {en:"narrow",af:"nou",pron:"nou"},{en:"wide",af:"wyd",pron:"wyd"}
     ],
     readings:[
       {
@@ -787,9 +788,9 @@ function startFlashcards() {
   if (!S.tense) return;
   const u = UNITS[S.unit];
   let cards = [];
-  u.nouns.forEach(n => cards.push({type:'noun', en:n.en, af:n.af, tense:null}));
-  u.adjectives.forEach(a => cards.push({type:'adjective', en:a.en, af:a.af, tense:null}));
-  u.verbs.forEach(v => cards.push({type:'verb', en:v.en, af:v[S.tense], tense:S.tense}));
+  u.nouns.forEach(n => cards.push({type:'noun', en:n.en, af:n.af, pron:n.pron||'', tense:null}));
+  u.adjectives.forEach(a => cards.push({type:'adjective', en:a.en, af:a.af, pron:a.pron||'', tense:null}));
+  u.verbs.forEach(v => cards.push({type:'verb', en:v.en, af:v[S.tense], pron:v.pron||'', tense:S.tense}));
   S.cards = shuffle(cards); S.cardIdx = 0; S.flipped = false;
   document.getElementById('fc-title').textContent = `${u.icon} ${u.name} — ${cap(S.tense)} Tense`;
   renderCard();
@@ -802,6 +803,7 @@ function renderCard() {
   document.getElementById('flashcard').classList.remove('flipped');
   document.getElementById('fc-en').textContent = c.en;
   document.getElementById('fc-af').textContent = c.af;
+  document.getElementById('fc-pron').textContent = c.pron ? c.pron : '';
   document.getElementById('fc-type-front').textContent = c.type;
   document.getElementById('fc-type-back').textContent = c.type;
   const pill = document.getElementById('fc-tense-pill');
@@ -990,18 +992,20 @@ function showVocab() {
   const u = UNITS[S.unit];
   document.getElementById('vocab-title').textContent = `${u.icon} ${u.name} — Vocab List`;
 
+  const pron = w => w.pron ? `<br><span style="font-size:.78rem;color:#999;font-style:italic">${w.pron}</span>` : '';
+
   const nounsRows = u.nouns.map(n=>
-    `<tr><td>${n.en}</td><td><strong>${n.af}</strong></td><td><span class="badge badge-noun">Noun</span></td></tr>`
+    `<tr><td>${n.en}</td><td><strong>${n.af}</strong>${pron(n)}</td><td><span class="badge badge-noun">Noun</span></td></tr>`
   ).join('');
 
   const adjRows = u.adjectives.map(a=>
-    `<tr><td>${a.en}</td><td><strong>${a.af}</strong></td><td><span class="badge badge-adj">Adjective</span></td></tr>`
+    `<tr><td>${a.en}</td><td><strong>${a.af}</strong>${pron(a)}</td><td><span class="badge badge-adj">Adjective</span></td></tr>`
   ).join('');
 
   const verbRows = u.verbs.map(v=>
     `<tr>
       <td><span class="badge badge-verb">Verb</span>&nbsp;${v.en}</td>
-      <td>${v.present}</td>
+      <td>${v.present}${v.pron?`<br><span style="font-size:.78rem;color:#999;font-style:italic">${v.pron}</span>`:''}</td>
       <td>${v.past}</td>
       <td>${v.future}</td>
     </tr>`

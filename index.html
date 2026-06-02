@@ -204,9 +204,10 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
   display: inline-block; padding: 2px 8px; border-radius: 4px;
   font-size: .72rem; font-weight: 700; text-transform: uppercase;
 }
-.badge-noun { background: #e8f5ef; color: var(--green); }
-.badge-verb { background: #fff0e0; color: #b36200; }
-.badge-adj  { background: #e8eeff; color: var(--blue); }
+.badge-noun   { background: #e8f5ef; color: var(--green); }
+.badge-verb   { background: #fff0e0; color: #b36200; }
+.badge-adj    { background: #e8eeff; color: var(--blue); }
+.badge-phrase { background: #fef0f0; color: var(--red); }
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:520px){
@@ -425,6 +426,15 @@ const UNITS = {
         q:"What did they do after building a sandcastle?",
         opts:["They floated in the sea","They went home","They ate lunch","They surfed"],correct:0
       }
+    ],
+    phrases:[
+      {en:"Let's go to the beach!",         af:"Kom ons gaan strand toe!",         pron:"kom ons gaan strand toe"},
+      {en:"The water is warm today",         af:"Die water is warm vandag",         pron:"die wa-ter is warm van-dag"},
+      {en:"I want to swim",                  af:"Ek wil swem",                      pron:"ek wil swem"},
+      {en:"Be careful of the waves",         af:"Pasop vir die golwe",              pron:"pa-sop vir die gol-we"},
+      {en:"I love the sea",                  af:"Ek is lief vir die see",           pron:"ek is lief vir die see"},
+      {en:"It is a beautiful day",           af:"Dis 'n pragtige dag",              pron:"dis 'n prag-ti-ge dag"},
+      {en:"Let's build a sandcastle",        af:"Kom ons bou 'n sandkasteel",       pron:"kom ons bou 'n sand-kas-teel"}
     ]
   },
   mountain: {
@@ -483,6 +493,15 @@ const UNITS = {
         q:"Where did they shelter from the fog?",
         opts:["In the cave","In a tent","Under a tree","On the summit"],correct:0
       }
+    ],
+    phrases:[
+      {en:"Let's go hiking",              af:"Kom ons gaan stap",           pron:"kom ons gaan stap"},
+      {en:"The view is beautiful",        af:"Die uitsig is pragtig",       pron:"die uit-sig is prag-tig"},
+      {en:"I am tired",                   af:"Ek is moeg",                  pron:"ek is moeg"},
+      {en:"How far is the top?",          af:"Hoe ver is die top?",         pron:"hoe ver is die top"},
+      {en:"Be careful, it is steep",      af:"Pasop, dit is steil",         pron:"pa-sop, dit is steil"},
+      {en:"It is cold up here",           af:"Dit is koud hierbo",          pron:"dit is koud hier-bo"},
+      {en:"What a great hike!",           af:"Wat 'n wonderlike staptog!",  pron:"wat 'n won-der-li-ke stap-tog"}
     ]
   },
   sports: {
@@ -541,6 +560,15 @@ const UNITS = {
         q:"What did the fans do when the team won?",
         opts:["They cheered","They left","They booed","They cried"],correct:0
       }
+    ],
+    phrases:[
+      {en:"Let's play!",             af:"Kom ons speel!",         pron:"kom ons speel"},
+      {en:"Good game!",              af:"Goeie spel!",            pron:"goei-e spel"},
+      {en:"Well done!",              af:"Goed gedaan!",           pron:"goed ge-daan"},
+      {en:"Our team won",            af:"Ons span het gewen",     pron:"ons span het ge-wen"},
+      {en:"Keep going!",             af:"Hou aan!",               pron:"hou aan"},
+      {en:"That was exciting!",      af:"Dit was opwindend!",     pron:"dit was op-win-dend"},
+      {en:"Score a goal!",           af:"Skiet 'n doel!",         pron:"skiet 'n doel"}
     ]
   },
   food: {
@@ -601,6 +629,15 @@ const UNITS = {
         q:"What did the omelette taste like?",
         opts:["Creamy","Spicy","Bitter","Salty"],correct:0
       }
+    ],
+    phrases:[
+      {en:"I am hungry",                     af:"Ek is honger",                    pron:"ek is hon-ger"},
+      {en:"It smells delicious",             af:"Dit ruik heerlik",                pron:"dit ruik heer-lik"},
+      {en:"Enjoy your meal!",                af:"Geniet jou ete!",                 pron:"ge-niet jou e-te"},
+      {en:"This food is delicious",          af:"Hierdie kos is heerlik",          pron:"hier-die kos is heer-lik"},
+      {en:"What would you like to eat?",     af:"Wat wil jy eet?",                 pron:"wat wil jy eet"},
+      {en:"I would like...",                 af:"Ek wil graag hê...",              pron:"ek wil graag hê"},
+      {en:"Can I have the bill please?",     af:"Die rekening asseblief",          pron:"die re-ke-ning as-se-blief"}
     ]
   },
   family: {
@@ -659,6 +696,15 @@ const UNITS = {
         q:"What did dad teach?",
         opts:["How to pray","How to cook","How to drive","How to sing"],correct:0
       }
+    ],
+    phrases:[
+      {en:"I love you",                    af:"Ek is lief vir jou",               pron:"ek is lief vir jou"},
+      {en:"Happy birthday!",               af:"Veels geluk!",                     pron:"veels ge-luk"},
+      {en:"Come visit us!",                af:"Kom besoek ons!",                  pron:"kom be-soek ons"},
+      {en:"How is your family?",           af:"Hoe gaan dit met jou familie?",    pron:"hoe gaan dit met jou fa-mi-lie"},
+      {en:"God bless you",                 af:"God seën jou",                     pron:"god seën jou"},
+      {en:"I miss you",                    af:"Ek mis jou",                       pron:"ek mis jou"},
+      {en:"We are stronger together",      af:"Ons is sterker saam",              pron:"ons is ster-ker saam"}
     ]
   },
   city: {
@@ -717,6 +763,93 @@ const UNITS = {
         q:"How does the person commute to work?",
         opts:["By train","By car","By bus","On foot"],correct:0
       }
+    ],
+    phrases:[
+      {en:"Where is the station?",       af:"Waar is die stasie?",         pron:"waar is die sta-sie"},
+      {en:"How do I get to...?",         af:"Hoe kom ek by...?",           pron:"hoe kom ek by"},
+      {en:"It is far from here",         af:"Dit is ver van hier",         pron:"dit is ver van hier"},
+      {en:"Turn left",                   af:"Draai links",                 pron:"draai links"},
+      {en:"Turn right",                  af:"Draai regs",                  pron:"draai regs"},
+      {en:"I am lost",                   af:"Ek is verdwaal",              pron:"ek is ver-dwaal"},
+      {en:"What time is it?",            af:"Hoe laat is dit?",            pron:"hoe laat is dit"}
+    ]
+  },
+  greetings: {
+    name:"Greetings", af:"Groete", icon:"👋",
+    nouns:[
+      {en:"name",af:"naam",pron:"naam"},{en:"friend",af:"vriend",pron:"vriend"},{en:"morning",af:"oggend",pron:"og-gend"},
+      {en:"afternoon",af:"middag",pron:"mid-dag"},{en:"evening",af:"aand",pron:"aand"},{en:"night",af:"nag",pron:"nag"},
+      {en:"day",af:"dag",pron:"dag"},{en:"week",af:"week",pron:"week"},
+      {en:"weather",af:"weer",pron:"weer"},{en:"conversation",af:"gesprek",pron:"ge-sprek"},
+      {en:"question",af:"vraag",pron:"vraag"},{en:"answer",af:"antwoord",pron:"ant-woord"},
+      {en:"person",af:"persoon",pron:"per-soon"},{en:"language",af:"taal",pron:"taal"},
+      {en:"word",af:"woord",pron:"woord"},{en:"greeting",af:"groet",pron:"groet"},
+      {en:"please",af:"asseblief",pron:"as-se-blief"},{en:"thank you",af:"dankie",pron:"dan-kie"},
+      {en:"goodbye",af:"totsiens",pron:"tot-siens"},{en:"year",af:"jaar",pron:"jaar"}
+    ],
+    verbs:[
+      {en:"greet",      present:"groet",       pron:"groet",         past:"het gegroet",       future:"sal groet"},
+      {en:"meet",       present:"ontmoet",     pron:"ont-moet",      past:"het ontmoet",       future:"sal ontmoet"},
+      {en:"ask",        present:"vra",         pron:"vra",           past:"het gevra",         future:"sal vra"},
+      {en:"answer",     present:"antwoord",    pron:"ant-woord",     past:"het geantwoord",    future:"sal antwoord"},
+      {en:"understand", present:"verstaan",    pron:"ver-staan",     past:"het verstaan",      future:"sal verstaan"},
+      {en:"speak",      present:"praat",       pron:"praat",         past:"het gepraat",       future:"sal praat"},
+      {en:"know",       present:"ken",         pron:"ken",           past:"het geken",         future:"sal ken"},
+      {en:"say",        present:"sê",          pron:"sê",            past:"het gesê",          future:"sal sê"},
+      {en:"introduce",  present:"stel voor",   pron:"stel voor",     past:"het voorgestel",    future:"sal voorstel"},
+      {en:"listen",     present:"luister",     pron:"luis-ter",      past:"het geluister",     future:"sal luister"},
+      {en:"call",       present:"noem",        pron:"noem",          past:"het genoem",        future:"sal noem"},
+      {en:"come from",  present:"kom van",     pron:"kom van",       past:"het van gekom",     future:"sal van kom"}
+    ],
+    adjectives:[
+      {en:"fine",af:"goed",pron:"goed"},{en:"glad",af:"bly",pron:"bly"},{en:"sure",af:"seker",pron:"se-ker"},
+      {en:"new",af:"nuut",pron:"nuut"},{en:"ready",af:"gereed",pron:"ge-reed"},
+      {en:"well",af:"gesond",pron:"ge-sond"},{en:"busy",af:"besig",pron:"be-sig"},
+      {en:"friendly",af:"vriendelik",pron:"vrien-de-lik"},{en:"happy",af:"gelukkig",pron:"ge-luk-kig"},
+      {en:"tired",af:"moeg",pron:"moeg"},{en:"nice",af:"lekker",pron:"lek-ker"},
+      {en:"interesting",af:"interessant",pron:"in-te-res-sant"},{en:"polite",af:"beleefd",pron:"be-leefd"},
+      {en:"quiet",af:"stil",pron:"stil"}
+    ],
+    readings:[
+      {
+        af:"Hallo! Hoe gaan dit? Dit gaan goed, dankie. Wat is jou naam? My naam is Jan. Lekker om jou te ontmoet!",
+        en:"Hello! How are you? I am fine, thank you. What is your name? My name is Jan. Nice to meet you!",
+        q:"How does the person say they are feeling?",
+        opts:["Fine, thank you","Tired and busy","Not so good","They don't say"],correct:0
+      },
+      {
+        af:"Goeie môre! Vandag is dit sonnig en warm. Ek is bly om hier te wees. Praat jy Afrikaans? Ja, 'n bietjie. Tot later!",
+        en:"Good morning! Today it is sunny and warm. I am glad to be here. Do you speak Afrikaans? Yes, a little. See you later!",
+        q:"What is the weather like in the passage?",
+        opts:["Sunny and warm","Cold and rainy","Windy and cloudy","Dark and cold"],correct:0
+      }
+    ],
+    phrases:[
+      {en:"Hello",                       af:"Hallo",                            pron:"hal-lo"},
+      {en:"Good morning",                af:"Goeie môre",                       pron:"goei-e mô-re"},
+      {en:"Good afternoon",              af:"Goeie middag",                     pron:"goei-e mid-dag"},
+      {en:"Good evening",                af:"Goeie naand",                      pron:"goei-e naand"},
+      {en:"Good night",                  af:"Goeie nag",                        pron:"goei-e nag"},
+      {en:"How are you?",                af:"Hoe gaan dit?",                    pron:"hoe gaan dit"},
+      {en:"I am fine, thank you",        af:"Dit gaan goed, dankie",            pron:"dit gaan goed, dan-kie"},
+      {en:"And you?",                    af:"En jy?",                           pron:"en jy"},
+      {en:"What is your name?",          af:"Wat is jou naam?",                 pron:"wat is jou naam"},
+      {en:"My name is...",               af:"My naam is...",                    pron:"my naam is"},
+      {en:"Nice to meet you",            af:"Lekker om jou te ontmoet",         pron:"lek-ker om jou te ont-moet"},
+      {en:"Please",                      af:"Asseblief",                        pron:"as-se-blief"},
+      {en:"Thank you",                   af:"Dankie",                           pron:"dan-kie"},
+      {en:"You're welcome",              af:"Plesier",                          pron:"ple-sier"},
+      {en:"Excuse me",                   af:"Verskoon my",                      pron:"ver-skoon my"},
+      {en:"Sorry",                       af:"Jammer",                           pron:"jam-mer"},
+      {en:"Yes",                         af:"Ja",                               pron:"ja"},
+      {en:"No",                          af:"Nee",                              pron:"nee"},
+      {en:"I don't understand",          af:"Ek verstaan nie",                  pron:"ek ver-staan nie"},
+      {en:"Do you speak English?",       af:"Praat jy Engels?",                 pron:"praat jy Eng-els"},
+      {en:"Goodbye",                     af:"Totsiens",                         pron:"tot-siens"},
+      {en:"See you later",               af:"Tot later",                        pron:"tot la-ter"},
+      {en:"See you tomorrow",            af:"Tot môre",                         pron:"tot mô-re"},
+      {en:"Where are you from?",         af:"Waar kom jy vandaan?",             pron:"waar kom jy van-daan"},
+      {en:"How old are you?",            af:"Hoe oud is jy?",                   pron:"hoe oud is jy"}
     ]
   }
 };
@@ -791,6 +924,7 @@ function startFlashcards() {
   u.nouns.forEach(n => cards.push({type:'noun', en:n.en, af:n.af, pron:n.pron||'', tense:null}));
   u.adjectives.forEach(a => cards.push({type:'adjective', en:a.en, af:a.af, pron:a.pron||'', tense:null}));
   u.verbs.forEach(v => cards.push({type:'verb', en:v.en, af:v[S.tense], pron:v.pron||'', tense:S.tense}));
+  if (u.phrases) u.phrases.forEach(p => cards.push({type:'phrase', en:p.en, af:p.af, pron:p.pron||'', tense:null}));
   S.cards = shuffle(cards); S.cardIdx = 0; S.flipped = false;
   document.getElementById('fc-title').textContent = `${u.icon} ${u.name} — ${cap(S.tense)} Tense`;
   renderCard();
@@ -801,8 +935,11 @@ function renderCard() {
   const c = S.cards[S.cardIdx];
   S.flipped = false;
   document.getElementById('flashcard').classList.remove('flipped');
+  const isPhrase = c.type === 'phrase';
   document.getElementById('fc-en').textContent = c.en;
+  document.getElementById('fc-en').style.fontSize = isPhrase ? '1.4rem' : '';
   document.getElementById('fc-af').textContent = c.af;
+  document.getElementById('fc-af').style.fontSize = isPhrase ? '1.4rem' : '';
   document.getElementById('fc-pron').textContent = c.pron ? c.pron : '';
   document.getElementById('fc-type-front').textContent = c.type;
   document.getElementById('fc-type-back').textContent = c.type;
@@ -833,10 +970,23 @@ document.addEventListener('keydown', e => {
 function buildQuestions(unitKey) {
   const u = UNITS[unitKey];
   const qs = [];
-  const pool = {af:[], en:[]};
+  const pool = {af:[], en:[], paf:[], pen:[]};
   Object.values(UNITS).forEach(x=>{
     [...x.nouns,...x.adjectives].forEach(w=>{pool.af.push(w.af);pool.en.push(w.en);});
+    (x.phrases||[]).forEach(p=>{pool.paf.push(p.af);pool.pen.push(p.en);});
   });
+
+  // MC Phrases (en→af and af→en)
+  if (u.phrases) {
+    u.phrases.forEach(p=>{
+      const opts1 = shuffle([p.af,...distract(p.af,pool.paf,3)]);
+      qs.push({kind:'mc',badge:'Phrase: EN → AF',prompt:'Translate this phrase to Afrikaans:',
+        word:p.en,opts:opts1,correct:p.af,expl:`"${p.en}" = "${p.af}"`});
+      const opts2 = shuffle([p.en,...distract(p.en,pool.pen,3)]);
+      qs.push({kind:'mc',badge:'Phrase: AF → EN',prompt:'What does this Afrikaans phrase mean?',
+        word:p.af,opts:opts2,correct:p.en,expl:`"${p.af}" = "${p.en}"`});
+    });
+  }
 
   // MC English→Afrikaans (nouns + adjectives)
   [...u.nouns,...u.adjectives].forEach(w=>{
@@ -1033,6 +1183,14 @@ function showVocab() {
         <tbody>${verbRows}</tbody>
       </table>
     </div>
+    ${u.phrases && u.phrases.length ? `
+    <div class="vocab-section">
+      <h3>Phrases (Frases)</h3>
+      <table class="vocab-table">
+        <thead><tr><th>English</th><th>Afrikaans</th></tr></thead>
+        <tbody>${u.phrases.map(p=>`<tr><td>${p.en}</td><td><strong>${p.af}</strong>${pron(p)}</td></tr>`).join('')}</tbody>
+      </table>
+    </div>` : ''}
   `;
   show('vocab');
 }

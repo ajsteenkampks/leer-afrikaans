@@ -398,8 +398,8 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
 <!-- ══════════════════ MAIN MENU ══════════════════ -->
 <div id="s-menu" class="screen active">
   <div class="section-label" style="margin-top:16px">
-    <h2>Wat wil jy doen?</h2>
-    <p>What would you like to do?</p>
+    <h2>What would you like to do?</h2>
+    <p>Choose a study mode below</p>
   </div>
   <div class="menu-grid">
     <div class="menu-card" onclick="goUnitSelect('flashcards')">
@@ -444,17 +444,17 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
     <div class="tense-btn" data-tense="present" onclick="pickTense(this)">
       <div style="font-size:1.4rem;margin-bottom:5px">🕐</div>
       <strong>Present</strong>
-      <div style="font-size:.78rem;margin-top:4px;opacity:.7">ek swem</div>
+      <div style="font-size:.78rem;margin-top:4px;opacity:.7" id="tense-eg-present">I swim</div>
     </div>
     <div class="tense-btn" data-tense="past" onclick="pickTense(this)">
       <div style="font-size:1.4rem;margin-bottom:5px">📅</div>
       <strong>Past</strong>
-      <div style="font-size:.78rem;margin-top:4px;opacity:.7">ek het geswem</div>
+      <div style="font-size:.78rem;margin-top:4px;opacity:.7" id="tense-eg-past">I swam</div>
     </div>
     <div class="tense-btn" data-tense="future" onclick="pickTense(this)">
       <div style="font-size:1.4rem;margin-bottom:5px">🔮</div>
       <strong>Future</strong>
-      <div style="font-size:.78rem;margin-top:4px;opacity:.7">ek sal swem</div>
+      <div style="font-size:.78rem;margin-top:4px;opacity:.7" id="tense-eg-future">I will swim</div>
     </div>
   </div>
   <div style="margin-top:22px;text-align:right">
@@ -2132,6 +2132,16 @@ function confirmUnit() {
     S.tense = null;
     document.querySelectorAll('.tense-btn').forEach(b=>b.classList.remove('selected'));
     document.getElementById('tense-confirm').style.display = 'none';
+    // Update tense example labels to match current language
+    if (S.lang === 'ja') {
+      document.getElementById('tense-eg-present').textContent = 'tabemasu (食べます)';
+      document.getElementById('tense-eg-past').textContent    = 'tabemashita (食べました)';
+      document.getElementById('tense-eg-future').textContent  = 'tabetai desu (食べたい)';
+    } else {
+      document.getElementById('tense-eg-present').textContent = 'I swim';
+      document.getElementById('tense-eg-past').textContent    = 'I swam';
+      document.getElementById('tense-eg-future').textContent  = 'I will swim';
+    }
     show('tense');
   } else if (S.mode==='quiz') {
     startQuiz();
@@ -2461,20 +2471,20 @@ function showVocab() {
   } else {
     // Afrikaans layout (existing)
     const pron = w => prStr(w.pron);
-    html += `<div class="vocab-section"><h3>Nouns (Naamwoorde)</h3>
+    html += `<div class="vocab-section"><h3>Nouns</h3>
       <table class="vocab-table"><thead><tr><th>English</th><th>Afrikaans</th><th>Type</th></tr></thead>
       <tbody>${u.nouns.map(n=>`<tr><td>${n.en}</td><td><strong>${n.af}</strong>${pron(n)}</td><td><span class="badge badge-noun">Noun</span></td></tr>`).join('')}</tbody></table></div>`;
-    html += `<div class="vocab-section"><h3>Adjectives (Byvoeglike Naamwoorde)</h3>
+    html += `<div class="vocab-section"><h3>Adjectives</h3>
       <table class="vocab-table"><thead><tr><th>English</th><th>Afrikaans</th><th>Type</th></tr></thead>
       <tbody>${u.adjectives.map(a=>`<tr><td>${a.en}</td><td><strong>${a.af}</strong>${pron(a)}</td><td><span class="badge badge-adj">Adjective</span></td></tr>`).join('')}</tbody></table></div>`;
-    html += `<div class="vocab-section"><h3>Verbs (Werkwoorde) — All Tenses</h3>
+    html += `<div class="vocab-section"><h3>Verbs — All Tenses</h3>
       <table class="vocab-table"><thead><tr><th>English</th><th>Present</th><th>Past</th><th>Future</th></tr></thead>
       <tbody>${u.verbs.map(v=>`<tr>
         <td><span class="badge badge-verb">Verb</span>&nbsp;${v.en}</td>
         <td>${v.present}${v.pron?`<br><span style="font-size:.78rem;color:#999;font-style:italic">${v.pron}</span>`:''}</td>
         <td>${v.past}</td><td>${v.future}</td></tr>`).join('')}</tbody></table></div>`;
     if (u.phrases && u.phrases.length) {
-      html += `<div class="vocab-section"><h3>Phrases (Frases)</h3>
+      html += `<div class="vocab-section"><h3>Phrases</h3>
         <table class="vocab-table"><thead><tr><th>English</th><th>Afrikaans</th></tr></thead>
         <tbody>${u.phrases.map(p=>`<tr><td>${p.en}</td><td><strong>${p.af}</strong>${prStr(p.pron)}</td></tr>`).join('')}</tbody></table></div>`;
     }

@@ -592,7 +592,11 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
 
 <!-- ══════════════════ MAIN MENU ══════════════════ -->
 <div id="s-menu" class="screen active">
-  <div class="section-label" style="margin-top:16px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+    <button class="back-btn" onclick="backToLanguages()">← Languages</button>
+    <div></div>
+  </div>
+  <div class="section-label" style="margin-top:8px">
     <h2>What would you like to do?</h2>
     <p>Choose a study mode below</p>
   </div>
@@ -2265,6 +2269,15 @@ function confirmWriting() {
   if (!S.writing) return;
   UNITS = UNITS_JA; EX = null;
   show('menu');
+}
+
+function backToLanguages() {
+  S.lang = null; S.writing = null; UNITS = null; EX = null;
+  document.body.className = '';
+  document.getElementById('ja-bg').style.display = 'none';
+  document.getElementById('af-bg').style.display = 'none';
+  document.getElementById('app-header').style.display = 'none';
+  show('lang');
 }
 
 function createPetals() {

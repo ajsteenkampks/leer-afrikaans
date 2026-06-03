@@ -246,9 +246,28 @@ body.lang-af #s-vocab,body.lang-af #s-writing,
 body.lang-ja #s-menu,body.lang-ja #s-unit,body.lang-ja #s-tense,
 body.lang-ja #s-fc,body.lang-ja #s-quiz,body.lang-ja #s-results,
 body.lang-ja #s-vocab,body.lang-ja #s-writing {
-  background:rgba(255,255,255,.88);border-radius:20px;margin:16px auto;
+  background:rgba(255,255,255,.88);border-radius:20px;margin:48px auto 16px;
   backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.12);
 }
+
+/* ── Sun glow pulse ── */
+#sun-g1 { transform-box:fill-box;transform-origin:center;animation:sunGlow1 5s ease-in-out infinite }
+#sun-g2 { transform-box:fill-box;transform-origin:center;animation:sunGlow2 5s ease-in-out infinite;animation-delay:-2.5s }
+@keyframes sunGlow1 {
+  0%,100% { transform:scale(1);    opacity:.18 }
+  50%      { transform:scale(1.22); opacity:.34 }
+}
+@keyframes sunGlow2 {
+  0%,100% { transform:scale(1);    opacity:.22 }
+  50%      { transform:scale(1.18); opacity:.42 }
+}
+/* ── Wave drift ── */
+.wave-far  { animation:waveDriftFar  8s ease-in-out infinite }
+.wave-mid  { animation:waveDriftMid  6s ease-in-out infinite }
+.wave-fore { animation:waveDriftFore 4s ease-in-out infinite }
+@keyframes waveDriftFar  { 0%,100%{transform:translateX(0)}  50%{transform:translateX(-10px)} }
+@keyframes waveDriftMid  { 0%,100%{transform:translateX(0)}  50%{transform:translateX(-16px)} }
+@keyframes waveDriftFore { 0%,100%{transform:translateX(0)}  50%{transform:translateX(-22px)} }
 
 /* ── Afrikaans water-sparkle animation ── */
 .water-sparkle {
@@ -474,21 +493,62 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
     -->
 
     <!-- ── SUN (upper right, bright Cape Town day) ── -->
-    <circle cx="690" cy="55" r="70"  fill="#ffe566" opacity=".18"/>
-    <circle cx="690" cy="55" r="48"  fill="#ffe566" opacity=".22"/>
-    <circle cx="690" cy="55" r="32"  fill="#fff5a0" opacity=".9"/>
+    <circle id="sun-g1" cx="690" cy="55" r="70"  fill="#ffe566" opacity=".18"/>
+    <circle id="sun-g2" cx="690" cy="55" r="48"  fill="#ffe566" opacity=".22"/>
+    <circle              cx="690" cy="55" r="32"  fill="#fff5a0" opacity=".9"/>
 
     <!-- soft horizon glow where sky meets sea -->
     <rect x="0" y="150" width="800" height="34" fill="white" opacity=".10"/>
 
     <!-- ── MOUNTAIN SILHOUETTE ── -->
-    <!-- main layer: warm slate-blue, readable against bright sky -->
+
+    <!-- FAR BACKGROUND RANGE: wide rolling continental mountains,
+         extends slightly off-canvas so it reads as mainland, not island -->
     <path d="
-      M 0,175
-      C 32,174 62,171 90,167
-      C 112,162 130,150 150,134
-      C 165,122 177,106 185,90
-      C 189,78 193,68 197,64
+      M -10,175 L -10,163
+      C  18,159  50,153  82,146
+      C 108,140 128,134 148,129
+      C 165,124 180,120 196,117
+      C 212,114 228,113 246,114
+      C 264,115 282,119 300,124
+      C 320,130 344,135 372,137
+      C 400,139 428,138 456,136
+      C 480,134 500,130 518,128
+      C 536,126 552,127 568,131
+      C 588,136 606,144 626,152
+      C 648,160 672,165 698,165
+      C 722,165 746,162 768,159
+      C 786,157 800,156 810,158
+      L 810,175 Z"
+      fill="#4a6888" opacity=".55"/>
+
+    <!-- SECONDARY RANGE: mid-distance peaks, connects the main skyline
+         to a broader mountain range on both sides -->
+    <path d="
+      M -10,175 L -10,168
+      C  25,167  60,164  95,158
+      C 120,153 140,147 158,141
+      C 172,136 184,131 196,128
+      C 208,125 220,123 234,122
+      C 248,121 263,122 280,126
+      C 300,130 325,137 355,143
+      C 390,149 425,153 460,153
+      C 492,153 522,150 548,146
+      C 568,142 584,137 600,134
+      C 615,131 630,131 645,134
+      C 662,138 680,145 704,152
+      C 726,158 752,162 776,162
+      C 792,162 805,162 810,163
+      L 810,175 Z"
+      fill="#1e3252" opacity=".80"/>
+
+    <!-- MAIN FOREGROUND SILHOUETTE: Cape Town skyline -->
+    <path d="
+      M -10,175 L -10,170
+      C  18,169  50,166  82,160
+      C 108,154 128,142 148,128
+      C 163,116 176,100 184,88
+      C 189,77 193,68 197,64
       C 201,71 207,83 217,97
       C 227,112 242,119 260,122
       C 270,114 278,100 285,83
@@ -502,24 +562,8 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
       C 696,147 713,149 731,148
       C 744,147 756,146 768,149
       C 778,153 789,161 800,168
-      L 800,175 Z"
+      L 810,170 L 810,175 Z"
       fill="#2e4460"/>
-
-    <!-- distant haze ridge for depth -->
-    <path d="
-      M 0,175
-      C 55,174 105,172 145,168
-      C 175,165 198,157 215,147
-      C 226,140 235,132 244,124
-      C 254,132 268,142 290,150
-      C 320,160 390,166 440,167
-      C 490,168 535,166 568,161
-      C 588,156 602,147 614,141
-      C 623,148 632,158 648,163
-      C 672,169 706,169 734,166
-      C 756,163 778,166 800,170
-      L 800,175 Z"
-      fill="#1e3252" opacity=".75"/>
 
     <!-- ── TABLECLOTH CLOUD ── -->
     <path d="M291,74
@@ -542,31 +586,37 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
     <!-- turquoise tint overlay to make the water feel tropical -->
     <rect x="0" y="175" width="800" height="125" fill="rgba(0,160,190,0.18)"/>
 
-    <!-- distant ripples -->
-    <path d="M0,181 Q200,179 400,181 Q600,183 800,181"
-          stroke="white" stroke-width="1.2" fill="none" opacity=".28"/>
-    <path d="M0,190 Q160,188 320,190 Q480,192 640,190 Q800,188 800,190"
-          stroke="white" stroke-width="1.4" fill="none" opacity=".28"/>
-    <path d="M0,200 Q120,198 240,200 Q380,202 520,200 Q660,198 800,200"
-          stroke="white" stroke-width="1.6" fill="none" opacity=".28"/>
-    <path d="M0,213 Q140,211 280,213 Q420,215 560,213 Q700,211 800,213"
-          stroke="white" stroke-width="1.8" fill="none" opacity=".26"/>
+    <!-- distant ripples (slow drift) -->
+    <g class="wave-far">
+      <path d="M0,181 Q200,179 400,181 Q600,183 800,181"
+            stroke="white" stroke-width="1.2" fill="none" opacity=".28"/>
+      <path d="M0,190 Q160,188 320,190 Q480,192 640,190 Q800,188 800,190"
+            stroke="white" stroke-width="1.4" fill="none" opacity=".28"/>
+      <path d="M0,200 Q120,198 240,200 Q380,202 520,200 Q660,198 800,200"
+            stroke="white" stroke-width="1.6" fill="none" opacity=".28"/>
+      <path d="M0,213 Q140,211 280,213 Q420,215 560,213 Q700,211 800,213"
+            stroke="white" stroke-width="1.8" fill="none" opacity=".26"/>
+    </g>
 
-    <!-- mid waves -->
-    <path d="M0,230 Q50,225 105,230 Q165,235 225,230 Q285,225 345,230
-             Q405,235 465,230 Q525,225 585,230 Q645,235 705,230 Q760,225 800,230"
-          stroke="white" stroke-width="2.5" fill="none" opacity=".40"/>
-    <path d="M0,250 Q60,245 125,250 Q200,255 275,250 Q350,245 425,250
-             Q500,255 575,250 Q650,245 725,250 Q775,253 800,250"
-          stroke="white" stroke-width="2.8" fill="none" opacity=".36"/>
+    <!-- mid waves (medium drift) -->
+    <g class="wave-mid">
+      <path d="M0,230 Q50,225 105,230 Q165,235 225,230 Q285,225 345,230
+               Q405,235 465,230 Q525,225 585,230 Q645,235 705,230 Q760,225 800,230"
+            stroke="white" stroke-width="2.5" fill="none" opacity=".40"/>
+      <path d="M0,250 Q60,245 125,250 Q200,255 275,250 Q350,245 425,250
+               Q500,255 575,250 Q650,245 725,250 Q775,253 800,250"
+            stroke="white" stroke-width="2.8" fill="none" opacity=".36"/>
+    </g>
 
-    <!-- foreground swell -->
-    <path d="M0,270 Q80,264 160,270 Q255,276 350,270 Q445,264 540,270
-             Q635,276 730,270 Q775,267 800,270"
-          stroke="white" stroke-width="3.5" fill="none" opacity=".38"/>
-    <path d="M0,288 Q100,282 200,288 Q320,294 440,288 Q560,282 680,288
-             Q750,292 800,288"
-          stroke="white" stroke-width="3"   fill="none" opacity=".28"/>
+    <!-- foreground swell (fastest drift) -->
+    <g class="wave-fore">
+      <path d="M0,270 Q80,264 160,270 Q255,276 350,270 Q445,264 540,270
+               Q635,276 730,270 Q775,267 800,270"
+            stroke="white" stroke-width="3.5" fill="none" opacity=".38"/>
+      <path d="M0,288 Q100,282 200,288 Q320,294 440,288 Q560,282 680,288
+               Q750,292 800,288"
+            stroke="white" stroke-width="3"   fill="none" opacity=".28"/>
+    </g>
 
     <!-- sun shimmer on the water -->
     <ellipse cx="690" cy="210" rx="90"  ry="8"  fill="white" opacity=".14"/>

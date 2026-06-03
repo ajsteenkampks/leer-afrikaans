@@ -511,7 +511,7 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
 <!-- ══ JAPANESE WRITING MODE ══ -->
 <div id="s-writing" class="screen">
   <div class="page-title">
-    <button class="back-btn" onclick="selectLang('ja',true)">← Back</button>
+    <button class="back-btn" onclick="backToLanguages()">← Back</button>
     <h2>Choose a Study Mode</h2>
   </div>
   <p style="color:#666;font-size:.9rem;margin-bottom:4px">How would you like to see Japanese words?</p>
@@ -536,7 +536,6 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
 <div class="header" id="app-header" style="display:none">
   <h1 id="app-title">🇿🇦 Leer Afrikaans</h1>
   <p id="app-subtitle">Learn Afrikaans — Unit by Unit</p>
-  <div class="flag-bar" id="app-flagbar"></div>
 </div>
 
 <!-- ══════════════════ MAIN MENU ══════════════════ -->
@@ -2189,7 +2188,6 @@ function selectLang(lang, backOnly) {
     header.style.display = 'block';
     document.getElementById('app-title').textContent = '🇯🇵 日本語を学ぼう';
     document.getElementById('app-subtitle').textContent = 'Learn Japanese — Unit by Unit';
-    document.getElementById('app-flagbar').style.background = '#BC002D';
     // Reset writing mode
     S.writing = null;
     document.querySelectorAll('.writing-card').forEach(c=>c.classList.remove('selected'));
@@ -2201,7 +2199,6 @@ function selectLang(lang, backOnly) {
     header.style.display = 'block';
     document.getElementById('app-title').textContent = '🇿🇦 Leer Afrikaans';
     document.getElementById('app-subtitle').textContent = 'Learn Afrikaans — Unit by Unit';
-    document.getElementById('app-flagbar').style.background = '';
     UNITS = UNITS_AF; EX = EX_AF;
     show('menu');
   }

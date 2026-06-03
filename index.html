@@ -463,25 +463,26 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
     <polygon points="230,222 240,188 250,222"   fill="#6b4010" opacity=".9"/>
     <polygon points="233,222 240,196 247,222"   fill="#8a5518" opacity=".8"/>
 
-    <!-- ── ELEPHANT (center-left, slightly distant) ── -->
-    <ellipse cx="328" cy="224" rx="22" ry="4"  fill="#1a0a02" opacity=".45"/>
-    <!-- body -->
-    <ellipse cx="324" cy="203" rx="24" ry="18" fill="#111"/>
+    <!-- ── ELEPHANT (center-left) ── -->
+    <!-- ground shadow -->
+    <ellipse cx="319" cy="225" rx="28" ry="5" fill="#140802" opacity=".5"/>
+    <!-- body: bottom edge = cy+ry = 199+16 = 215 (exactly where legs start) -->
+    <ellipse cx="314" cy="199" rx="27" ry="16" fill="#1a1a1a"/>
+    <!-- ear: large fan, drawn before head so head overlaps the join naturally -->
+    <ellipse cx="323" cy="191" rx="20" ry="25" fill="#272727"/>
     <!-- head -->
-    <circle  cx="343" cy="194" r="15"           fill="#111"/>
-    <!-- ear -->
-    <ellipse cx="337" cy="190" rx="10" ry="13" fill="#1c1c1c"/>
-    <!-- trunk -->
-    <path d="M351,200 Q362,212 355,222" stroke="#111" stroke-width="7" fill="none" stroke-linecap="round"/>
-    <!-- tusk hint -->
-    <path d="M352,202 Q361,210 357,218" stroke="#e8d8a0" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/>
-    <!-- legs -->
-    <rect x="304" y="216" width="8" height="10" fill="#111" rx="1"/>
-    <rect x="316" y="216" width="8" height="10" fill="#111" rx="1"/>
-    <rect x="328" y="216" width="8" height="10" fill="#111" rx="1"/>
-    <rect x="340" y="216" width="7" height="10" fill="#111" rx="1"/>
+    <circle cx="338" cy="191" r="14" fill="#1a1a1a"/>
+    <!-- trunk: starts at nose, curves down to ground -->
+    <path d="M350,197 Q367,210 358,224" stroke="#1a1a1a" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <!-- tusk -->
+    <path d="M350,200 Q361,211 357,221" stroke="#e8e09a" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".88"/>
+    <!-- 4 legs: all start at y=215 (body bottom), end at y=224 (ground) -->
+    <rect x="293" y="215" width="9" height="9" fill="#1a1a1a" rx="2"/>
+    <rect x="306" y="215" width="9" height="9" fill="#1a1a1a" rx="2"/>
+    <rect x="318" y="215" width="9" height="9" fill="#1a1a1a" rx="2"/>
+    <rect x="331" y="215" width="9" height="9" fill="#1a1a1a" rx="2"/>
     <!-- tail -->
-    <path d="M302,204 Q295,212 297,220" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M288,201 Q280,211 283,220" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
 
     <!-- ── GIRAFFE (center-right) ── -->
     <ellipse cx="490" cy="224" rx="17" ry="4"  fill="#1a0a02" opacity=".5"/>

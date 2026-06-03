@@ -239,13 +239,22 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
   100% { transform:translateX(-80px) scaleX(-1) }
 }
 
-/* Glass screens over savannah */
+/* ── Shared glass panels (identical layout for both languages) ── */
 body.lang-af #s-menu,body.lang-af #s-unit,body.lang-af #s-tense,
 body.lang-af #s-fc,body.lang-af #s-quiz,body.lang-af #s-results,
-body.lang-af #s-vocab,body.lang-af #s-writing {
+body.lang-af #s-vocab,body.lang-af #s-writing,
+body.lang-ja #s-menu,body.lang-ja #s-unit,body.lang-ja #s-tense,
+body.lang-ja #s-fc,body.lang-ja #s-quiz,body.lang-ja #s-results,
+body.lang-ja #s-vocab,body.lang-ja #s-writing {
   background:rgba(255,255,255,.88);border-radius:20px;margin:16px auto;
-  backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.14);
+  backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.12);
 }
+/* ── Shared card/button transparency (both languages, same values) ── */
+body.lang-af .menu-card,body.lang-ja .menu-card { background:rgba(255,255,255,.95) }
+body.lang-af .unit-btn,body.lang-ja .unit-btn   { background:rgba(255,255,255,.9) }
+body.lang-af .tense-btn,body.lang-ja .tense-btn  { background:rgba(255,255,255,.9) }
+body.lang-af .results-card,body.lang-ja .results-card { background:rgba(255,255,255,.95) }
+body.lang-af .quiz-card,body.lang-ja .quiz-card   { background:rgba(255,255,255,.95) }
 
 /* ════════════════════════════════════════
    LANGUAGE SELECTOR
@@ -299,19 +308,13 @@ body.lang-af #s-vocab,body.lang-af #s-writing {
 /* ════════════════════════════════════════
    JAPANESE THEME OVERRIDES
 ════════════════════════════════════════ */
+/* ── Japanese colour overrides (structure already set above) ── */
 body.lang-ja .header { background:#BC002D }
-body.lang-ja .flag-bar { background:#BC002D;height:4px }
-body.lang-ja #s-menu,body.lang-ja #s-unit,body.lang-ja #s-tense,
-body.lang-ja #s-fc,body.lang-ja #s-quiz,body.lang-ja #s-results,
-body.lang-ja #s-vocab,body.lang-ja #s-writing {
-  background:rgba(255,255,255,.87);border-radius:20px;margin:16px auto;
-  backdrop-filter:blur(10px);box-shadow:0 8px 32px rgba(0,0,0,.12);
-}
-body.lang-ja .menu-card { border-color:#BC002D;background:rgba(255,255,255,.95) }
+body.lang-ja .menu-card { border-color:#BC002D }
 body.lang-ja .menu-card:hover { background:#BC002D;box-shadow:0 10px 28px rgba(188,0,45,.35) }
-body.lang-ja .unit-btn { border-color:#FFB7C5;background:rgba(255,255,255,.9) }
+body.lang-ja .unit-btn { border-color:#FFB7C5 }
 body.lang-ja .unit-btn:hover,body.lang-ja .unit-btn.selected { background:#FFB7C5;color:#1a1a1a }
-body.lang-ja .tense-btn { border-color:#BC002D;background:rgba(255,255,255,.9) }
+body.lang-ja .tense-btn { border-color:#BC002D }
 body.lang-ja .tense-btn:hover,body.lang-ja .tense-btn.selected { background:#BC002D;color:#fff }
 body.lang-ja .btn-green { background:#BC002D }
 body.lang-ja .btn-green:hover { background:#8a0020 }

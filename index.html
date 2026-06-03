@@ -463,57 +463,33 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
     <polygon points="230,222 240,188 250,222"   fill="#6b4010" opacity=".9"/>
     <polygon points="233,222 240,196 247,222"   fill="#8a5518" opacity=".8"/>
 
-    <!-- ── ELEPHANT (center-left) ── -->
-    <!-- ground shadow -->
-    <ellipse cx="319" cy="225" rx="28" ry="5" fill="#140802" opacity=".5"/>
-    <!-- body: bottom edge = cy+ry = 199+16 = 215 (exactly where legs start) -->
-    <ellipse cx="314" cy="199" rx="27" ry="16" fill="#1a1a1a"/>
-    <!-- ear: large fan, drawn before head so head overlaps the join naturally -->
-    <ellipse cx="323" cy="191" rx="20" ry="25" fill="#272727"/>
-    <!-- head -->
-    <circle cx="338" cy="191" r="14" fill="#1a1a1a"/>
-    <!-- trunk: starts at nose, curves down to ground -->
-    <path d="M350,197 Q367,210 358,224" stroke="#1a1a1a" stroke-width="9" fill="none" stroke-linecap="round"/>
-    <!-- tusk -->
-    <path d="M350,200 Q361,211 357,221" stroke="#e8e09a" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".88"/>
-    <!-- 4 legs: all start at y=215 (body bottom), end at y=224 (ground) -->
-    <rect x="293" y="215" width="9" height="9" fill="#1a1a1a" rx="2"/>
-    <rect x="306" y="215" width="9" height="9" fill="#1a1a1a" rx="2"/>
-    <rect x="318" y="215" width="9" height="9" fill="#1a1a1a" rx="2"/>
-    <rect x="331" y="215" width="9" height="9" fill="#1a1a1a" rx="2"/>
-    <!-- tail -->
-    <path d="M288,201 Q280,211 283,220" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
-
-    <!-- ── GIRAFFE (center-right) ── -->
-    <ellipse cx="490" cy="224" rx="17" ry="4"  fill="#1a0a02" opacity=".5"/>
-    <!-- rear legs -->
-    <rect x="487" y="198" width="5" height="26" fill="#111" rx="1"/>
-    <rect x="497" y="198" width="5" height="26" fill="#111" rx="1"/>
-    <!-- body -->
-    <rect x="479" y="175" width="30" height="27" fill="#111" rx="3"/>
-    <!-- front legs -->
-    <rect x="480" y="198" width="5" height="26" fill="#111" rx="1"/>
-    <rect x="492" y="198" width="5" height="26" fill="#111" rx="1"/>
-    <!-- neck (long, slight angle) -->
-    <path d="M488,175 L493,175 L499,118 L494,118 Z" fill="#111"/>
-    <!-- head -->
-    <rect x="491" y="109" width="14" height="11" fill="#111" rx="2"/>
-    <!-- ossicones (horns) -->
-    <rect x="493" y="102" width="3"  height="8" fill="#111" rx="1"/>
-    <rect x="501" y="103" width="3"  height="7" fill="#111" rx="1"/>
-    <!-- tail -->
-    <path d="M509,178 Q516,188 513,198" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
-
-    <!-- ── DISTANT WILDEBEEST HERD (tiny silhouettes) ── -->
-    <ellipse cx="410" cy="217" rx="8" ry="5" fill="#1a1a1a" opacity=".7"/>
-    <ellipse cx="424" cy="217" rx="7" ry="4" fill="#1a1a1a" opacity=".65"/>
-    <ellipse cx="437" cy="217" rx="7" ry="4" fill="#1a1a1a" opacity=".6"/>
-    <line x1="408" y1="217" x2="406" y2="224" stroke="#1a1a1a" stroke-width="2" opacity=".7"/>
-    <line x1="413" y1="217" x2="415" y2="224" stroke="#1a1a1a" stroke-width="2" opacity=".7"/>
-    <line x1="422" y1="217" x2="420" y2="224" stroke="#1a1a1a" stroke-width="2" opacity=".65"/>
-    <line x1="427" y1="217" x2="429" y2="224" stroke="#1a1a1a" stroke-width="2" opacity=".65"/>
-    <line x1="435" y1="217" x2="433" y2="224" stroke="#1a1a1a" stroke-width="2" opacity=".6"/>
-    <line x1="440" y1="217" x2="442" y2="224" stroke="#1a1a1a" stroke-width="2" opacity=".6"/>
+    <!-- ══ SPRINGBOK — pronking (mid-leap) pose ══ -->
+    <!-- shadow on grass -->
+    <ellipse cx="462" cy="220" rx="27" ry="4" fill="#140802" opacity=".38"/>
+    <!-- rump raised higher than shoulder — creates the arched pronking silhouette -->
+    <ellipse cx="440" cy="191" rx="17" ry="12" fill="#1a1a1a"/>
+    <!-- main shoulder/body (lower, connects to rump) -->
+    <ellipse cx="463" cy="198" rx="27" ry="12" fill="#1a1a1a"/>
+    <!-- neck: tapered thick stroke up to head -->
+    <path d="M479,189 Q487,177 490,169" stroke="#1a1a1a" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <!-- head: small oval angled forward-up -->
+    <ellipse cx="494" cy="165" rx="10" ry="8" fill="#1a1a1a" transform="rotate(20,494,165)"/>
+    <!-- snout: slight forward taper -->
+    <path d="M501,162 Q508,161 507,167 Q506,173 500,171 Z" fill="#1a1a1a"/>
+    <!-- eye catch-light (tiny white dot so the head reads as a face) -->
+    <circle cx="498" cy="163" r="1.5" fill="#fff" opacity=".55"/>
+    <!-- horn 1 (near): lyre shape — rises, curves back, tip flares forward -->
+    <path d="M491,158 Q483,140 487,128 Q492,119 501,125 Q506,131 499,141" stroke="#1a1a1a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <!-- horn 2 (far, slightly offset right): same lyre curve -->
+    <path d="M496,157 Q489,139 493,127 Q498,118 507,124 Q512,130 505,140" stroke="#1a1a1a" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+    <!-- front legs (pair — angled slightly forward, body bottom = 198+12=210) -->
+    <path d="M474,209 Q474,215 472,220" stroke="#1a1a1a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <path d="M466,210 Q465,216 463,220" stroke="#1a1a1a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <!-- back legs (pair — angled slightly backward) -->
+    <path d="M448,209 Q445,215 443,220" stroke="#1a1a1a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <path d="M440,209 Q436,215 434,220" stroke="#1a1a1a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <!-- tail: short, erect (characteristic of pronking) -->
+    <path d="M435,188 Q429,180 431,176" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
   </svg>
 </div>
 

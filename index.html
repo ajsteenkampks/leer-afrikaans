@@ -463,33 +463,53 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
     <polygon points="230,222 240,188 250,222"   fill="#6b4010" opacity=".9"/>
     <polygon points="233,222 240,196 247,222"   fill="#8a5518" opacity=".8"/>
 
-    <!-- ══ SPRINGBOK — pronking (mid-leap) pose ══ -->
-    <!-- shadow on grass -->
-    <ellipse cx="462" cy="220" rx="27" ry="4" fill="#140802" opacity=".38"/>
-    <!-- rump raised higher than shoulder — creates the arched pronking silhouette -->
-    <ellipse cx="440" cy="191" rx="17" ry="12" fill="#1a1a1a"/>
-    <!-- main shoulder/body (lower, connects to rump) -->
-    <ellipse cx="463" cy="198" rx="27" ry="12" fill="#1a1a1a"/>
-    <!-- neck: tapered thick stroke up to head -->
-    <path d="M479,189 Q487,177 490,169" stroke="#1a1a1a" stroke-width="9" fill="none" stroke-linecap="round"/>
-    <!-- head: small oval angled forward-up -->
-    <ellipse cx="494" cy="165" rx="10" ry="8" fill="#1a1a1a" transform="rotate(20,494,165)"/>
-    <!-- snout: slight forward taper -->
-    <path d="M501,162 Q508,161 507,167 Q506,173 500,171 Z" fill="#1a1a1a"/>
-    <!-- eye catch-light (tiny white dot so the head reads as a face) -->
-    <circle cx="498" cy="163" r="1.5" fill="#fff" opacity=".55"/>
-    <!-- horn 1 (near): lyre shape — rises, curves back, tip flares forward -->
-    <path d="M491,158 Q483,140 487,128 Q492,119 501,125 Q506,131 499,141" stroke="#1a1a1a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    <!-- horn 2 (far, slightly offset right): same lyre curve -->
-    <path d="M496,157 Q489,139 493,127 Q498,118 507,124 Q512,130 505,140" stroke="#1a1a1a" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-    <!-- front legs (pair — angled slightly forward, body bottom = 198+12=210) -->
-    <path d="M474,209 Q474,215 472,220" stroke="#1a1a1a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-    <path d="M466,210 Q465,216 463,220" stroke="#1a1a1a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-    <!-- back legs (pair — angled slightly backward) -->
-    <path d="M448,209 Q445,215 443,220" stroke="#1a1a1a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-    <path d="M440,209 Q436,215 434,220" stroke="#1a1a1a" stroke-width="5.5" fill="none" stroke-linecap="round"/>
-    <!-- tail: short, erect (characteristic of pronking) -->
-    <path d="M435,188 Q429,180 431,176" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- ══ SPRINGBOK — smooth bezier silhouette, pronking pose ══ -->
+    <ellipse cx="463" cy="221" rx="30" ry="5" fill="#140802" opacity=".35"/>
+
+    <!-- BODY: one smooth closed path — arched spine, rounded rump, hanging belly -->
+    <path d="M418,194 C432,184 453,181 467,189 C471,191 476,196 479,202
+             C479,209 472,215 444,215 C428,215 417,210 417,207
+             C415,204 415,196 418,194 Z" fill="#1a1a1a"/>
+
+    <!-- NECK: tapered filled shape — wide at chest, narrows to head -->
+    <path d="M472,192 C476,180 481,170 485,165 C487,162 490,162 490,167
+             C490,173 487,181 477,197 C475,198 472,196 472,192 Z" fill="#1a1a1a"/>
+
+    <!-- EAR: large pointed antelope ear, drawn before head so head overlaps its base -->
+    <path d="M489,163 C486,154 483,145 480,138 C479,134 481,133 483,135
+             C486,138 488,147 490,157 C491,160 491,162 489,163 Z" fill="#1a1a1a"/>
+
+    <!-- HEAD: elongated skull tapering to a pointed snout, facing right -->
+    <path d="M488,164 C492,158 500,155 506,159 C510,162 511,167 509,172
+             C507,176 502,179 496,180 C491,181 487,177 487,173
+             C486,168 486,166 488,164 Z" fill="#1a1a1a"/>
+
+    <!-- HORN 1 (near): solid filled lyre-shaped path — shaft leans back, tip flares forward -->
+    <path d="M491,161 C489,150 486,139 488,127 C490,119 494,116 499,121
+             C503,126 503,136 500,146 C497,153 493,157 491,161 Z" fill="#1a1a1a"/>
+
+    <!-- HORN 2 (far side, offset 5px right): same lyre form, creates depth -->
+    <path d="M496,160 C494,149 492,138 494,126 C496,118 500,115 505,120
+             C509,125 509,135 506,145 C503,152 498,157 496,160 Z" fill="#1a1a1a"/>
+
+    <!-- FRONT LEGS: near (7px) and far (6px), body bottom y=215 -->
+    <path d="M474,215 C474,218 473,221 472,224"
+          stroke="#1a1a1a" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M466,216 C465,219 464,222 463,224"
+          stroke="#1a1a1a" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+    <!-- BACK LEGS: near (7px) and far (6px), rump area y=213 -->
+    <path d="M422,213 C421,217 420,220 419,224"
+          stroke="#1a1a1a" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M430,213 C429,217 428,220 427,224"
+          stroke="#1a1a1a" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+    <!-- TAIL: small pointed filled shape, erect in pronking -->
+    <path d="M418,195 C413,188 409,181 411,177 C412,174 414,174 415,177
+             C417,181 418,188 419,196 Z" fill="#1a1a1a"/>
+
+    <!-- eye: tiny white dot so the face reads clearly -->
+    <circle cx="499" cy="167" r="2" fill="white" opacity=".5"/>
   </svg>
 </div>
 

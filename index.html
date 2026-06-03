@@ -394,7 +394,7 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
 
 <!-- ══ JAPANESE CHERRY BLOSSOM BACKGROUND ══ -->
 <div id="ja-bg">
-  <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+  <svg viewBox="0 30 800 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
     <!-- Pink clouds -->
     <ellipse cx="150" cy="60" rx="80" ry="30" fill="#ffd6e0" opacity=".55"/>
     <ellipse cx="200" cy="50" rx="60" ry="22" fill="#ffb7c5" opacity=".45"/>
@@ -568,12 +568,73 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
     <circle cx="696" cy="171" r="7"  fill="#ffc8d5" opacity=".76"/>
     <circle cx="685" cy="170" r="7"  fill="#ffb7c5" opacity=".76"/>
     <circle cx="675" cy="168" r="6"  fill="#ff9db5" opacity=".74"/>
+
+    <!-- ── JAPANESE FOREGROUND ── -->
+    <!-- Ground extension (below where trees sit) -->
+    <rect x="0" y="244" width="800" height="36" fill="#3a7030" opacity=".9"/>
+    <rect x="0" y="252" width="800" height="28" fill="#4a8840" opacity=".85"/>
+
+    <!-- TORII GATE (vermillion — iconic floating gate) -->
+    <g fill="#c82000">
+      <!-- left pillar -->
+      <rect x="310" y="192" width="11" height="58" rx="3"/>
+      <!-- right pillar -->
+      <rect x="396" y="192" width="11" height="58" rx="3"/>
+      <!-- secondary crossbeam (nuki) -->
+      <rect x="302" y="216" width="113" height="9" rx="2"/>
+      <!-- primary crossbeam (kasagi) — curves upward at ends -->
+      <path d="M296,202 C308,190 332,185 358,184 C384,183 408,185 420,190 C428,194 430,200 428,204
+               L426,208 C416,204 396,200 370,199 C344,198 318,200 302,206 Z"/>
+    </g>
+    <!-- torii shadow on grass -->
+    <ellipse cx="358" cy="250" rx="55" ry="6" fill="#2a5a20" opacity=".55"/>
+
+    <!-- PAGODA (5-tier, black silhouette, right side) -->
+    <g transform="translate(620,250)" fill="#1a1a2e">
+      <!-- base platform -->
+      <rect x="-20" y="-8"  width="40" height="8"  rx="1"/>
+      <!-- tier 5 body+roof -->
+      <rect x="-14" y="-20" width="28" height="12" rx="1"/>
+      <path d="M-19,-20 L19,-20 L21,-27 L-21,-27 Z"/>
+      <!-- tier 4 -->
+      <rect x="-10" y="-35" width="20" height="10" rx="1"/>
+      <path d="M-14,-35 L14,-35 L16,-42 L-16,-42 Z"/>
+      <!-- tier 3 -->
+      <rect x="-7"  y="-49" width="14" height="10" rx="1"/>
+      <path d="M-10,-49 L10,-49 L12,-56 L-12,-56 Z"/>
+      <!-- tier 2 -->
+      <rect x="-5"  y="-63" width="10" height="10" rx="1"/>
+      <path d="M-8, -63 L8, -63 L10,-70 L-10,-70 Z"/>
+      <!-- tier 1 -->
+      <rect x="-3"  y="-77" width="6"  height="10" rx="1"/>
+      <path d="M-6, -77 L6, -77 L8, -84 L-8, -84 Z"/>
+      <!-- spire -->
+      <rect x="-1.5" y="-99" width="3" height="15" rx="1"/>
+      <circle cx="0" cy="-101" r="4"/>
+    </g>
+    <!-- pagoda shadow -->
+    <ellipse cx="620" cy="250" rx="22" ry="4" fill="#2a5a20" opacity=".5"/>
+
+    <!-- Small Japanese house (left side) -->
+    <g transform="translate(148,250)" fill="#15152a">
+      <rect x="-32" y="-36" width="64" height="36"/>
+      <!-- gabled roof -->
+      <path d="M-38,-36 L0,-60 L38,-36 Z"/>
+      <!-- ridge tile -->
+      <rect x="-5" y="-62" width="10" height="5" rx="1"/>
+      <!-- door -->
+      <rect x="-8" y="-20" width="16" height="20" fill="#0d0d20"/>
+      <!-- windows -->
+      <rect x="-26" y="-26" width="12" height="10" rx="1" fill="#0d0d20"/>
+      <rect x="14"  y="-26" width="12" height="10" rx="1" fill="#0d0d20"/>
+    </g>
+    <ellipse cx="148" cy="250" rx="34" ry="4" fill="#2a5a20" opacity=".5"/>
   </svg>
 </div>
 
 <!-- ══ AFRIKAANS SAVANNAH BACKGROUND ══ -->
 <div id="af-bg">
-  <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <svg viewBox="0 40 800 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
     <!-- ══ TABLE MOUNTAIN FROM THE SEA ══ -->
     <!--
       Left→Right skyline: Signal Hill · Devil's Peak · Table Mountain (flat top)
@@ -640,45 +701,45 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
       L 810,175 Z"
       fill="#3e5e7a"/>
 
-    <!-- MAIN FOREGROUND SILHOUETTE: Cape Town skyline -->
+    <!-- MAIN FOREGROUND SILHOUETTE: Cape Town skyline (Table Mountain enlarged) -->
     <path d="
       M -10,175 L -10,170
-      C  18,169  50,166  82,160
-      C 108,154 128,142 148,128
-      C 163,116 176,100 184,88
-      C 189,77 193,68 197,64
-      C 201,71 207,83 217,97
-      C 227,112 242,119 260,122
-      C 270,114 278,100 285,83
-      L 291,74
-      L 553,74
-      C 561,82 568,97 576,113
-      C 585,126 595,134 609,138
-      C 618,131 625,117 634,107
-      L 644,101 L 649,95 L 653,101
-      C 659,111 668,128 682,139
-      C 696,147 713,149 731,148
-      C 744,147 756,146 768,149
-      C 778,153 789,161 800,168
-      L 810,170 L 810,175 Z"
+      C  18,169  50,166  82,159
+      C 108,150 128,136 148,118
+      C 163,103 176,84  184,68
+      C 189,57  193,46  197,42
+      C 201,50  207,66  217,84
+      C 227,100 242,109 260,112
+      C 270,104 278,84  285,62
+      L 291,52
+      L 553,52
+      C 561,62  568,82  576,100
+      C 585,114 595,124 609,128
+      C 618,120 625,104 634,90
+      L 644,78 L 649,70 L 653,78
+      C 659,92  668,114 682,128
+      C 696,138 713,142 731,140
+      C 744,138 756,138 768,142
+      C 778,147 789,156 800,164
+      L 810,166 L 810,175 Z"
       fill="#2e4460"/>
 
-    <!-- ── TABLECLOTH CLOUD ── -->
-    <path d="M291,74
-             C 312,57 348,49 395,47
-             C 430,45 468,47 505,47
-             C 532,49 548,60 553,74
-             C 534,70 488,67 422,67
-             C 358,67 314,70 291,74 Z"
-          fill="white" opacity=".78"/>
+    <!-- ── TABLECLOTH CLOUD (updated to match new flat top y=52) ── -->
+    <path d="M291,52
+             C 312,36 348,28 395,26
+             C 430,24 468,26 505,26
+             C 532,28 548,40 553,52
+             C 534,48 488,45 422,45
+             C 358,45 314,48 291,52 Z"
+          fill="white" opacity=".82"/>
     <!-- cascade left edge -->
-    <path d="M291,74 C285,93 281,116 283,142"
+    <path d="M291,52 C284,72 280,98 282,124"
           stroke="white" stroke-width="16" fill="none"
-          stroke-linecap="round" opacity=".32"/>
+          stroke-linecap="round" opacity=".34"/>
     <!-- cascade right edge -->
-    <path d="M553,74 C559,96 561,120 559,144"
+    <path d="M553,52 C559,74 561,100 559,126"
           stroke="white" stroke-width="12" fill="none"
-          stroke-linecap="round" opacity=".24"/>
+          stroke-linecap="round" opacity=".26"/>
 
     <!-- ── OCEAN ── -->
     <!-- turquoise tint overlay to make the water feel tropical -->
@@ -721,6 +782,54 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
     <ellipse cx="690" cy="225" rx="120" ry="6"  fill="white" opacity=".10"/>
     <ellipse cx="690" cy="245" rx="100" ry="5"  fill="white" opacity=".07"/>
     <ellipse cx="300" cy="250" rx="80"  ry="4"  fill="white" opacity=".06"/>
+
+    <!-- ── EXTRA FOREGROUND OCEAN ── -->
+    <!-- deeper water tint near the bottom -->
+    <rect x="0" y="255" width="800" height="45" fill="rgba(0,140,170,0.22)"/>
+    <!-- additional close wave crests -->
+    <g class="wave-fore">
+      <path d="M-20,262 Q40,255 100,262 Q170,269 240,262 Q310,255 380,262
+               Q450,269 520,262 Q590,255 660,262 Q730,269 800,262 Q830,258 850,262"
+            stroke="white" stroke-width="4" fill="none" opacity=".42"/>
+      <path d="M-20,278 Q50,271 120,278 Q200,285 280,278 Q360,271 440,278
+               Q520,285 600,278 Q680,271 760,278 Q800,282 850,278"
+            stroke="white" stroke-width="4.5" fill="none" opacity=".38"/>
+    </g>
+    <!-- foam along bottom -->
+    <rect x="0" y="293" width="800" height="7" fill="rgba(255,255,255,0.18)"/>
+
+    <!-- ── DOLPHIN (breaching near centre-left) ── -->
+    <!-- body — dark oceanic blue, arcing out of water -->
+    <path d="M190,172 C196,158 208,142 224,132 C238,123 252,120 264,124
+             C274,128 280,138 282,150 C284,162 280,170 276,174"
+          fill="#0a2840"/>
+    <!-- belly — slightly lighter -->
+    <path d="M190,172 C196,162 208,152 224,146 C238,140 252,140 264,146
+             C272,150 278,158 278,166 C278,170 276,174 276,174"
+          fill="#163a58"/>
+    <!-- dorsal fin -->
+    <path d="M236,126 C233,112 238,100 244,98 C249,102 250,116 244,126 Z"
+          fill="#0a2840"/>
+    <!-- upper tail fluke -->
+    <path d="M190,172 C183,164 173,164 169,172 C171,179 181,177 190,172 Z"
+          fill="#0a2840"/>
+    <!-- lower tail fluke -->
+    <path d="M190,172 C184,180 174,182 170,174 C172,168 182,170 190,172 Z"
+          fill="#0a2840"/>
+    <!-- snout -->
+    <path d="M276,174 C282,168 290,164 292,156"
+          stroke="#0a2840" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <!-- eye -->
+    <circle cx="278" cy="138" r="3.5" fill="white" opacity=".9"/>
+    <circle cx="279" cy="138" r="1.8" fill="#050e18"/>
+    <!-- water splash at re-entry -->
+    <path d="M168,174 C160,168 154,167 150,172"
+          stroke="rgba(255,255,255,.72)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M278,172 C285,166 292,166 296,172"
+          stroke="rgba(255,255,255,.72)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- small ripple rings around splash zone -->
+    <ellipse cx="182" cy="176" rx="18" ry="4" fill="none" stroke="rgba(255,255,255,.30)" stroke-width="1.5"/>
+    <ellipse cx="287" cy="176" rx="14" ry="3" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.2"/>
   </svg>
 </div>
 

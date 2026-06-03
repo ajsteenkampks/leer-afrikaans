@@ -222,9 +222,9 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:
 #af-bg {
   display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;overflow:hidden;
   background:linear-gradient(180deg,
-    #0b1d42 0%,#163d8a 18%,#2868b8 38%,
-    #58a0d8 54%,#4488c4 57%,
-    #184a8e 73%,#0a2c68 88%,#061535 100%);
+    #0d8ad8 0%,#1aa8ec 20%,#4cc8f4 42%,
+    #88e2fc 53%,#00bcd6 56%,
+    #0090b8 72%,#005880 88%,#003258 100%);
 }
 #af-bg svg { position:absolute;bottom:0;width:100%;height:auto }
 .safari-bird {
@@ -385,11 +385,16 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
       y=175 = horizon/sea level · y=65 = Table Mountain top
     -->
 
-    <!-- soft horizon glow -->
-    <rect x="0" y="155" width="800" height="28" fill="white" opacity=".055"/>
+    <!-- ── SUN (upper right, bright Cape Town day) ── -->
+    <circle cx="690" cy="55" r="70"  fill="#ffe566" opacity=".18"/>
+    <circle cx="690" cy="55" r="48"  fill="#ffe566" opacity=".22"/>
+    <circle cx="690" cy="55" r="32"  fill="#fff5a0" opacity=".9"/>
+
+    <!-- soft horizon glow where sky meets sea -->
+    <rect x="0" y="150" width="800" height="34" fill="white" opacity=".10"/>
 
     <!-- ── MOUNTAIN SILHOUETTE ── -->
-    <!-- main dark layer -->
+    <!-- main layer: warm slate-blue, readable against bright sky -->
     <path d="
       M 0,175
       C 32,174 62,171 90,167
@@ -410,9 +415,9 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
       C 744,147 756,146 768,149
       C 778,153 789,161 800,168
       L 800,175 Z"
-      fill="#1c1a36"/>
+      fill="#2e4460"/>
 
-    <!-- hazy secondary ridge for depth -->
+    <!-- distant haze ridge for depth -->
     <path d="
       M 0,175
       C 55,174 105,172 145,168
@@ -426,60 +431,60 @@ body.lang-ja .tense-pill { background:rgba(0,0,0,.12) }
       C 672,169 706,169 734,166
       C 756,163 778,166 800,170
       L 800,175 Z"
-      fill="#12102a" opacity=".8"/>
+      fill="#1e3252" opacity=".75"/>
 
     <!-- ── TABLECLOTH CLOUD ── -->
-    <!-- the famous cloud that cascades over the flat top -->
     <path d="M291,74
              C 312,57 348,49 395,47
              C 430,45 468,47 505,47
              C 532,49 548,60 553,74
              C 534,70 488,67 422,67
              C 358,67 314,70 291,74 Z"
-          fill="white" opacity=".42"/>
-    <!-- cascade over left edge -->
-    <path d="M291,74 C285,93 281,116 283,140"
-          stroke="white" stroke-width="15" fill="none"
-          stroke-linecap="round" opacity=".16"/>
-    <!-- cascade over right edge (lighter — less wind that side) -->
-    <path d="M553,74 C559,95 561,118 559,140"
-          stroke="white" stroke-width="11" fill="none"
-          stroke-linecap="round" opacity=".12"/>
+          fill="white" opacity=".78"/>
+    <!-- cascade left edge -->
+    <path d="M291,74 C285,93 281,116 283,142"
+          stroke="white" stroke-width="16" fill="none"
+          stroke-linecap="round" opacity=".32"/>
+    <!-- cascade right edge -->
+    <path d="M553,74 C559,96 561,120 559,144"
+          stroke="white" stroke-width="12" fill="none"
+          stroke-linecap="round" opacity=".24"/>
 
     <!-- ── OCEAN ── -->
-    <!-- dark water overlay -->
-    <rect x="0" y="175" width="800" height="125" fill="rgba(8,32,80,0.28)"/>
+    <!-- turquoise tint overlay to make the water feel tropical -->
+    <rect x="0" y="175" width="800" height="125" fill="rgba(0,160,190,0.18)"/>
 
-    <!-- distant ripples (near horizon, very subtle) -->
+    <!-- distant ripples -->
     <path d="M0,181 Q200,179 400,181 Q600,183 800,181"
-          stroke="white" stroke-width="1"   fill="none" opacity=".13"/>
-    <path d="M0,190 Q160,188 320,190 Q480,192 640,190 Q740,189 800,190"
-          stroke="white" stroke-width="1.2" fill="none" opacity=".14"/>
+          stroke="white" stroke-width="1.2" fill="none" opacity=".28"/>
+    <path d="M0,190 Q160,188 320,190 Q480,192 640,190 Q800,188 800,190"
+          stroke="white" stroke-width="1.4" fill="none" opacity=".28"/>
     <path d="M0,200 Q120,198 240,200 Q380,202 520,200 Q660,198 800,200"
-          stroke="white" stroke-width="1.4" fill="none" opacity=".14"/>
+          stroke="white" stroke-width="1.6" fill="none" opacity=".28"/>
     <path d="M0,213 Q140,211 280,213 Q420,215 560,213 Q700,211 800,213"
-          stroke="white" stroke-width="1.5" fill="none" opacity=".15"/>
+          stroke="white" stroke-width="1.8" fill="none" opacity=".26"/>
 
-    <!-- mid-water waves -->
-    <path d="M0,230 Q50,226 105,230 Q165,234 225,230 Q285,226 345,230
-             Q405,234 465,230 Q525,226 585,230 Q645,234 705,230 Q760,226 800,230"
-          stroke="white" stroke-width="2"   fill="none" opacity=".22"/>
-    <path d="M0,250 Q60,246 125,250 Q200,254 275,250 Q350,246 425,250
-             Q500,254 575,250 Q650,246 725,250 Q775,253 800,250"
-          stroke="white" stroke-width="2.2" fill="none" opacity=".20"/>
+    <!-- mid waves -->
+    <path d="M0,230 Q50,225 105,230 Q165,235 225,230 Q285,225 345,230
+             Q405,235 465,230 Q525,225 585,230 Q645,235 705,230 Q760,225 800,230"
+          stroke="white" stroke-width="2.5" fill="none" opacity=".40"/>
+    <path d="M0,250 Q60,245 125,250 Q200,255 275,250 Q350,245 425,250
+             Q500,255 575,250 Q650,245 725,250 Q775,253 800,250"
+          stroke="white" stroke-width="2.8" fill="none" opacity=".36"/>
 
     <!-- foreground swell -->
-    <path d="M0,270 Q80,265 160,270 Q255,275 350,270 Q445,265 540,270
-             Q635,275 730,270 Q775,268 800,270"
-          stroke="white" stroke-width="2.8" fill="none" opacity=".18"/>
-    <path d="M0,288 Q100,283 200,288 Q320,293 440,288 Q560,283 680,288
+    <path d="M0,270 Q80,264 160,270 Q255,276 350,270 Q445,264 540,270
+             Q635,276 730,270 Q775,267 800,270"
+          stroke="white" stroke-width="3.5" fill="none" opacity=".38"/>
+    <path d="M0,288 Q100,282 200,288 Q320,294 440,288 Q560,282 680,288
              Q750,292 800,288"
-          stroke="white" stroke-width="2"   fill="none" opacity=".14"/>
+          stroke="white" stroke-width="3"   fill="none" opacity=".28"/>
 
     <!-- sun shimmer on the water -->
-    <ellipse cx="400" cy="218" rx="140" ry="6" fill="white" opacity=".055"/>
-    <ellipse cx="210" cy="248" rx="95"  ry="4" fill="white" opacity=".04"/>
-    <ellipse cx="620" cy="255" rx="110" ry="4" fill="white" opacity=".04"/>
+    <ellipse cx="690" cy="210" rx="90"  ry="8"  fill="white" opacity=".14"/>
+    <ellipse cx="690" cy="225" rx="120" ry="6"  fill="white" opacity=".10"/>
+    <ellipse cx="690" cy="245" rx="100" ry="5"  fill="white" opacity=".07"/>
+    <ellipse cx="300" cy="250" rx="80"  ry="4"  fill="white" opacity=".06"/>
   </svg>
 </div>
 
